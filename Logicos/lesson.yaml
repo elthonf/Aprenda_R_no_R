@@ -12,7 +12,7 @@
     
 - Class: text
   Output: "Existem dois valores l\xF3gicos em R, tamb\xE9m chamados de valores booleanos.\
-    \ Eles s\xE3o verdadeiros e falsos. Em R voc\xEA pode construir express\xF5es\
+    \ Eles s\xE3o TRUE e FALSE. Em R voc\xEA pode construir express\xF5es\
     \ l\xF3gicas que ser\xE3o avaliadas como TRUE ou FALSE."
 
 - Class: text
@@ -25,8 +25,7 @@
   CorrectAnswer: TRUE == TRUE
   Hint: Use o operador de igualdade e digite TRUE == TRUE
   Output: "Criar express\xF5es l\xF3gicas requer operadores l\xF3gicos. Voc\xEA provavelmente\
-    \ est\xE1 familiarizado com operadores aritm\xE9ticos como `+`, `-`,` * `e` /\
-    \ `. O primeiro operador l\xF3gico que vamos discutir \xE9 o operador de igualdade,\
+    \ est\xE1 familiarizado com operadores aritm\xE9ticos como `+`, `-`,`*` e `/`. O primeiro operador l\xF3gico que vamos discutir \xE9 o operador de igualdade,\
     \ representado por dois sinais de igual `==`. Use o operador de igualdade\
     \ abaixo para descobrir se TRUE \xE9 igual a TRUE."
     
@@ -97,7 +96,7 @@
   Output: "O pr\xF3ximo operador que discutiremos \xE9 o operador `não é igual`\
     \ representado por `!=`. N\xE3o \xE9 igual testa se dois valores s\xE3o diferentes,\
     \ ent\xE3o TRUE != FALSE \xE9 avaliado como TRUE. Como o operador de igualdade,\
-    \ `! =` Tamb\xE9m pode ser usado com n\xFAmeros. Tente escrever uma express\xE3\
+    \ `!=` Tamb\xE9m pode ser usado com n\xFAmeros. Tente escrever uma express\xE3\
     o par ver se 5 n\xE3o \xE9 igual a 7."
   
 - AnswerTests: any_of_exprs('!5 == 7', '!(5 == 7)')
@@ -107,7 +106,7 @@
     \ express\xE3o 5 == 7 (tudo que voc\xEA precisa \xE9 um ponto de exclama\xE7\xE3\
     o na frente)."
   Output: "Para negar express\xF5es booleanas, voc\xEA pode usar o operador NOT. Um\
-    \ ponto de exclama\xE7\xE3o `!` Far\xE1 com que! TRUE (diga: n\xE3o \xE9 verdade)\
+    \ ponto de exclama\xE7\xE3o `!` Far\xE1 com que !TRUE (diga: n\xE3o \xE9 verdade)\
     \ avalie para FALSE e! FALSE (diga: n\xE3o false) para avaliar como TRUE. Tente\
     \ usar o operador NOT e o operador igual para encontrar o oposto de se 5 \xE9\
     \ igual a 7."
@@ -126,7 +125,7 @@
     \ para encontrar a resposta correta."
   Output: "Qual das seguintes op\xE7\xF5es \xE9 avaliada como FALSE?"
 
-- AnswerChoices: TRUE; FALSE; Pode haver verdade objetiva ao programar? %>%
+- AnswerChoices: TRUE; FALSE; Pode haver verdade objetiva ao programar?; %>%
   AnswerTests: omnitest(correctVal='TRUE')
   Class: mult_question
   CorrectAnswer: true
@@ -151,25 +150,25 @@
   Class: cmd_question
   CorrectAnswer: TRUE & c(TRUE, FALSE, FALSE)
   Hint: 'Agora, para ver como o operador AND trabalha com um vetor, digite: TRUE &
-    c (TRUE, FALSE, FALSE)'
+    c(TRUE, FALSE, FALSE)'
   Output: "Voc\xEA pode usar o operador `&` para avaliar AND atrav\xE9s de um\
     \ vetor. A vers\xE3o `&&` do AND s\xF3 avalia o primeiro membro de um\
     \ vetor. Vamos testar ambos para a pr\xE1tica. Digite a express\xE3o TRUE &\
-    \ c (TRUE, FALSE, FALSE)."
+    \ c(TRUE, FALSE, FALSE)."
     
 - Class: text
   Output: "O que acontece nesse caso \xE9 que o operando da esquerda &quot;TRUE&quot;\
     \ \xE9 reciclado em todos os elementos no vetor do operando da direita. Esta \xE9\
-    \ a declara\xE7\xE3o equivalente a c (TRUE, TRUE, TRUE) &\
-    \ c (TRUE, FALSE, FALSE)."
+    \ a declara\xE7\xE3o equivalente a c(TRUE, TRUE, TRUE) &\
+    \ c(TRUE, FALSE, FALSE)."
 
 - AnswerTests: omnitest(correctExpr='TRUE && c(TRUE, FALSE, FALSE)')
   Class: cmd_question
   CorrectAnswer: TRUE && c(TRUE, FALSE, FALSE)
   Hint: "Como voc\xEA ver\xE1, a vers\xE3o && do AND funciona de maneira diferente.\
-    \ Tipo: TRUE && c (TRUE, FALSE, FALSE)"
+    \ Tipo: TRUE && c(TRUE, FALSE, FALSE)"
   Output: "Agora vamos digitar a mesma express\xE3o, exceto que usaremos o operador\
-    \ `&&`. Digite a express\xE3o TRUE && c (TRUE, FALSE, FALSE)."
+    \ `&&`. Digite a express\xE3o TRUE && c(TRUE, FALSE, FALSE)."
 
 - Class: text
   Output: "Nesse caso, o operando esquerdo \xE9 avaliado apenas com o primeiro membro\
@@ -190,17 +189,17 @@
 - AnswerTests: omnitest(correctExpr='TRUE | c(TRUE, FALSE, FALSE)')
   Class: cmd_question
   CorrectAnswer: TRUE | c(TRUE, FALSE, FALSE)
-  Hint: 'Teste o operador OR vetorizado digitando: TRUE | c (TRUE, FALSE, FALSE)'
+  Hint: 'Teste o operador OR vetorizado digitando: TRUE | c(TRUE, FALSE, FALSE)'
   Output: "Vamos testar a vers\xE3o vetorizada do operador OR. Digite a express\xE3\
-    o TRUE | c (TRUE, FALSE, FALSE)."
+    o TRUE | c(TRUE, FALSE, FALSE)."
     
 - AnswerTests: omnitest(correctExpr='TRUE || c(TRUE, FALSE, FALSE)')
   Class: cmd_question
   CorrectAnswer: TRUE || c(TRUE, FALSE, FALSE)
   Hint: "Como voc\xEA ver\xE1 o || vers\xE3o do OR n\xE3o \xE9 vetorizada. Tipo: TRUE\
-    \ || c (TRUE, FALSE, FALSE)"
+    \ || c(TRUE, FALSE, FALSE)"
   Output: "Agora vamos experimentar a vers\xE3o n\xE3o vetorizada do operador OR.\
-    \ Digite a express\xE3o TRUE || c (TRUE, FALSE, FALSE)."
+    \ Digite a express\xE3o TRUE || c(TRUE, FALSE, FALSE)."
     
 - Class: text
   Output: "Os operadores l\xF3gicos podem ser encadeados como operadores aritm\xE9\
@@ -262,10 +261,10 @@
 - AnswerTests: omnitest(correctExpr="identical('twins', 'twins')")
   Class: cmd_question
   CorrectAnswer: identical('twins', 'twins')
+  Hint: "Se voc\xEA quiser ver se dois objetos R s\xE3o id\xEAnticos, digite: identical('twins', 'twins')"
+  Output: "A fun\xE7\xE3o identical() retornar\xE1 TRUE se os dois objetos R passados como argumentos forem id\xEAnticos. Experimente a fun\xE7\xE3o identical() digitando: identical('twins', 'twins')"
   
-  Hint: "Se voc\xEA quiser ver se dois objetos R s\xE3o id\xEAnticos, digite: identical(`g\xEAmeos`, `g\xEAmeos`)"
-  Output: "A fun\xE7\xE3o identical() retornar\xE1 TRUE se os dois objetos R passados como argumentos forem id\xEAnticos. Experimente a fun\xE7\xE3o identical() digitando: identical('g\xEAmeos', 'g\xEAmeos')"
-- AnswerChoices: "identical(5 > 4, 3 < 3.1); identical(4, 3.1); identical('ol\xE1', 'ol\xE1'); identical(7, 8)"
+- AnswerChoices: "identical(5 > 4, 3 < 3.1); identical(4, 3.1); identical('ol\xE1', 'alô'); identical(7, 8)"
   AnswerTests: omnitest(correctVal='identical(5 > 4, 3 < 3.1)')
   Class: mult_question
   CorrectAnswer: "identical(5 > 4, 3 < 3.1)"
@@ -301,7 +300,7 @@
   CorrectAnswer: ints <- sample(10)
   Hint: "Para criar um vetor de dez inteiros sem tipo de substitui\xE7\xE3o: ints <- sample(10)"
   Output: "Para as pr\xF3ximas perguntas, precisaremos criar um vetor de inteiros\
-    \ chamados ints. Crie este vetor digitando: ints <- sample (10)"
+    \ chamados ints. Crie este vetor digitando: ints <- sample(10)"
     
 - AnswerTests: omnitest(correctExpr='ints')
   Class: cmd_question
@@ -360,13 +359,14 @@
   Output: "Use a fun\xE7\xE3o all() para ver se todos os elementos de ints s\xE3\
     o maiores que zero."
 
-- AnswerChoices: any(ints == 10); all(ints == 10); all(c (TRUE, FALSE, TRUE)); any(ints == 2.5)
+- AnswerChoices: any(ints == 10); all(ints == 10); all(c(TRUE, FALSE, TRUE)); any(ints == 2.5)
   AnswerTests: omnitest(correctVal='any(ints == 10)')
   Class: mult_question
   CorrectAnswer: any(ints == 10)
   Hint: "any() ser\xE1 avaliado como TRUE se houver um ou mais elementos TRUE em\
     \ um vetor l\xF3gico."
   Output: "Qual das seguintes avalia\xE7\xF5es \xE9 verdadeira?"
+  
 - Class: text
   Output: "Isso \xE9 tudo para esta introdu\xE7\xE3o \xE0 l\xF3gica em R. Se voc\xEA\
     \ realmente quer ver o que voc\xEA pode fazer com a l\xF3gica, confira a li\xE7\
