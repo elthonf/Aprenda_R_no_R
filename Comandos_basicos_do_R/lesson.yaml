@@ -251,9 +251,8 @@
     \ Enter.)"
 
 - Class: mult_question
-  Output: "Gostaria de informar a algu\xE9m sobre sua conclus\xE3o desta\
-    \ li\xE7\xE3o via e-mail?"
+  Output: "Gostaria de informar ao professor sobre a conclus\xE3o desta li\xE7\xE3o"
   CorrectAnswer: NULL
   AnswerChoices: Sim; Não
   AnswerTests: notify()
-  Hint: NULL
+  Hint: Na dúvida, digite Sim :-)
