@@ -5,7 +5,7 @@ notify <- function() {
   # Get info
   info = list()
   
-  info$class <- toupper( readline_clean("Qual o c\xF3digo da sua turma? (exemplo FIAP-IA-01)") )
+  info$class <- toupper( readline_clean("Qual o c\xF3digo da sua turma? (exemplo FIAP-01IA)") )
   repeat{
     info$user <- toupper( readline_clean("Qual seu c\xF3digo de aluno?") )
     if( !is.na(as.numeric(info$user)) ){
