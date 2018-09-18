@@ -1,0 +1,183 @@
+- Class: meta
+  Course: Aprenda R no R
+  Lesson: Sequencias Numéricas
+  Author: Elthon Manhas de Freitas
+  Type: Standard
+  Organization: FIAP
+  Version: 1.0.0
+
+- Class: text
+  Output: "Oi Alunos!!! Nesta li\xE7\xE3o, voc\xEA aprender\xE1 como criar sequ\xEAncias de n\xFA\
+    meros em R."
+    
+- AnswerTests: omnitest(correctExpr='1:20')
+  Class: cmd_question
+  CorrectAnswer: '1:20'
+  Hint: "Digite 1:20 sem espa\xE7os. Certifique-se de usar um c\xF3lon regular e N\xC3\
+    O um ponto e v\xEDrgula."
+  Output: "A maneira mais simples de criar uma sequ\xEAncia de n\xFAmeros em R \xE9\
+    \ usando o operador `:`. Digite 1:20 para ver como funciona."
+
+- AnswerTests: omnitest(correctExpr='pi:10')
+  Class: cmd_question
+  CorrectAnswer: pi:10
+  Hint: "Digite pi:10 e veja o que acontece. pi \xE9 uma constante predefinida em R que assume o valor 3,1415...."
+  Output: "Isso nos deu cada n\xFAmero inteiro entre (e incluindo) 1 e 20. Tamb\xE9\
+    m poder\xEDamos us\xE1-lo para criar uma sequ\xEAncia de n\xFAmeros reais. Por exemplo, digite pi:10."
+
+- Class: text
+  Output: "O resultado \xE9 um vetor de n\xFAmeros reais come\xE7ando com pi (3.142...) e aumentando em incrementos de 1. O limite superior de 10 nunca \xE9 atingido,\
+    \ uma vez que o pr\xF3ximo n\xFAmero em nossa sequ\xEAncia seria maior que 10."
+    
+- AnswerTests: omnitest(correctExpr='15:1')
+  Class: cmd_question
+  CorrectAnswer: '15:1'
+  Hint: 'Digite 15:1 e pressione Enter.'
+  Output: 'O que acontece se fizermos 15:1? Tente para descobrir.'
+  
+- Class: text
+  Output: "Decresceu de 15 para 1 em decrementos de 1! \xC9 improv\xE1vel que desejemos\
+    \ esse comportamento na maioria dos programas, mas \xE9 bom saber disso para usar em um programa ou outro."
+
+- Class: text
+  Output: "Lembre-se que se voc\xEA tiver d\xFAvidas sobre uma fun\xE7\xE3o R em particular,\
+    \ voc\xEA pode acessar sua documenta\xE7\xE3o com um ponto de interroga\xE7\xE3\
+    o seguido pelo nome da fun\xE7\xE3o: ?function_name_here. No entanto, no caso\
+    \ de um operador como o dois pontos usado acima, voc\xEA deve colocar o s\xEDmbolo\
+    \ em crases como neste exemplo: ?`:`. (Se voc\xEA n\xE3o tiver uma tecla de crase, voc\xEA pode usar aspas normais neste exercício.)"
+
+- AnswerTests: any_of_exprs('?`:`', "?':'", '?":"')
+  Class: cmd_question
+  CorrectAnswer: ?`:`
+  Hint: "Para visualizar a documenta\xE7\xE3o de um s\xEDmbolo como o operador de\
+    \ dois pontos, voc\xEA precisa usar crases (ou aspas). O R sabe que voc\xEA n\xE3o est\xE1 tentando usar o s\xEDmbolo no comando. Aqui\
+    \ est\xE1 o que espero que você digite ?`:`. N\xE3o esque\xE7a o ponto de interroga\xE7\xE3o\
+    \ na frente."
+  Output: "Veja a documenta\xE7\xE3o para `:` agora."
+  
+- Class: text
+  Output: "Frequentemente, desejamos mais controle sobre uma sequ\xEAncia que estamos\
+    \ criando do que o operador `:` nos oferece. A fun\xE7\xE3o seq() serve para\
+    \ esse prop\xF3sito."
+
+- AnswerTests: omnitest(correctExpr='seq(1, 20)')
+  Class: cmd_question
+  CorrectAnswer: seq(1, 20)
+  Hint: "Digite seq(1, 20) e pressione Enter. O espa\xE7o ap\xF3s a v\xEDrgula n\xE3\
+    o \xE9 obrigat\xF3rio, mas \xE9 recomendado, j\xE1 que ele tende a fazer com que\
+    \ seu c\xF3digo pare\xE7a menos confuso."
+  Output: "O uso mais b\xE1sico de seq() faz exatamente a mesma coisa que o operador\
+    \ `:`. Tente seq(1, 20) para ver o que acontece."
+
+- AnswerTests: omnitest(correctExpr='seq(0, 10, by=0.5)')
+  Class: cmd_question
+  CorrectAnswer: seq(0, 10, by=0.5)
+  Hint: "Voc\xEA ainda est\xE1 usando a fun\xE7\xE3o seq() aqui, mas desta vez com\
+    \ um argumento extra que diz ao R que voc\xEA quer incrementar sua sequ\xEAncia\
+    \ em 0.5. Tente seq(0, 10, by=0.5)."
+  Output: "Isso nos d\xE1 a mesma sa\xEDda que 1:20. No entanto, digamos que, em vez\
+    \ disso, queremos um vetor de n\xFAmeros que varia de 0 a 10, incrementado em\
+    \ 0,5. O comando seq(0, 10, by=0.5) faz exatamente isso. Experimente."
+
+- AnswerTests: omnitest(correctExpr='my_seq <- seq(5, 10, length=30)')
+  Class: cmd_question
+  CorrectAnswer: my_seq <- seq(5, 10, length=30)
+  Hint: "Voc\xEA est\xE1 usando a mesma fun\xE7\xE3o aqui, mas alterando seus argumentos\
+    \ para resultados diferentes. Certifique-se de armazenar o resultado em uma nova\
+    \ vari\xE1vel chamada my_seq, assim: my_seq <- seq(5, 10, length=30)."
+  Output: "Pode ser que n\xE3o nos importemos com o incremento e queremos apenas uma\
+    \ sequ\xEAncia de 30 n\xFAmeros entre 5 e 10. seq(5, 10, length=30) faz\
+    \ o truque, UAU! Tente agora e armazene o resultado em uma nova vari\xE1vel\
+    \ chamada my_seq."
+
+- AnswerTests: omnitest(correctExpr='length(my_seq)')
+  Class: cmd_question
+  CorrectAnswer: length(my_seq)
+  Hint: "Use length(my_seq) para ver o tamanho da vari\xE1vel my_seq."
+  Output: "Para confirmar que my_seq tem comprimento 30, podemos usar a fun\xE7\xE3\
+    o length(). Experimente usar esta função na variável que você acabou de criar."
+
+- Class: text
+  Output: "Vamos fingir que n\xE3o sabemos o comprimento de my_seq, mas queremos gerar\
+    \ uma seq\xFC\xEAncia de inteiros de 1 a N, onde N representa o comprimento do\
+    \ vetor my_seq. Em outras palavras, queremos um novo vetor (1, 2, 3, ...) com\
+    \ o mesmo comprimento que my_seq."
+
+- AnswerTests: omnitest(correctExpr='1:length(my_seq)')
+  Class: cmd_question
+  CorrectAnswer: 1:length(my_seq)
+  Hint: "Digite 1:length(my_seq), sem atribuir o resultado a uma nova vari\xE1vel."
+  Output: "Existem v\xE1rias maneiras de fazer isso. Uma possibilidade \xE9 combinar\
+    \ o operador `:` e a fun\xE7\xE3o length() assim: 1:length(my_seq). Tente assim e veja se funciona."
+
+- AnswerTests: omnitest(correctExpr='seq(along.with = my_seq)')
+  Class: cmd_question
+  CorrectAnswer: seq(along.with = my_seq)
+  Hint: "Digite seq(along.with = my_seq). Observe que estamos usando a mesma fun\xE7\
+    \xE3o seq(), mas com um argumento diferente chamado `along.with`. Isso diz ao\
+    \ R que voc\xEA quer uma seq\xFC\xEAncia `de mesmo tamanho` da sequ\xEAncia my_seq.\
+    \ Lembre-se que voc\xEA pode digitar ?seq se voc\xEA tiver d\xFAvidas sobre a fun\xE7\
+    \xE3o seq()."
+  Output: "Outra op\xE7\xE3o \xE9 usar seq(along.with = my_seq). Opa, gostei disso! Agora faça você e veja com seus próprios olhos."
+
+- AnswerTests: omnitest(correctExpr='seq_along(my_seq)')
+  Class: cmd_question
+  CorrectAnswer: seq_along(my_seq)
+  Hint: "A fun\xE7\xE3o seq_along() \xE9 uma varia\xE7\xE3o da fun\xE7\xE3o seq().\
+    \ Tente seq_along(my_seq) para obter o mesmo resultado, mas de outra maneira."
+  Output: "No entanto, como \xE9 o caso de muitas tarefas comuns, o R tem uma fun\xE7\
+    \xE3o interna separada para esse prop\xF3sito chamada seq_along(). Digite seq_along(my_seq) para v\xEA-lo em a\xE7\xE3o."
+
+- Class: text
+  Output: "Muitas vezes existem v\xE1rias abordagens para resolver o mesmo problema,\
+    \ ainda mais em R. Simples abordagens que envolvem menos digita\xE7\xE3o\
+    \ s\xE3o geralmente melhores. Tamb\xE9m \xE9 importante que seu c\xF3digo seja\
+    \ leg\xEDvel, para que voc\xEA e outras pessoas possam descobrir o que est\xE1\
+    \ acontecendo sem muito trabalho."
+
+- Class: text
+  Output: "Se o R tiver uma fun\xE7\xE3o interna para uma tarefa espec\xEDfica, \xE9\
+    \ prov\xE1vel que essa fun\xE7\xE3o seja altamente otimizada para essa finalidade\
+    \ e seja sua melhor op\xE7\xE3o. \xC0 medida que voc\xEA se tornar um programador\
+    \ R mais avan\xE7ado, criar\xE1 suas pr\xF3prias fun\xE7\xF5es para executar tarefas\
+    \ quando n\xE3o houver op\xE7\xF5es melhores. Vamos explorar escrevendo suas pr\xF3\
+    prias fun\xE7\xF5es em li\xE7\xF5es futuras."
+
+- Class: text
+  Output: "Mais uma fun\xE7\xE3o relacionada \xE0 cria\xE7\xE3o de seq\xFC\xEAncias\
+    \ de n\xFAmeros \xE9 rep(), que significa `replicar`. Vamos dar uma\
+    \ olhada em alguns exemplos e usos."
+
+- AnswerTests: omnitest(correctExpr='rep(0, times = 40)')
+  Class: cmd_question
+  CorrectAnswer: rep(0, times = 40)
+  Hint: Digite rep(0, times = 40) para fazer um vetor contendo 40 zeros.
+  Output: "Se estivermos interessados em criar um vetor que contenha 40\
+    \ zeros, podemos usar rep(0, times = 40). Vai lá, digita este comando."
+
+- AnswerTests: omnitest(correctExpr='rep(c(0, 1, 2), times = 10)')
+  Class: cmd_question
+  CorrectAnswer: rep(c(0, 1, 2), times = 10)
+  Hint: "Tente rep(c(0, 1, 2), times = 10) para ver uma varia\xE7\xE3o do\
+    \ mesmo comando. Certifique-se de usar a fun\xE7\xE3o c() para informar R que os\
+    \ n\xFAmeros 0, 1 e 2 formam um vetor."
+  Output: "Se ao inv\xE9s de zeros, nós quisermos que a saída seja 10 repeti\xE7\xF5\
+    es do vetor (0, 1, 2), podemos fazer rep(c(0, 1, 2), times = 10). Vai fundo e veja o resultado."
+
+- AnswerTests: omnitest(correctExpr='rep(c(0, 1, 2), each = 10)')
+  Class: cmd_question
+  CorrectAnswer: rep(c(0, 1, 2), each = 10)
+  Hint: "Digite rep(c(0, 1, 2), each = 10) para ver como o argumento `each` altera o comportamento da fun\xE7\xE3o rep()."
+  Output: "Finalmente, digamos que, em vez de repetir o vetor (0, 1, 2) várias vezes,\
+    \ queremos que nosso vetor contenha 10 zeros, depois 10 uns, depois 10 dois. N\xF3\
+    s podemos fazer isso com o argumento `each`. Tente rep(c(0, 1, 2), each = 10)."
+
+- Class: text
+  Output: "Por enquanto é isso. Vimos bastante sobre como criar sequencias numéricas hoje."
+
+- Class: mult_question
+  Output: "Gostaria de informar ao professor sobre a conclus\xE3o desta li\xE7\xE3o"
+  CorrectAnswer: NULL
+  AnswerChoices: Sim; Não
+  AnswerTests: notify()
+  Hint: Na dúvida, digite Sim :-)
