@@ -1,0 +1,270 @@
+- Class: meta
+  Course: Aprenda R no R
+  Lesson: Vetores
+  Author: Elthon Manhas de Freitas
+  Type: Standard
+  Organization: FIAP
+  Version: 1.0.0
+
+- Class: text
+  Output: "Olá meus queridos alunos. Que tal vermos um pouco sobre vetores?"
+  
+- Class: text
+  Output: "A estrutura de dados mais simples e mais comum em R é o vetor, o termo correto é vetor atômico - por ser originalmente indivisível. Observação: no R temos a impressão de que podemos dividir vetores atômicos, o que acontece na verdade é que um novo vetor é criado quando necessário ;-)."
+  
+- Class: text
+  Output: "Um vetor contém apenas um tipo de dados, ou seja, é um estrutura de dados homogênea. Uma lista\
+    \ pode conter vários tipos de dados, por isso é considerada uma estrutura de dados heterogênea. Exploraremos nesta lição os vetores \
+    \ antes de chegarmos \xE0s listas."
+    
+- Class: text
+  Output: "Se você fez a lição de sequencias numéricas, viu que já lidamos com vetores numéricos,\
+    \ que são um tipo de vetor at\xF4mico. Outros tipos de vetores at\xF4micos\
+    \ incluem l\xF3gico, caractere, inteiro e complexo (ou imaginário). Nesta lição, examinaremos\
+    \ mais de perto os vetores l\xF3gicos e de caracteres."
+
+- Class: text
+  Output: "Os vetores l\xF3gicos podem conter os valores TRUE, FALSE e NA (para\
+    \ 'não dispon\xEDvel'). Esses valores são gerados como resultado\
+    \ de 'condiç\xF5es' l\xF3gicas - ou testes lógicos. Vamos testar algumas condiç\
+    \xF5es simples."
+
+- AnswerTests: omnitest(correctExpr='num_vect <- c(0.5, 55, -10, 6)')
+  Class: cmd_question
+  CorrectAnswer: num_vect <- c(0.5, 55, -10, 6)
+  Hint: "Lembre-se de que a função c() é usada para criar um vetor. Se voc\xEA\
+    \ esquecer como usá-lo, digite ?c para acessar o arquivo de ajuda. Não esqueç\
+    a de atribuir o resultado a uma nova variável chamada num_vect."
+  Output: "Primeiro, use a função c() e crie um vetor numérico chamado num_vect que contenha os valores 0.5, 55, -10 e 6."
+
+- AnswerTests: omnitest(correctExpr='tf <- num_vect < 1')
+  Class: cmd_question
+  CorrectAnswer: tf <- num_vect < 1
+  Hint: "Use tf <- num_vect < 1 para atribuir o resultado de num_vect < 1 a uma variável chamada tf."
+  Output: "Agora, crie uma variável chamada tf que obtenha o resultado de num_vect < 1, que é lido como 'num_vect é menor que 1'."
+    
+- AnswerChoices: "um vetor de 4 valores lógicos; um único valor lógico"
+  AnswerTests: omnitest(correctVal='um vetor de 4 valores lógicos')
+  Class: mult_question
+  CorrectAnswer: "um vetor de 4 valores lógicos"
+  Hint: "OK, só tem duas opções! Então deve ser a outra! :-)"
+  Output: "Como voc\xEA acha que a variável tf foi criada?"
+  
+- AnswerTests: omnitest(correctExpr='tf')
+  Class: cmd_question
+  CorrectAnswer: tf
+  Hint: Apenas digite tf e pressione Enter para visualizar o seu valor.
+  Output: "Imprima o conteúdo de tf agora."
+
+- Class: text
+  Output: "A instrução num_vect < 1 é uma condição e tf nos informa\
+    \ se cada elemento correspondente de nosso numérico vetorial num_vect satisfaz\
+    \ essa condição."
+
+- Class: text
+  Output: "O primeiro elemento de num_vect é 0.5, pois é menor que 1 e, portanto,\
+    \ a instrução 0.5 < 1 é TRUE. O segundo elemento de num_vect é 55,\
+    \ que é maior que 1, portanto, a instrução 55 < 1 é FALSE. A mesma\
+    \ l\xF3gica se aplica ao terceiro e quarto elementos."
+
+- AnswerTests: omnitest(correctExpr='num_vect >= 6')
+  Class: cmd_question
+  CorrectAnswer: num_vect >= 6
+  Hint: "Não crie uma nova variável. N\xF3s apenas queremos ver o resultado\
+    \ de num_vect >= 6. Certifique-se de que não há espaço entre os s\xED\
+    mbolos `>` e `=`. Pense neles como um s\xEDmbolo representando 'maior\
+    \ que ou igual a'."
+  Output: "Vamos tentar uma variação. Digite num_vect >= 6 sem atribuir o resultado a\
+    \ uma nova variável para exibir o resultado no console."
+    
+- Class: text
+  Output: "Desta vez, estamos perguntando se cada elemento individual de num_vect\
+    \ é maior que OU igual a 6. Como somente 55 e 6 são maiores ou iguais a\
+    \ 6, o segundo e quarto elementos do resultado são TRUE e o primeiro e terceiro\
+    \ elementos são FALSE."
+
+- Class: text
+  Output: "Os s\xEDmbolos `<` e `>=` nesses exemplos são chamados de 'operadores\
+    \ l\xF3gicos'. Outros operadores l\xF3gicos incluem `>`, `<=`, `==`\
+    \ para igualdade exata, e `!=` para desigualdade."
+    
+- Class: text
+  Output: "Se tivermos duas express\xF5es l\xF3gicas, A e B, podemos perguntar se\
+    \ pelo menos um é verdadeiro com A | B (l\xF3gico 'ou' também conhecido por 'uniã\
+    o') ou se ambos são TRUE com A & B (l\xF3gica 'e' também conhecido por 'interseção'). Por fim, !A é a negação de A e é TRUE\
+    \ quando A é FALSE e vice-versa."
+    
+- Class: text
+  Output: "\xC9 uma boa ideia passar algum tempo brincando com várias combinaç\
+    \xF5es desses operadores l\xF3gicos até ficar confortável com o uso deles.\
+    \ Vamos fazer alguns exemplos aqui para voc\xEA começar."
+    
+- Class: text
+  Output: "Tente o seu melhor para prever o resultado de cada uma das seguintes afirmaç\
+    \xF5es. Voc\xEA pode usar lápis e papel, se for te ajudar.\
+    \ Se voc\xEA ficar empacado, apenas adivinhe e voc\xEA tem 50% de chance de obter\
+    \ a resposta certa!"
+
+- AnswerChoices: TRUE; FALSE
+  AnswerTests: omnitest(correctVal='FALSE')
+  Class: mult_question
+  CorrectAnswer: FALSE
+  Hint: "Quebre este problema em 2 partes. O `&` no meio indica que ambas as partes\
+    \ devem ser verdadeiras. Seu trabalho é descobrir se cada uma é uma afirmaçã\
+    o verdadeira. Se forem, toda a condição é verdadeira. Se não, é\
+    \ falso."
+  Output: (3 > 5) & (4 == 4)
+
+- AnswerChoices: TRUE; FALSE
+  AnswerTests: omnitest(correctVal='TRUE')
+  Class: mult_question
+  CorrectAnswer: TRUE
+  Hint: "Quebre este problema em 2 partes. O `|` no meio afirma que PELO MENOS, uma\
+    \ das partes é TRUE. Seu trabalho é descobrir se cada uma é uma afirmaç\
+    ão verdadeira. Se uma for, toda a condição é verdadeira. Se não,\
+    \ é falso."
+  Output: (TRUE == TRUE) | (TRUE = FALSE)
+
+- AnswerChoices: TRUE; FALSE
+  AnswerTests: omnitest(correctVal='TRUE')
+  Class: mult_question
+  CorrectAnswer: TRUE
+  Hint: "Isso é complicado. Lembre-se que o s\xEDmbolo `!` Nega o que vier depois\
+    \ dele. Há também uma ordem de operaç\xF5es acontecendo aqui. Condiç\
+    \xF5es que estão entre par\xEAnteses devem ser avaliadas primeiro. Entã\
+    o, trabalhe a solução de dentro para fora."
+  Output: ((111 >= 111) | !(TRUE)) & ((4 + 1) == 5)
+  
+- Class: text
+  Output: "Não se preocupe se voc\xEA achar que isso é complicado. Fis essa conta para\
+    \ ser mesmo. Trabalhar com declaraç\xF5es l\xF3gicas em R requer prática, mas\
+    \ seus esforços serão recompensados em liç\xF5es futuras\
+    \ (por exemplo, estruturas de subconjuntos e controle)."
+ 
+- Class: text
+  Output: "Os vetores de caracteres também são muito comuns em R. Aspas duplas ou simples\
+    \ são usadas para distinguir vetores de texto, como no exemplo a seguir."
+
+- AnswerTests: omnitest(correctExpr='my_char <- c("My", "name", "is")')
+  Class: cmd_question
+  CorrectAnswer: my_char <- c("My", "name", "is")
+  Hint: 'Digite my_char <- c("My", "name", "is") 
+    para criar uma nova variável chamada my_char que contenha um vetor de caracteres 
+    de comprimento 3. Certifique-se de que as vírgulas que separam as palavras 
+    estejam FORA das aspas ou o R vai entender que as vígulas são parte das palavras.'
+  Output: 'Crie um vetor de caractere que contenha as seguintes palavras: "My", "name", "is". 
+    Lembre-se de incluir cada palavra em seu próprio conjunto de aspas, de modo que R saiba que elas são cadeias de 
+    caracteres. Armazene o vetor em uma variável chamada my_char.'
+
+- AnswerTests: omnitest(correctExpr='my_char')
+  Class: cmd_question
+  CorrectAnswer: my_char
+  Hint: "Digite my_char para visualizar seu conteúdo."
+  Output: "Imprima o conteúdo de my_char para ver como que esta variável foi criada."
+
+- Class: text
+  Output: "Show! my_char é um vetor de caracteres de comprimento 3. Digamos que\
+    \ queremos unir os elementos de my_char em uma cadeia de caracteres cont\xEDnua\
+    \ (isto é, um vetor de caracteres de comprimento 1). Podemos fazer isso usando\
+    \ a função paste()."
+
+- AnswerTests: omnitest(correctExpr='paste(my_char, collapse = " ")')
+  Class: cmd_question
+  CorrectAnswer: paste(my_char, collapse = " ")
+  Hint: Digite paste(my_char, collapse = " ") para recolher as palavras no
+    vetor, de modo que elas quase formem uma frase. Deve haver um único espaço
+    entre as aspas duplas no argumento `collapse` para que haja espaços únicos separando as palavras."
+  Output: Digite paste(my_char, collapse = " ") agora. Certifique-se de 
+    que existe um espaço entre as aspas duplas no argumento `collapse`. Você 
+    verá porque esse argumento em um segundo."
+ 
+- Class: text
+  Output: "O argumento `collapse` para a função paste() diz ao R que quando\
+    \ unimos os elementos do vetor do caractere my_char, gostar\xEDamos de separá\
+    -los com espaços simples."
+
+- Class: text
+  Output: Parece que estamos esquecendo alguma coisa .... Ah, sim! Seu nome!
+  
+- AnswerTests: var_is_a("character", "my_name"); expr_uses_func("c"); expr_creates_var("my_name");
+    val_has_length(4)
+  Class: cmd_question
+  CorrectAnswer: my_name <- c(my_char, "Swirl")
+  Hint: Coloque seu nome no final do vetor my_char usando a função c(). Certifique-se 
+    de atribuir o resultado a uma nova variável chamada my_name. Se o seu nome 
+    fosse 'Swirl', você digitaria my_name <- c(my_char, "Swirl").
+  Output: 'Para adicionar (ou `concatenar`) seu nome ao final de my_char, 
+    use a função c() assim: c(my_char, "your_name_here"). Coloque 
+    seu nome entre aspas duplas onde coloquei "your_name_here". Experimente 
+    agora, armazenando o resultado em uma nova variável chamada my_name.'
+
+- AnswerTests: omnitest(correctExpr='my_name')
+  Class: cmd_question
+  CorrectAnswer: my_name
+  Hint: "Digite my_name e pressione Enter para visualizar seu conteúdo."
+  Output: "D\xEA uma olhada no conteúdo de my_name."
+
+- AnswerTests: omnitest(correctExpr='paste(my_name, collapse = " ")')
+  Class: cmd_question
+  CorrectAnswer: paste(my_name, collapse = " ")
+  Hint: 'Use paste(my_name, collapse = " ") para unir as quatro palavras\
+    \ juntas, separadas por espaços simples.'
+  Output: 'Agora, use a função paste() mais uma vez para unir as palavras em 
+    my_name em uma única cadeia de caracteres. Não esqueça do argumento collapse = " "!'
+
+- Class: text
+  Output: "Neste exemplo, usamos a função paste() para juntar os elementos\
+    \ de um único vetor de caractere. paste() também pode ser usado para unir\
+    \ os elementos de vários vetores de caracteres."
+
+- AnswerTests: omnitest(correctExpr='paste("Hello", "world!", sep = " ")')
+  Class: cmd_question
+  CorrectAnswer: paste("Hello", "world!", sep = " ")
+  Hint: 'Digite paste("Hello", "world!", sep = " ") 
+    para unir as duas palavras "Hello" e "world", separadas 
+    por um único espaço. Deve haver um único espaço entre as aspas duplas 
+    no argumento `sep` para a função paste().'
+  Output: 'No caso mais simples, podemos unir dois vetores de caracteres que são de comprimento 1 (isto é, juntar duas palavras). Digite paste("Hello", 
+    "world!", sep = " "), onde o argumento `sep` diz ao R que 
+    queremos separar os elementos unidos com um único espaço.'
+    
+- AnswerTests: any_of_exprs('paste(1:3, c("X", "Y", "Z"), sep = "")', 'paste(c(1:3), c("X", "Y", "Z"), sep = "")')
+  Class: cmd_question
+  CorrectAnswer: paste(1:3, c("X", "Y", "Z"), sep = "")
+  Hint: 'Digite paste(1:3, c("X", "Y", "Z"), sep = "") para ver o que acontece quando unimos dois vetores de igual comprimento usando paste().'
+  Output: 'Para um exemplo um pouco mais complicado, podemos unir dois vetores, cada 
+    um com o comprimento 3. Use paste() para unir o vetor inteiro 1:3 com o vetor de caracteres 
+    c("X", "Y", "Z"). Desta vez, use sep = "" para não deixar espaço entre os elementos unidos.'
+
+- Class: text
+  Output: "O que voc\xEA acha que acontecerá se os vetores tiverem comprimentos diferentes?"
+    
+- AnswerTests: omnitest(correctExpr='paste(LETTERS, 1:4, sep = "-")')
+  Class: cmd_question
+  CorrectAnswer: paste(LETTERS, 1:4, sep = "-")
+  Hint: Digite paste(LETTERS, 1:4, sep = "-") para ver como R recicla 
+    o vetor 1:4 para corresponder ao comprimento de LETTERS. Observe que estamos 
+    usando `-` como nosso separador desta vez, em vez de um único espaço.
+  Output: Reciclagem de vetores! Digite paste(LETTERS, 1:4, sep = "-"), 
+    onde LETTERS é uma variável pré-definida em R contendo um vetor de 
+    caracteres de todas as 26 letras maiúsculas do alfabeto.
+
+- Class: text
+  Output: "Como o vetor de caracteres LETTERS é maior que o vetor numérico 1:4, o R simplesmente recicla, ou repete, 1:4 até coincidir com o comprimento\
+    \ de LETTERS."
+
+- Class: text
+  Output: "Também vale a pena notar que o vetor numérico 1:4 é 'convertido'\
+    \ em um vetor de caracteres pela função paste()."
+
+- Class: text
+  Output: "Discutiremos a conversão (ou coerção) em outra lição, mas tudo o que ela realmente\
+    \ quer dizer é que os números 1, 2, 3 e 4 na sa\xEDda acima não sã\
+    o mais números para o R, mas sim caracteres '1', '2', '3' e '4'."
+
+- Class: mult_question
+  Output: "Gostaria de informar ao professor sobre a conclusão desta lição"
+  CorrectAnswer: NULL
+  AnswerChoices: Sim; Não
+  AnswerTests: notify()
+  Hint: Na dúvida, digite Sim :-)
