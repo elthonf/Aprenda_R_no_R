@@ -7,31 +7,31 @@
   Version: 1.0.0
   
 - Class: text
-  Output: "Esta li\xE7\xE3o deve ser uma breve introdu\xE7\xE3o sobre valores booleanos e opera\xE7\xF5\
-    es l\xF3gicas em R."
+  Output: "Esta lição deve ser uma breve introdução sobre valores booleanos e operaçõ\
+    es lógicas em R."
     
 - Class: text
-  Output: "Existem dois valores l\xF3gicos em R, tamb\xE9m chamados de valores booleanos.\
-    \ Eles s\xE3o TRUE e FALSE. Em R voc\xEA pode construir express\xF5es\
-    \ l\xF3gicas que ser\xE3o avaliadas como TRUE ou FALSE."
+  Output: "Existem dois valores lógicos em R, também chamados de valores booleanos.\
+    \ Eles são TRUE e FALSE. Em R você pode construir expressões\
+    \ lógicas que serão avaliadas como TRUE ou FALSE."
 
 - Class: text
-  Output: "Muitas das perguntas desta li\xE7\xE3o envolver\xE3o a avalia\xE7\xE3o\
-    \ de express\xF5es l\xF3gicas. Se tiver dificuldades, pode ser \xFAtil abrir um segundo terminal R onde\
-    \ voc\xEA pode experimentar algumas dessas express\xF5es. Fica a seu critério."
+  Output: "Muitas das perguntas desta lição envolverão a avaliação\
+    \ de expressões lógicas. Se tiver dificuldades, pode ser útil abrir um segundo terminal R onde\
+    \ você pode experimentar algumas dessas expressões. Fica a seu critério."
  
 - AnswerTests: omnitest(correctExpr='TRUE == TRUE')
   Class: cmd_question
   CorrectAnswer: TRUE == TRUE
   Hint: Use o operador de igualdade e digite TRUE == TRUE
-  Output: "Criar express\xF5es l\xF3gicas requer operadores l\xF3gicos. Voc\xEA provavelmente\
-    \ est\xE1 familiarizado com operadores aritm\xE9ticos como `+`, `-`,`*` e `/`. O primeiro operador l\xF3gico que vamos discutir \xE9 o operador de igualdade,\
+  Output: "Criar expressões lógicas requer operadores lógicos. Você provavelmente\
+    \ está familiarizado com operadores aritméticos como `+`, `-`,`*` e `/`. O primeiro operador lógico que vamos discutir é o operador de igualdade,\
     \ representado por dois sinais de igual `==`. Use o operador de igualdade\
-    \ abaixo para descobrir se TRUE \xE9 igual a TRUE."
+    \ abaixo para descobrir se TRUE é igual a TRUE."
     
 - Class: text
-  Output: "Assim como a aritm\xE9tica, as express\xF5es l\xF3gicas podem ser agrupadas\
-    \ por par\xEAnteses para que a express\xE3o inteira (TRUE == TRUE) == TRUE seja\
+  Output: "Assim como a aritmética, as expressões lógicas podem ser agrupadas\
+    \ por parênteses para que a expressão inteira (TRUE == TRUE) == TRUE seja\
     \ avaliada como TRUE."
     
 - AnswerTests: omnitest(correctExpr='(FALSE == TRUE) == FALSE')
@@ -44,30 +44,30 @@
   Class: cmd_question
   CorrectAnswer: 6 == 7
   Hint: Use o operador de igualdade e digite 6 == 7
-  Output: "O operador de igualdade tamb\xE9m pode ser usado para comparar n\xFAmeros.\
-    \ Use `==` para ver se 6 \xE9 igual a 7."
+  Output: "O operador de igualdade também pode ser usado para comparar números.\
+    \ Use `==` para ver se 6 é igual a 7."
     
 - Class: text
-  Output: "A express\xE3o anterior \xE9 avaliada como FALSE porque 6 \xE9 menor que\
+  Output: "A expressão anterior é avaliada como FALSE porque 6 é menor que\
     \ 7. Felizmente, existem operadores de desigualdade que nos permitem testar se\
-    \ um valor \xE9 menor ou maior que outro valor."
+    \ um valor é menor ou maior que outro valor."
     
 - AnswerTests: omnitest(correctExpr='6 < 7')
   Class: cmd_question
   CorrectAnswer: 6 < 7
   Hint: Use o operador menor que e digite 6 < 7
-  Output: "O operador menor que '<' testa se o n\xFAmero no lado esquerdo\
-    \ do operador (chamado de operando \xE0 esquerda) \xE9 menor que o n\xFAmero no\
-    \ lado direito do operador (chamado operando \xE0 direita). Escreva uma express\xE3\
+  Output: "O operador menor que '<' testa se o número no lado esquerdo\
+    \ do operador (chamado de operando à esquerda) é menor que o número no\
+    \ lado direito do operador (chamado operando à direita). Escreva uma expressã\
     o para testar se 6 é menor que 7."
 
 - AnswerTests: omnitest(correctExpr='10 <= 10')
   Class: cmd_question
   CorrectAnswer: 10 <= 10
   Hint: Use o operador `<=` e digite 10 <= 10
-  Output: "Existe tamb\xE9m um operador menor que ou igual a <= que testa se o\
-    \ operando da esquerda \xE9 menor ou igual ao operando da direita. Escreva uma\
-    \ express\xE3o para testar se 10 \xE9 menor ou igual a 10."
+  Output: "Existe também um operador menor que ou igual a <= que testa se o\
+    \ operando da esquerda é menor ou igual ao operando da direita. Escreva uma\
+    \ expressão para testar se 10 é menor ou igual a 10."
 
 - Class: text
   Output: Tenha em mente que existem os operadores correspondentes maiores que `>`
@@ -77,63 +77,63 @@
   AnswerTests: omnitest(correctVal='9 >= 10')
   Class: mult_question
   CorrectAnswer: 9 >= 10
-  Hint: "Se precisar, voc\xEA pode avaliar cada express\xE3o em uma sess\xE3o R separada\
+  Hint: "Se precisar, você pode avaliar cada expressão em uma sessão R separada\
     \ para encontrar a resposta correta."
-  Output: "Qual das seguintes op\xE7\xF5es \xE9 avaliada como FALSE?"
+  Output: "Qual das seguintes opções é avaliada como FALSE?"
 
 - AnswerChoices: 9 >= 10; 7 == 9; 57 < 8; -6 > -7
   AnswerTests: omnitest(correctVal='-6 > -7')
   Class: mult_question
   CorrectAnswer: -6 > -7
-  Hint: "Se precisar, voc\xEA pode avaliar cada express\xE3o em uma sess\xE3o R separada\
+  Hint: "Se precisar, você pode avaliar cada expressão em uma sessão R separada\
     \ para encontrar a resposta correta."
-  Output: "Qual das seguintes avalia\xE7\xF5es \xE9 verdadeira?"
+  Output: "Qual das seguintes avaliações é verdadeira?"
 
 - AnswerTests: omnitest(correctExpr='5 != 7')
   Class: cmd_question
   CorrectAnswer: 5 != 7
-  Hint: "Use o operador n\xE3o igual e digite 5 != 7"
-  Output: "O pr\xF3ximo operador que discutiremos \xE9 o operador `não é igual`\
-    \ representado por `!=`. N\xE3o \xE9 igual testa se dois valores s\xE3o diferentes,\
-    \ ent\xE3o TRUE != FALSE \xE9 avaliado como TRUE. Como o operador de igualdade,\
-    \ `!=` Tamb\xE9m pode ser usado com n\xFAmeros. Tente escrever uma express\xE3\
-    o par ver se 5 n\xE3o \xE9 igual a 7."
+  Hint: "Use o operador não igual e digite 5 != 7"
+  Output: "O próximo operador que discutiremos é o operador `não é igual`\
+    \ representado por `!=`. Não é igual testa se dois valores são diferentes,\
+    \ então TRUE != FALSE é avaliado como TRUE. Como o operador de igualdade,\
+    \ `!=` Também pode ser usado com números. Tente escrever uma expressã\
+    o par ver se 5 não é igual a 7."
   
 - AnswerTests: any_of_exprs('!5 == 7', '!(5 == 7)')
   Class: cmd_question
   CorrectAnswer: '!5 == 7'
-  Hint: "Esta express\xE3o pode ser um pouco complicada, ent\xE3o pense em negar a\
-    \ express\xE3o 5 == 7 (tudo que voc\xEA precisa \xE9 um ponto de exclama\xE7\xE3\
+  Hint: "Esta expressão pode ser um pouco complicada, então pense em negar a\
+    \ expressão 5 == 7 (tudo que você precisa é um ponto de exclamaçã\
     o na frente)."
-  Output: "Para negar express\xF5es booleanas, voc\xEA pode usar o operador NOT. Um\
-    \ ponto de exclama\xE7\xE3o `!` Far\xE1 com que !TRUE (diga: n\xE3o \xE9 verdade)\
-    \ avalie para FALSE e! FALSE (diga: n\xE3o false) para avaliar como TRUE. Tente\
-    \ usar o operador NOT e o operador igual para encontrar o oposto de se 5 \xE9\
+  Output: "Para negar expressões booleanas, você pode usar o operador NOT. Um\
+    \ ponto de exclamação `!` Fará com que !TRUE (diga: não é verdade)\
+    \ avalie para FALSE e! FALSE (diga: não false) para avaliar como TRUE. Tente\
+    \ usar o operador NOT e o operador igual para encontrar o oposto de se 5 é\
     \ igual a 7."
     
 - Class: text
   Output: "Vamos dar um tempo para rever. O operador equals `==` testa se dois valores\
-    \ booleanos ou n\xFAmeros s\xE3o iguais, o operador n\xE3o igual `! =` Testa\
-    \ se dois valores booleanos ou n\xFAmeros s\xE3o desiguais, e o operador NOT `!` nega express\xF5es l\xF3gicas para que express\xF5es TRUE se tornem Express\xF5\
+    \ booleanos ou números são iguais, o operador não igual `! =` Testa\
+    \ se dois valores booleanos ou números são desiguais, e o operador NOT `!` nega expressões lógicas para que expressões TRUE se tornem Expressõ\
     es FALSE e FALSE se tornam TRUE."
  
 - AnswerChoices: '!(0 >= -1); !FALSE; 7 != 8; 9 < 10'
   AnswerTests: omnitest(correctVal='!(0 >= -1)')
   Class: mult_question
   CorrectAnswer: '!(0 >= -1)'
-  Hint: "Se precisar, voc\xEA pode avaliar cada express\xE3o em uma sess\xE3o R separada\
+  Hint: "Se precisar, você pode avaliar cada expressão em uma sessão R separada\
     \ para encontrar a resposta correta."
-  Output: "Qual das seguintes op\xE7\xF5es \xE9 avaliada como FALSE?"
+  Output: "Qual das seguintes opções é avaliada como FALSE?"
 
 - AnswerChoices: TRUE; FALSE; Pode haver verdade objetiva ao programar?; %>%
   AnswerTests: omnitest(correctVal='TRUE')
   Class: mult_question
   CorrectAnswer: true
-  Hint: "Tente avaliar cada express\xE3o isoladamente e crie uma resposta."
-  Output: "Em que voc\xEA acha que a seguinte express\xE3o ser\xE1 avaliada ?: (TRUE != FALSE) == !(6 == 7)"
+  Hint: "Tente avaliar cada expressão isoladamente e crie uma resposta."
+  Output: "Em que você acha que a seguinte expressão será avaliada ?: (TRUE != FALSE) == !(6 == 7)"
 - Class: text
-  Output: "Em algum momento, voc\xEA pode precisar examinar os relacionamentos entre\
-    \ v\xE1rias express\xF5es l\xF3gicas. \xC9 aqui que entra o operador AND e o operador\
+  Output: "Em algum momento, você pode precisar examinar os relacionamentos entre\
+    \ várias expressões lógicas. \xC9 aqui que entra o operador AND e o operador\
     \ OR."
 
 - AnswerTests: omnitest(correctExpr='FALSE & FALSE')
@@ -142,238 +142,238 @@
   Hint: 'Apenas para ilustrar como funciona o operador AND: FALSE & FALSE'
   Output: "Vamos ver como o operador AND funciona. Existem dois operadores AND em\
     \ R, `&` e `&&`. Ambos os operadores funcionam de forma semelhante,\
-    \ se os operandos direito e esquerdo de AND forem ambos TRUE a express\xE3o inteira\
-    \ \xE9 TRUE, caso contr\xE1rio, \xE9 FALSE. Por exemplo, TRUE & TRUE \xE9\
-    \ avaliado como TRUE. Tente digitar FALSE & FALSE como \xE9 avaliado."
+    \ se os operandos direito e esquerdo de AND forem ambos TRUE a expressão inteira\
+    \ é TRUE, caso contrário, é FALSE. Por exemplo, TRUE & TRUE é\
+    \ avaliado como TRUE. Tente digitar FALSE & FALSE como é avaliado."
 
 - AnswerTests: omnitest(correctExpr='TRUE & c(TRUE, FALSE, FALSE)')
   Class: cmd_question
   CorrectAnswer: TRUE & c(TRUE, FALSE, FALSE)
   Hint: 'Agora, para ver como o operador AND trabalha com um vetor, digite: TRUE &
     c(TRUE, FALSE, FALSE)'
-  Output: "Voc\xEA pode usar o operador `&` para avaliar AND atrav\xE9s de um\
-    \ vetor. A vers\xE3o `&&` do AND s\xF3 avalia o primeiro membro de um\
-    \ vetor. Vamos testar ambos para a pr\xE1tica. Digite a express\xE3o TRUE &\
+  Output: "Você pode usar o operador `&` para avaliar AND através de um\
+    \ vetor. A versão `&&` do AND só avalia o primeiro membro de um\
+    \ vetor. Vamos testar ambos para praticar. Digite a expressão TRUE &\
     \ c(TRUE, FALSE, FALSE)."
     
 - Class: text
-  Output: "O que acontece nesse caso \xE9 que o operando da esquerda &quot;TRUE&quot;\
-    \ \xE9 reciclado em todos os elementos no vetor do operando da direita. Esta \xE9\
-    \ a declara\xE7\xE3o equivalente a c(TRUE, TRUE, TRUE) &\
+  Output: "O que acontece nesse caso é que o operando da esquerda &quot;TRUE&quot;\
+    \ é reciclado em todos os elementos no vetor do operando da direita. Esta é\
+    \ a declaração equivalente a c(TRUE, TRUE, TRUE) &\
     \ c(TRUE, FALSE, FALSE)."
 
 - AnswerTests: omnitest(correctExpr='TRUE && c(TRUE, FALSE, FALSE)')
   Class: cmd_question
   CorrectAnswer: TRUE && c(TRUE, FALSE, FALSE)
-  Hint: "Como voc\xEA ver\xE1, a vers\xE3o && do AND funciona de maneira diferente.\
+  Hint: "Como você verá, a versão && do AND funciona de maneira diferente.\
     \ Tipo: TRUE && c(TRUE, FALSE, FALSE)"
-  Output: "Agora vamos digitar a mesma express\xE3o, exceto que usaremos o operador\
-    \ `&&`. Digite a express\xE3o TRUE && c(TRUE, FALSE, FALSE)."
+  Output: "Agora vamos digitar a mesma expressão, exceto que usaremos o operador\
+    \ `&&`. Digite a expressão TRUE && c(TRUE, FALSE, FALSE)."
 
 - Class: text
-  Output: "Nesse caso, o operando esquerdo \xE9 avaliado apenas com o primeiro membro\
-    \ do operando direito (o vetor). O restante dos elementos no vetor n\xE3o \xE9\
-    \ avaliado de forma alguma nessa express\xE3o."
+  Output: "Nesse caso, o operando esquerdo é avaliado apenas com o primeiro membro\
+    \ do operando direito (o vetor). O restante dos elementos no vetor não é\
+    \ avaliado de forma alguma nessa expressão."
 
 - Class: text
-  Output: "O operador OR segue um conjunto similar de regras. A vers\xE3o `|` do OR\
-    \ avalia OR atrav\xE9s de um vetor inteiro, enquanto a vers\xE3o || do OR apenas\
+  Output: "O operador OR segue um conjunto similar de regras. A versão `|` do OR\
+    \ avalia OR através de um vetor inteiro, enquanto a versão || do OR apenas\
     \ avalia o primeiro membro de um vetor."
 
 - Class: text
-  Output: "Uma express\xE3o usando o operador OR ser\xE1 avaliada como TRUE se o operando\
-    \ esquerdo ou o operando da direita for TRUE. Se ambos forem TRUE, a express\xE3\
-    o ser\xE1 avaliada como TRUE, no entanto, se nenhum for TRUE, a express\xE3o ser\xE1\
+  Output: "Uma expressão usando o operador OR será avaliada como TRUE se o operando\
+    \ esquerdo ou o operando da direita for TRUE. Se ambos forem TRUE, a expressã\
+    o será avaliada como TRUE, no entanto, se nenhum for TRUE, a expressão será\
     \ FALSE."
     
 - AnswerTests: omnitest(correctExpr='TRUE | c(TRUE, FALSE, FALSE)')
   Class: cmd_question
   CorrectAnswer: TRUE | c(TRUE, FALSE, FALSE)
   Hint: 'Teste o operador OR vetorizado digitando: TRUE | c(TRUE, FALSE, FALSE)'
-  Output: "Vamos testar a vers\xE3o vetorizada do operador OR. Digite a express\xE3\
+  Output: "Vamos testar a versão vetorizada do operador OR. Digite a expressã\
     o TRUE | c(TRUE, FALSE, FALSE)."
     
 - AnswerTests: omnitest(correctExpr='TRUE || c(TRUE, FALSE, FALSE)')
   Class: cmd_question
   CorrectAnswer: TRUE || c(TRUE, FALSE, FALSE)
-  Hint: "Como voc\xEA ver\xE1 o || vers\xE3o do OR n\xE3o \xE9 vetorizada. Tipo: TRUE\
+  Hint: "Como você verá o || versão do OR não é vetorizada. Tipo: TRUE\
     \ || c(TRUE, FALSE, FALSE)"
-  Output: "Agora vamos experimentar a vers\xE3o n\xE3o vetorizada do operador OR.\
-    \ Digite a express\xE3o TRUE || c(TRUE, FALSE, FALSE)."
+  Output: "Agora vamos experimentar a versão não vetorizada do operador OR.\
+    \ Digite a expressão TRUE || c(TRUE, FALSE, FALSE)."
     
 - Class: text
-  Output: "Os operadores l\xF3gicos podem ser encadeados como operadores aritm\xE9\
-    ticos. As express\xF5es: `6! = 10 && FALSE && 1> = 2` ou` TRUE || 5 < 9.3 || FALSE` s\xE3o perfeitamente normais de ver."
+  Output: "Os operadores lógicos podem ser encadeados como operadores aritmé\
+    ticos. As expressões: `6! = 10 && FALSE && 1> = 2` ou `TRUE || 5 < 9.3 || FALSE` são até comuns de se ver."
     
 - AnswerTests: omnitest(correctExpr='5 > 8 || 6 != 8 && 4 > 3.9')
   Class: cmd_question
   CorrectAnswer: 5 > 8 || 6 != 8 && 4 > 3.9
-  Hint: "Veja como funciona a ordem das opera\xE7\xF5es digitando: 5 > 8 || 6 != 8 e 4 > 3.9"
-  Output: "Como voc\xEA deve se lembrar, a aritm\xE9tica tem uma ordem de opera\xE7\
-    \xF5es e tamb\xE9m express\xF5es l\xF3gicas. Todos os operadores AND s\xE3o avaliados\
+  Hint: "Veja como funciona a ordem das operações digitando: 5 > 8 || 6 != 8 e 4 > 3.9"
+  Output: "Como você deve se lembrar, a aritmética tem uma ordem de operaç\
+    ões e também expressões lógicas. Todos os operadores AND são avaliados\
     \ antes dos operadores OR. Vamos ver um exemplo de um caso amb\xEDguo. Tipo: 5 > 8 || 6 != 8 e 4 > 3.9"
     
 - Class: text
-  Output: "Vamos percorrer a ordem das opera\xE7\xF5es no caso acima. Primeiro, os\
-    \ operandos esquerdo e direito do operador AND s\xE3o avaliados. 6 n\xE3o \xE9\
-    \ igual a 8, 4 \xE9 maior que 3.9, portanto ambos os operandos s\xE3o TRUE, ent\xE3\
-    o a express\xE3o resultante TRUE && TRUE \xE9 avaliada como TRUE. Em seguida,\
-    \ o operando esquerdo do operador OR \xE9 avaliado: 5 n\xE3o \xE9 maior que 8,\
-    \ portanto, a express\xE3o inteira \xE9 reduzida para FALSE || VERDADE. Como o\
-    \ operando direito dessa express\xE3o \xE9 TRUE, toda a express\xE3o \xE9 avaliada\
+  Output: "Vamos percorrer a ordem das operações no caso acima. Primeiro, os\
+    \ operandos esquerdo e direito do operador AND são avaliados. 6 não é\
+    \ igual a 8, 4 é maior que 3.9, portanto ambos os operandos são TRUE, entã\
+    o a expressão resultante TRUE && TRUE é avaliada como TRUE. Em seguida,\
+    \ o operando esquerdo do operador OR é avaliado: 5 não é maior que 8,\
+    \ portanto, a expressão inteira é reduzida para FALSE || TRUE. Como o\
+    \ operando direito dessa expressão é TRUE, toda a expressão é avaliada\
     \ como TRUE."
     
 - AnswerChoices: TRUE && FALSE || 9 >= 4 && 3 < 6; TRUE && 62 < 62 && 44 >= 44; 99.99 > 100 || 45 < 7.3 || 4 != 4.0; FALSE || TRUE && FALSE
   AnswerTests: omnitest(correctVal='TRUE && FALSE || 9 >= 4 && 3 < 6')
   Class: mult_question
   CorrectAnswer: TRUE && FALSE || 9 >= 4 && 3 < 6
-  Hint: "Tente avaliar cada express\xE3o isoladamente e crie uma resposta."
-  Output: "Qual das seguintes express\xF5es \xE9 avaliada como TRUE?"
+  Hint: "Tente avaliar cada expressão isoladamente e crie uma resposta."
+  Output: "Qual das seguintes expressões é avaliada como TRUE?"
   
 - AnswerChoices: FALSE && 6 >= 6 || 7 >= 8 || 50 <= 49.5; FALSE || TRUE && 6 != 4 || 9 > 4; (8 > 4) || 5 == 5.0 && 7.8 >= 7,79; 6 >= -9 && !(6 > 7) && !(!TRUE)
   AnswerTests: omnitest(correctVal='FALSE && 6 >= 6 || 7 >= 8 || 50 <= 49.5')
   Class: mult_question
   CorrectAnswer: FALSE && 6 >= 6 || 7 >= 8 || 50 <= 49.5
-  Hint: "Tente avaliar cada express\xE3o isoladamente e crie uma resposta."
-  Output: "Qual das seguintes express\xF5es \xE9 avaliada como FALSE?"
+  Hint: "Tente avaliar cada expressão isoladamente e crie uma resposta."
+  Output: "Qual das seguintes expressões é avaliada como FALSE?"
 
 - Class: text
-  Output: "Agora que voc\xEA est\xE1 familiarizado com os operadores l\xF3gicos de\
-    \ R, voc\xEA pode tirar proveito de algumas fun\xE7\xF5es que o R fornece para\
-    \ lidar com express\xF5es l\xF3gicas."
+  Output: "Agora que você está familiarizado com os operadores lógicos de\
+    \ R, você pode tirar proveito de algumas funções que o R fornece para\
+    \ lidar com expressões lógicas."
     
 - AnswerTests: omnitest(correctExpr='isTRUE(6 > 4)')
   Class: cmd_question
   CorrectAnswer: isTRUE(6 > 4)
-  Hint: 'Teste o isTRUE () digitando: isTRUE(6 > 4)'
-  Output: "A fun\xE7\xE3o isTRUE () recebe um argumento. Se esse argumento for avaliado\
-    \ como TRUE, a fun\xE7\xE3o retornar\xE1 TRUE. Caso contr\xE1rio, a fun\xE7\xE3\
-    o retornar\xE1 FALSE. Tente usar essa fun\xE7\xE3o digitando: isTRUE (6 > 4)"
+  Hint: 'Teste o isTRUE() digitando: isTRUE(6 > 4)'
+  Output: "A função isTRUE() recebe um argumento. Se esse argumento for avaliado\
+    \ como TRUE, a função retornará TRUE. Caso contrário, a funçã\
+    o retornará FALSE. Tente usar essa função digitando: isTRUE(6 > 4)"
     
 - AnswerChoices: isTRUE(!TRUE); istrue(3); istrue(NA); !isTRUE(4 < 3); !isTRUE(8 != 5)
   AnswerTests: omnitest(correctVal='!isTRUE(4 < 3)')
   Class: mult_question
   CorrectAnswer: '!isTRUE(4 < 3)'
-  Hint: "isTRUE() s\xF3 retornar\xE1 TRUE se a instru\xE7\xE3o passada para ele como\
+  Hint: "isTRUE() só retornará TRUE se a instrução passada para ele como\
     \ um argumento for TRUE."
-  Output: "Qual das seguintes avalia\xE7\xF5es \xE9 verdadeira?"
+  Output: "Qual das seguintes avaliações é verdadeira?"
  
 - AnswerTests: omnitest(correctExpr="identical('twins', 'twins')")
   Class: cmd_question
   CorrectAnswer: identical('twins', 'twins')
-  Hint: "Se voc\xEA quiser ver se dois objetos R s\xE3o id\xEAnticos, digite: identical('twins', 'twins')"
-  Output: "A fun\xE7\xE3o identical() retornar\xE1 TRUE se os dois objetos R passados como argumentos forem id\xEAnticos. Experimente a fun\xE7\xE3o identical() digitando: identical('twins', 'twins')"
+  Hint: "Se você quiser ver se dois objetos R são idênticos, digite: identical('twins', 'twins')"
+  Output: "A função identical() retornará TRUE se os dois objetos R passados como argumentos forem idênticos. Experimente a função identical() digitando: identical('twins', 'twins')"
   
-- AnswerChoices: "identical(5 > 4, 3 < 3.1); identical(4, 3.1); identical('ol\xE1', 'alô'); identical(7, 8)"
+- AnswerChoices: "identical(5 > 4, 3 < 3.1); identical(4, 3.1); identical('olá', 'alô'); identical(7, 8)"
   AnswerTests: omnitest(correctVal='identical(5 > 4, 3 < 3.1)')
   Class: mult_question
   CorrectAnswer: "identical(5 > 4, 3 < 3.1)"
-  Hint: "identical() s\xF3 ser\xE1 avaliado como verdadeiro se seus argumentos\
+  Hint: "identical() só será avaliado como verdadeiro se seus argumentos\
     \ forem exatamente os mesmos."
-  Output: "Qual das seguintes avalia\xE7\xF5es \xE9 verdadeira?"
+  Output: "Qual das seguintes avaliações é verdadeira?"
   
 - AnswerTests: omnitest(correctExpr='xor(5 == 6, !FALSE)')
   Class: cmd_question
   CorrectAnswer: xor(5 == 6, !FALSE)
-  Hint: "Teste a fun\xE7\xE3o xor () digitando: xor(5 == 6, !FALSE)"
-  Output: "Voc\xEA tamb\xE9m deve estar ciente da fun\xE7\xE3o xor(), que leva dois\
-    \ argumentos. A fun\xE7\xE3o xor() significa OU exclusivo. Se um argumento for\
-    \ avaliado como TRUE e um argumento for avaliado como FALSE, essa fun\xE7\xE3\
-    o retornar\xE1 TRUE, caso contr\xE1rio, retornar\xE1 FALSE. Experimente a fun\xE7\
-    \xE3o xor() digitando: xor(5 == 6, !FALSE)"
+  Hint: "Teste a função xor () digitando: xor(5 == 6, !FALSE)"
+  Output: "Você também deve estar ciente da função xor(), que leva dois\
+    \ argumentos. A função xor() significa OU exclusivo. Se um argumento for\
+    \ avaliado como TRUE e um argumento for avaliado como FALSE, essa funçã\
+    o retornará TRUE, caso contrário, retornará FALSE. Experimente a funç\
+    ão xor() digitando: xor(5 == 6, !FALSE)"
     
 - Class: text
-  Output: "5 == 6 avalia como FALSE, !FALSE avalia como TRUE, ent\xE3o xor (FALSE,\
-    \ TRUE) \xE9 avaliado como TRUE. Por outro lado, se o primeiro argumento foi alterado\
-    \ para 5 == 5 e o segundo argumento n\xE3o foi alterado, ent\xE3o ambos os argumentos\
-    \ teriam sido TRUE, ent\xE3o xor (TRUE, TRUE) teria avaliado como FALSE."
+  Output: "5 == 6 avalia como FALSE, !FALSE avalia como TRUE, então xor (FALSE,\
+    \ TRUE) é avaliado como TRUE. Por outro lado, se o primeiro argumento foi alterado\
+    \ para 5 == 5 e o segundo argumento não foi alterado, então ambos os argumentos\
+    \ teriam sido TRUE, então xor (TRUE, TRUE) teria avaliado como FALSE."
     
-- AnswerChoices: "xor(4 >= 9, 8 != 8.0); xor(!isTRUE(TRUE), 6 > -1); xor(identical(xor, 'xor'), 7 == 7.0); xor (!!TRUE, !!FALSE)"
+- AnswerChoices: "xor(4 >= 9, 8 != 8.0); xor(!isTRUE(TRUE), 6 > -1); xor(identical(xor, 'xor'), 7 == 7.0); xor(!!TRUE, !!FALSE)"
   AnswerTests: omnitest(correctVal='xor(4 >= 9, 8 != 8.0)')
   Class: mult_question
   CorrectAnswer: xor(4 >= 9, 8 != 8.0)
-  Hint: Para xor() para avaliar como TRUE, um argumento deve ser TRUE e um deve ser  FALSE.
-  Output: "Qual das seguintes op\xE7\xF5es \xE9 avaliada como FALSE?"
+  Hint: Para xor() avaliar como TRUE, um argumento deve ser TRUE e um deve ser FALSE. Qual das opções é avaliada como FALSE?
+  Output: "Qual das seguintes opções é avaliada como FALSE?"
   
 - AnswerTests: omnitest(correctExpr='ints <- sample(10)')
   Class: cmd_question
   CorrectAnswer: ints <- sample(10)
-  Hint: "Para criar um vetor de dez inteiros sem tipo de substitui\xE7\xE3o: ints <- sample(10)"
-  Output: "Para as pr\xF3ximas perguntas, precisaremos criar um vetor de inteiros\
+  Hint: "Para criar um vetor de dez inteiros sem tipo de substituição: ints <- sample(10)"
+  Output: "Para as próximas perguntas, precisaremos criar um vetor de inteiros\
     \ chamados ints. Crie este vetor digitando: ints <- sample(10)"
     
 - AnswerTests: omnitest(correctExpr='ints')
   Class: cmd_question
   CorrectAnswer: ints
   Hint: 'Para ver o tipo de vetor: ints'
-  Output: "Agora simplesmente exiba o conte\xFAdo de ints."
+  Output: "Agora simplesmente exiba o conteúdo de ints."
   
 - AnswerTests: omnitest(correctExpr='ints > 5')
   Class: cmd_question
   CorrectAnswer: ints > 5
-  Hint: "Para ver quais elementos de `ints` s\xE3o maiores que 5 digite: ints > 5"
-  Output: "O vetor `ints` \xE9 uma amostragem aleat\xF3ria de n\xFAmeros inteiros\
-    \ de 1 a 10 sem substitui\xE7\xE3o. Digamos que quis\xE9ssemos fazer algumas perguntas\
-    \ l\xF3gicas sobre o conte\xFAdo de ints. Se digitarmos ints > 5, obteremos\
-    \ um vetor l\xF3gico correspondente a cada elemento de ints for maior que 5. Tente\
+  Hint: "Para ver quais elementos de `ints` são maiores que 5 digite: ints > 5"
+  Output: "O vetor `ints` é uma amostragem aleatória de números inteiros\
+    \ de 1 a 10 sem substituição. Digamos que quiséssemos fazer algumas perguntas\
+    \ lógicas sobre o conteúdo de ints. Se digitarmos ints > 5, obteremos\
+    \ um vetor lógico correspondente a cada elemento de ints for maior que 5. Tente\
     \ digitar: ints > 5"
     
 - Class: text
-  Output: "Podemos usar o vetor l\xF3gico resultante para fazer outras perguntas sobre\
-    \ o ints. A fun\xE7\xE3o which() usa um vetor l\xF3gico como argumento e retorna\
-    \ os \xEDndices do vetor que s\xE3o TRUE. Por exemplo, which(c(TRUE, FALSE, TRUE))\
+  Output: "Podemos usar o vetor lógico resultante para fazer outras perguntas sobre\
+    \ o ints. A função which() usa um vetor lógico como argumento e retorna\
+    \ os \xEDndices do vetor que são TRUE. Por exemplo, which(c(TRUE, FALSE, TRUE))\
     \ retornaria o vetor c(1, 3)."
     
 - AnswerTests: omnitest(correctExpr='which(ints > 7)')
   Class: cmd_question
   CorrectAnswer: which(ints > 7)
-  Hint: "Use a fun\xE7\xE3o which() no vetor l\xF3gico produzido por: `ints > 7`"
-  Output: "Use a fun\xE7\xE3o which() para encontrar os \xEDndices de ints maiores\
+  Hint: "Use a função which() no vetor lógico produzido por: `ints > 7`"
+  Output: "Use a função which() para encontrar os \xEDndices de ints maiores\
     \ que 7."
 
 - AnswerChoices: ints < 2; ints <= 2; which(ints <2); which(ints <= 2)
   AnswerTests: omnitest(correctVal='which(ints <= 2)')
   Class: mult_question
   CorrectAnswer: which(ints <= 2)
-  Hint: "Use a fun\xE7\xE3o which()."
+  Hint: "Use a função which()."
   Output: "Qual dos seguintes comandos produziria os \xEDndices dos elementos em ints\
     \ menores ou iguais a 2?"
     
 - Class: text
-  Output: "Como a fun\xE7\xE3o which(), as fun\xE7\xF5es any() e all() usam vetores\
-    \ l\xF3gicos como argumento. A fun\xE7\xE3o any() retornar\xE1 TRUE se um ou\
-    \ mais dos elementos no vetor l\xF3gico forem TRUE. A fun\xE7\xE3o all () retornar\xE1\
-    \ TRUE se cada elemento no vetor l\xF3gico for TRUE."
+  Output: "Como a função which(), as funções any() e all() usam vetores\
+    \ lógicos como argumento. A função any() retornará TRUE se um ou\
+    \ mais dos elementos no vetor lógico forem TRUE. A função all () retornará\
+    \ TRUE se cada elemento no vetor lógico for TRUE."
 
 - AnswerTests: omnitest(correctExpr='any(ints < 0)')
   Class: cmd_question
   CorrectAnswer: any(ints < 0)
-  Hint: "Use a fun\xE7\xE3o any() no vetor l\xF3gico produzido por: `ints <0`"
-  Output: "Use a fun\xE7\xE3o any() para ver se algum dos elementos de ints \xE9\
+  Hint: "Use a função any() no vetor lógico produzido por: `ints <0`"
+  Output: "Use a função any() para ver se algum dos elementos de ints é\
     \ menor que zero."
     
 - AnswerTests: omnitest(correctExpr='all(ints > 0)')
   Class: cmd_question
   CorrectAnswer: all(ints > 0)
-  Hint: "Use a fun\xE7\xE3o all() no vetor l\xF3gico produzido por: `ints> 0`"
-  Output: "Use a fun\xE7\xE3o all() para ver se todos os elementos de ints s\xE3\
+  Hint: "Use a função all() no vetor lógico produzido por: `ints> 0`"
+  Output: "Use a função all() para ver se todos os elementos de ints sã\
     o maiores que zero."
 
 - AnswerChoices: any(ints == 10); all(ints == 10); all(c(TRUE, FALSE, TRUE)); any(ints == 2.5)
   AnswerTests: omnitest(correctVal='any(ints == 10)')
   Class: mult_question
   CorrectAnswer: any(ints == 10)
-  Hint: "any() ser\xE1 avaliado como TRUE se houver um ou mais elementos TRUE em\
-    \ um vetor l\xF3gico."
-  Output: "Qual das seguintes avalia\xE7\xF5es \xE9 verdadeira?"
+  Hint: "any() será avaliado como TRUE se houver um ou mais elementos TRUE em\
+    \ um vetor lógico."
+  Output: "Qual das seguintes avaliações é verdadeira?"
   
 - Class: text
-  Output: "Isso \xE9 tudo para esta introdu\xE7\xE3o \xE0 l\xF3gica em R. Se voc\xEA\
-    \ realmente quer ver o que voc\xEA pode fazer com a l\xF3gica, confira a li\xE7\
-    \xE3o de fluxo de controle!"
+  Output: "Isso é tudo para esta introdução à lógica em R. Se você\
+    \ realmente quer ver o que você pode fazer com a lógica, confira a liç\
+    ão de fluxo de controle!"
 
 - Class: mult_question
-  Output: "Gostaria de informar ao professor sobre a conclus\xE3o desta li\xE7\xE3o"
+  Output: "Gostaria de informar ao professor sobre a conclusão desta lição"
   CorrectAnswer: NULL
   AnswerChoices: Sim; Não
   AnswerTests: notify()
