@@ -1,0 +1,133 @@
+- Author: Nick Carchedi
+  Class: meta
+  Course: R Programming
+  Lesson: Missing Values
+  Organization: JHU Biostat
+  Type: Standard
+  Version: 2.2.0
+- Class: text
+  Output: "Valores em falta desempenham um papel importante na estat\xEDstica e na\
+    \ an\xE1lise de dados. Freq\xFCentemente, os valores omissos n\xE3o devem ser\
+    \ ignorados, mas devem ser cuidadosamente estudados para ver se h\xE1 um padr\xE3\
+    o subjacente ou causa para o seu desaparecimento."
+- Class: text
+  Output: "Em R, NA \xE9 usado para representar qualquer valor que &#39;n\xE3o est\xE1\
+    \ dispon\xEDvel&#39; ou &#39;ausente&#39; (no sentido estat\xEDstico). Nesta li\xE7\
+    \xE3o, exploraremos os valores ausentes ainda mais."
+- AnswerTests: omnitest(correctExpr='x <- c(44, NA, 5, NA)')
+  Class: cmd_question
+  CorrectAnswer: x <- c(44, NA, 5, NA)
+  Hint: "Atribua o vetor c (44, NA, 5, NA) a uma vari\xE1vel x. O NA deve mai\xFA\
+    scula."
+  Output: "Qualquer opera\xE7\xE3o envolvendo NA geralmente produz NA como resultado.\
+    \ Para ilustrar, vamos criar um vetor c (44, NA, 5, NA) e atribu\xED-lo a uma\
+    \ vari\xE1vel x."
+- AnswerTests: any_of_exprs('x * 3', '3 * x')
+  Class: cmd_question
+  CorrectAnswer: x * 3
+  Hint: Tente x * 3.
+  Output: Agora vamos multiplicar x por 3.
+- Class: text
+  Output: "Observe que os elementos do vetor resultante que correspondem aos valores\
+    \ de NA em x tamb\xE9m s\xE3o NA."
+- AnswerTests: omnitest(correctExpr='y <- rnorm(1000)')
+  Class: cmd_question
+  CorrectAnswer: y <- rnorm(1000)
+  Hint: "A fun\xE7\xE3o rnorm () gera n\xFAmeros aleat\xF3rios a partir de uma distribui\xE7\
+    \xE3o normal. Digite y &lt;- rnorm (1000)."
+  Output: "Para tornar as coisas um pouco mais interessantes, vamos criar um vetor\
+    \ contendo 1.000 desenhos de uma distribui\xE7\xE3o normal padr\xE3o com y &lt;-\
+    \ rnorm (1000)."
+- AnswerTests: omnitest(correctExpr='z <- rep(NA, 1000)')
+  Class: cmd_question
+  CorrectAnswer: z <- rep(NA, 1000)
+  Hint: Digite z &lt;- rep (NA, 1000) para gerar um vetor de 1000 NAs.
+  Output: Em seguida, vamos criar um vetor contendo 1000 NAs com z &lt;- rep (NA,
+    1000).
+- AnswerTests: omnitest(correctExpr='my_data <- sample(c(y, z), 100)')
+  Class: cmd_question
+  CorrectAnswer: my_data <- sample(c(y, z), 100)
+  Hint: "A fun\xE7\xE3o sample () desenha uma amostra aleat\xF3ria dos dados fornecidos\
+    \ como seu primeiro argumento (neste caso, c (y, z)) do tamanho especificado pelo\
+    \ segundo argumento (100). O comando my_data &lt;- sample (c (y, z), 100) nos\
+    \ dar\xE1 o que queremos."
+  Output: "Finalmente, vamos selecionar 100 elementos aleatoriamente desses 2000 valores\
+    \ (combinando yez) de tal forma que n\xE3o sabemos quantos NAs teremos ou quais\
+    \ posi\xE7\xF5es eles ocupar\xE3o em nosso vetor final - my_data &lt;- amostra\
+    \ (c (y, z), 100)."
+- AnswerTests: omnitest(correctExpr='my_na <- is.na(my_data)')
+  Class: cmd_question
+  CorrectAnswer: my_na <- is.na(my_data)
+  Hint: "Atribua o resultado de is.na (my_data) \xE0 vari\xE1vel my_na."
+  Output: "Vamos primeiro fazer a pergunta de onde nossos NAs est\xE3o localizados\
+    \ em nossos dados. A fun\xE7\xE3o is.na () nos diz se cada elemento de um vetor\
+    \ \xE9 NA. Chame is.na () em my_data e atribua o resultado a my_na."
+- AnswerTests: omnitest(correctExpr='my_na')
+  Class: cmd_question
+  CorrectAnswer: my_na
+  Hint: "Digite my_na para visualizar seu conte\xFAdo."
+  Output: "Agora, imprima my_na para ver o que voc\xEA criou."
+- Class: text
+  Output: "Onde quer que voc\xEA veja uma VERDADEIRA, voc\xEA sabe que o elemento\
+    \ correspondente de my_data \xE9 NA. Da mesma forma, em todos os lugares que voc\xEA\
+    \ v\xEA um FALSE, voc\xEA sabe que o elemento correspondente de my_data \xE9 um\
+    \ de nossos sorteios aleat\xF3rios da distribui\xE7\xE3o normal padr\xE3o."
+- AnswerTests: omnitest(correctExpr='my_data == NA')
+  Class: cmd_question
+  CorrectAnswer: my_data == NA
+  Hint: Tente my_data == NA para ver o que acontece.
+  Output: "Em nossa discuss\xE3o anterior sobre operadores l\xF3gicos, introduzimos\
+    \ o operador `==` como um m\xE9todo de testar a igualdade entre dois objetos.\
+    \ Ent\xE3o, voc\xEA pode pensar que a express\xE3o my_data == NA produz os mesmos\
+    \ resultados que is.na (). De uma chance."
+- Class: text
+  Output: "A raz\xE3o de voc\xEA ter um vetor de todos os NAs \xE9 que NA n\xE3o \xE9\
+    \ realmente um valor, mas apenas um espa\xE7o reservado para uma quantidade que\
+    \ n\xE3o est\xE1 dispon\xEDvel. Portanto, a express\xE3o l\xF3gica \xE9 incompleta\
+    \ e R n\xE3o tem escolha sen\xE3o retornar um vetor do mesmo tamanho que my_data\
+    \ que cont\xE9m todos os NAs."
+- Class: text
+  Output: "N\xE3o se preocupe se isso for um pouco confuso. O principal objetivo \xE9\
+    \ ser cauteloso ao usar express\xF5es l\xF3gicas sempre que os NAs se infiltrarem,\
+    \ j\xE1 que um \xFAnico valor de NA pode inviabilizar a coisa toda."
+- Class: text
+  Output: "Ent\xE3o, de volta para a tarefa em m\xE3os. Agora que temos um vetor,\
+    \ my_na, que tem um TRUE para cada NA e FALSE para cada valor num\xE9rico, podemos\
+    \ calcular o n\xFAmero total de NAs em nossos dados."
+- Class: text
+  Output: "O truque \xE9 reconhecer que sob a superf\xEDcie, R representa TRUE como\
+    \ o n\xFAmero 1 e FALSE como o n\xFAmero 0. Portanto, se pegarmos a soma de um\
+    \ monte de TRUEs e FALSEs, obtemos o n\xFAmero total de TRUEs."
+- AnswerTests: omnitest(correctExpr='sum(my_na)')
+  Class: cmd_question
+  CorrectAnswer: sum(my_na)
+  Hint: "Use soma (my_na) para contar o n\xFAmero NAs nos dados."
+  Output: "Vamos tentar fazer isso aqui. Chame a fun\xE7\xE3o sum () em my_na para\
+    \ contar o n\xFAmero total de TRUEs em my_na e, assim, o n\xFAmero total de NAs\
+    \ em my_data. N\xE3o atribua o resultado a uma nova vari\xE1vel."
+- AnswerTests: omnitest(correctExpr='my_data')
+  Class: cmd_question
+  CorrectAnswer: my_data
+  Hint: Imprime my_data no console.
+  Output: "Muito legal, n\xE9? Finalmente, vamos dar uma olhada nos dados para nos\
+    \ convencer de que tudo &quot;se soma&quot;. Imprime my_data no console."
+- AnswerTests: omnitest(correctExpr='0/0')
+  Class: cmd_question
+  CorrectAnswer: 0/0
+  Hint: Tente 0/0.
+  Output: "Agora que temos NAs abaixo, vamos ver um segundo tipo de valor ausente\
+    \ - NaN, que significa &quot;n\xE3o um n\xFAmero&quot;. Para gerar NaN, tente\
+    \ dividir (usando uma barra invertida) 0 por 0 agora."
+- AnswerTests: omnitest(correctExpr='Inf - Inf')
+  Class: cmd_question
+  CorrectAnswer: Inf - Inf
+  Hint: "Digite Inf - Inf. Voc\xEA consegue adivinhar o resultado?"
+  Output: "Vamos fazer mais um, s\xF3 por divers\xE3o. Em R, Inf significa infinito.\
+    \ O que acontece se voc\xEA subtrair Inf de Inf?"
+- AnswerChoices: "Sim; N\xE3o"
+  AnswerTests: notify()
+  Class: mult_question
+  CorrectAnswer: null
+  Hint: null
+  Output: "Gostaria de informar a algu\xE9m sobre sua conclus\xE3o bem-sucedida desta\
+    \ li\xE7\xE3o via e-mail?"
