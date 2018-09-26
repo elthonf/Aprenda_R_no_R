@@ -1,0 +1,229 @@
+- Author: Nick Carchedi
+  Class: meta
+  Course: R Programming
+  Lesson: Dates and Times
+  Organization: JHU Biostat
+  Type: Standard
+  Version: 2.2.11
+- Class: text
+  Output: "R tem um modo especial de representar datas e horas, o que pode ser \xFA\
+    til se voc\xEA estiver trabalhando com dados que mostram como algo muda com o\
+    \ tempo (ou seja, dados de s\xE9ries temporais) ou se seus dados cont\xEAm alguma\
+    \ outra informa\xE7\xE3o temporal, como datas de nascimento ."
+- Class: text
+  Output: "As datas s\xE3o representadas pela classe &#39;Data&#39; e as horas s\xE3\
+    o representadas pelas classes &#39;POSIXct&#39; e &#39;POSIXlt&#39;. Internamente,\
+    \ as datas s\xE3o armazenadas como o n\xFAmero de dias desde 1970-01-01 e os tempos\
+    \ s\xE3o armazenados como o n\xFAmero de segundos desde 1970-01-01 (para &#39;POSIXct&#39;)\
+    \ ou uma lista de segundos, minutos, horas etc. (para &#39;POSIXlt&#39;)."
+- AnswerTests: omnitest(correctExpr='d1 <- Sys.Date()')
+  Class: cmd_question
+  CorrectAnswer: d1 <- Sys.Date()
+  Hint: "Digite d1 &lt;- Sys.Date () para obter a data atual e armazene-a em uma nova\
+    \ vari\xE1vel chamada d1."
+  Output: "Vamos come\xE7ar usando d1 &lt;- Sys.Date () para obter a data atual e\
+    \ armazen\xE1-la na vari\xE1vel d1. (Essa \xE9 a letra &#39;d&#39; e o n\xFAmero\
+    \ 1.)"
+- AnswerTests: omnitest(correctExpr='class(d1)')
+  Class: cmd_question
+  CorrectAnswer: class(d1)
+  Hint: "class (d1) lhe dir\xE1 a classe de d1."
+  Output: "Use a fun\xE7\xE3o class () para confirmar que d1 \xE9 um objeto Date."
+- AnswerTests: omnitest(correctExpr='unclass(d1)')
+  Class: cmd_question
+  CorrectAnswer: unclass(d1)
+  Hint: Use unclass (d1) para ver o que d1 se parece internamente.
+  Output: "Podemos usar a fun\xE7\xE3o unclass () para ver como d1 se parece internamente.\
+    \ Experimente."
+- Class: text
+  Output: "Esse \xE9 o n\xFAmero exato de dias desde 1970-01-01!"
+- AnswerTests: omnitest(correctExpr='d1')
+  Class: cmd_question
+  CorrectAnswer: d1
+  Hint: "Digite d1 para imprimir seu conte\xFAdo."
+  Output: "No entanto, se voc\xEA imprimir d1 no console, receber\xE1 a data de hoje\
+    \ - YEAR-MONTH-DAY. De uma chance."
+- AnswerTests: omnitest(correctExpr='d2 <- as.Date("1969-01-01")')
+  Class: cmd_question
+  CorrectAnswer: d2 <- as.Date("1969-01-01")
+  Hint: Tente d2 &lt;- as.Date (&quot;1969-01-01&quot;).
+  Output: "E se precisarmos fazer refer\xEAncia a uma data anterior a 1970-01-01?\
+    \ Crie uma vari\xE1vel d2 contendo as.Date (&quot;1969-01-01&quot;)."
+- AnswerTests: omnitest(correctExpr='unclass(d2)')
+  Class: cmd_question
+  CorrectAnswer: unclass(d2)
+  Hint: "unclass (d2) mostrar\xE1 como d2 se parece internamente."
+  Output: Agora use unclass () novamente para ver como d2 se parece internamente.
+- Class: text
+  Output: "Como voc\xEA pode ter previsto, voc\xEA recebe um n\xFAmero negativo. Neste\
+    \ caso, \xE9 -365, desde 1969-01-01 \xE9 exatamente um ano civil (ou seja, 365\
+    \ dias) ANTES de 1970-01-01."
+- AnswerTests: omnitest(correctExpr='t1 <- Sys.time()')
+  Class: cmd_question
+  CorrectAnswer: t1 <- Sys.time()
+  Hint: "t1 &lt;- Sys.time () armazenar\xE1 a data e hora atuais em uma vari\xE1vel\
+    \ chamada t1."
+  Output: "Agora, vamos dar uma olhada em como o R armazena tempos. Voc\xEA pode acessar\
+    \ a data e hora atuais usando a fun\xE7\xE3o Sys.time () sem argumentos. Fa\xE7\
+    a isso e armazene o resultado em uma vari\xE1vel chamada t1."
+- AnswerTests: omnitest(correctExpr='t1')
+  Class: cmd_question
+  CorrectAnswer: t1
+  Hint: "Digite t1 para visualizar seu conte\xFAdo."
+  Output: "Veja o conte\xFAdo de t1."
+- AnswerTests: omnitest(correctExpr='class(t1)')
+  Class: cmd_question
+  CorrectAnswer: class(t1)
+  Hint: Veja a classe de t1 com classe (t1).
+  Output: E verifique a classe () de t1.
+- AnswerTests: omnitest(correctExpr='unclass(t1)')
+  Class: cmd_question
+  CorrectAnswer: unclass(t1)
+  Hint: "Use unclass (t1) para ver quantos segundos se passaram desde o in\xEDcio\
+    \ de 1970."
+  Output: "Como mencionado anteriormente, POSIXct \xE9 apenas uma das duas maneiras\
+    \ pelas quais R representa a informa\xE7\xE3o de tempo. (Voc\xEA pode ignorar\
+    \ o segundo valor acima, POSIXt, que funciona apenas como um idioma comum entre\
+    \ POSIXct e POSIXlt.) Use unclass () para ver o que t1 se parece internamente\
+    \ - o n\xFAmero (grande) de segundos desde o in\xEDcio de 1970."
+- AnswerTests: omnitest(correctExpr='t2 <- as.POSIXlt(Sys.time())')
+  Class: cmd_question
+  CorrectAnswer: t2 <- as.POSIXlt(Sys.time())
+  Hint: "t2 &lt;- as.POSIXlt (Sys.time ()) ir\xE1 for\xE7ar o resultado de Sys.time\
+    \ para &#39;POSIXlt&#39; e armazenar o resultado."
+  Output: "Por padr\xE3o, Sys.time () retorna um objeto da classe POSIXct, mas podemos\
+    \ coagir o resultado para POSIXlt com as.POSIXlt (Sys.time ()). Experimente e\
+    \ armazene o resultado em t2."
+- AnswerTests: omnitest(correctExpr='class(t2)')
+  Class: cmd_question
+  CorrectAnswer: class(t2)
+  Hint: Digite class (t2) para visualizar sua classe.
+  Output: Verifique a turma de t2.
+- AnswerTests: omnitest(correctExpr='t2')
+  Class: cmd_question
+  CorrectAnswer: t2
+  Hint: "Digite t2 para visualizar seu conte\xFAdo."
+  Output: "Agora veja seu conte\xFAdo."
+- AnswerTests: omnitest(correctExpr='unclass(t2)')
+  Class: cmd_question
+  CorrectAnswer: unclass(t2)
+  Hint: Use unclass (t2) para visualizar sua estrutura interna.
+  Output: "O formato impresso de t2 \xE9 id\xEAntico ao de t1. Agora unclass () t2\
+    \ para ver como \xE9 diferente internamente."
+- AnswerTests: omnitest(correctExpr='str(unclass(t2))')
+  Class: cmd_question
+  CorrectAnswer: str(unclass(t2))
+  Hint: Use str (unclass (t2)) para visualizar sua estrutura interna de maneira mais
+    compacta.
+  Output: "t2, como todos os objetos POSIXlt, \xE9 apenas uma lista de valores que\
+    \ comp\xF5em a data e a hora. Use str (unclass (t2)) para ter uma vis\xE3o mais\
+    \ compacta."
+- AnswerTests: omnitest(correctExpr='t2$min')
+  Class: cmd_question
+  CorrectAnswer: t2$min
+  Hint: "t2 $ min lhe dar\xE1 o n\xFAmero de minutos do tempo armazenado em t2."
+  Output: "Se, por exemplo, queremos apenas os minutos do tempo armazenado em t2,\
+    \ podemos acess\xE1-los com t2 $ min. De uma chance."
+- Class: text
+  Output: "Agora que exploramos todos os tr\xEAs tipos de objetos de data e hora,\
+    \ vamos ver algumas fun\xE7\xF5es que extraem informa\xE7\xF5es \xFAteis de qualquer\
+    \ um desses objetos - weekdays (), months () e trimestres ()."
+- AnswerTests: omnitest(correctExpr='weekdays(d1)')
+  Class: cmd_question
+  CorrectAnswer: weekdays(d1)
+  Hint: Tente dias da semana (d1) para obter o dia da semana.
+  Output: "A fun\xE7\xE3o weekdays () retornar\xE1 o dia da semana de qualquer objeto\
+    \ de data ou hora. Experimente em d1, que \xE9 o objeto Date que cont\xE9m a data\
+    \ de hoje."
+- AnswerTests: omnitest(correctExpr='months(t1)')
+  Class: cmd_question
+  CorrectAnswer: months(t1)
+  Hint: "meses (t1) lhe dar\xE1 o m\xEAs atual."
+  Output: "A fun\xE7\xE3o months () tamb\xE9m funciona em qualquer objeto de data\
+    \ ou hora. Experimente em t1, que \xE9 o objeto POSIXct que cont\xE9m a hora atual\
+    \ (bem, foi a hora atual em que voc\xEA a criou)."
+- AnswerTests: omnitest(correctExpr='quarters(t2)')
+  Class: cmd_question
+  CorrectAnswer: quarters(t2)
+  Hint: "trimestres (t2) lhe dar\xE1 o trimestre atual."
+  Output: "A fun\xE7\xE3o trimestres () retorna o trimestre do ano (Q1-Q4) de qualquer\
+    \ objeto de data ou hora. Experimente em t2, que \xE9 o objeto POSIXlt que cont\xE9\
+    m a hora em que voc\xEA o criou."
+- Class: text
+  Output: "Geralmente, as datas e horas em um conjunto de dados estar\xE3o em um formato\
+    \ que o R n\xE3o reconhece. A fun\xE7\xE3o strptime () pode ser \xFAtil nessa\
+    \ situa\xE7\xE3o."
+- Class: text
+  Output: "O strptime () converte os vetores de caracteres em POSIXlt. Nesse sentido,\
+    \ \xE9 semelhante a as.POSIXlt (), exceto que a entrada n\xE3o precisa estar em\
+    \ um formato espec\xEDfico (AAAA-MM-DD)."
+- AnswerTests: omnitest(correctExpr='t3 <- "October 17, 1986 08:24"')
+  Class: cmd_question
+  CorrectAnswer: t3 <- "October 17, 1986 08:24"
+  Hint: "Loja &quot;17 de outubro de 1986 08:24&quot; (incluindo as aspas) em uma\
+    \ nova vari\xE1vel chamada t3."
+  Output: "Para ver como funciona, armazene a seguinte cadeia de caracteres em uma\
+    \ vari\xE1vel chamada t3: &quot;17 de outubro de 1986 08:24&quot; (com as aspas)."
+- AnswerTests: omnitest(correctExpr='t4 <- strptime(t3, "%B %d, %Y %H:%M")')
+  Class: cmd_question
+  CorrectAnswer: t4 <- strptime(t3, "%B %d, %Y %H:%M")
+  Hint: "t4 &lt;- strptime (t3, &quot;% B% d,% Y% H:% M&quot;) converter\xE1 nosso\
+    \ objeto de data / hora em um formato que o R entenda."
+  Output: "Agora, use strptime (t3, &quot;% B% d,% Y% H:% M&quot;) para ajudar R a\
+    \ converter nosso objeto de data / hora em um formato que ele entenda. Atribua\
+    \ o resultado a uma nova vari\xE1vel chamada t4. (Voc\xEA deve obter a documenta\xE7\
+    \xE3o do strptime () se quiser saber mais sobre como funciona.)"
+- AnswerTests: omnitest(correctExpr='t4')
+  Class: cmd_question
+  CorrectAnswer: t4
+  Hint: "Digite t4 para imprimir seu conte\xFAdo."
+  Output: "Imprima o conte\xFAdo de t4."
+- AnswerTests: omnitest(correctExpr='class(t4)')
+  Class: cmd_question
+  CorrectAnswer: class(t4)
+  Hint: Digite class (t4) para verificar sua classe.
+  Output: "Esse \xE9 o formato que esperamos. Agora, vamos verificar sua classe ()."
+- Class: text
+  Output: "Finalmente, h\xE1 v\xE1rias opera\xE7\xF5es que voc\xEA pode executar em\
+    \ datas e horas, incluindo opera\xE7\xF5es aritm\xE9ticas (+ e -) e compara\xE7\
+    \xF5es (&lt;, ==, etc.)"
+- AnswerTests: omnitest(correctExpr='Sys.time() > t1')
+  Class: cmd_question
+  CorrectAnswer: Sys.time() > t1
+  Hint: "Sys.time ()&gt; t1 lhe dir\xE1 que a hora atual \xE9 depois da hora contida\
+    \ em t1 (que era a hora atual quando voc\xEA a criou)."
+  Output: "A vari\xE1vel t1 cont\xE9m a hora em que voc\xEA a criou (lembre-se que\
+    \ voc\xEA usou Sys.time ()). Confirme que algum tempo se passou desde que voc\xEA\
+    \ criou t1 usando o operador &#39;maior que&#39; para compar\xE1-lo com a hora\
+    \ atual: Sys.time ()&gt; t1"
+- AnswerTests: omnitest(correctExpr='Sys.time() - t1')
+  Class: cmd_question
+  CorrectAnswer: Sys.time() - t1
+  Hint: "Sys.time () - t1 lhe dar\xE1 o tempo decorrido desde que t1 foi criado."
+  Output: "Ent\xE3o, sabemos que algum tempo se passou, mas quanto? Tente subtrair\
+    \ t1 da hora atual usando Sys.time () - t1. N\xE3o esque\xE7a os par\xEAnteses\
+    \ no final do Sys.time (), j\xE1 que \xE9 uma fun\xE7\xE3o."
+- Class: text
+  Output: "A mesma linha de pensamento se aplica \xE0 adi\xE7\xE3o e aos outros operadores\
+    \ de compara\xE7\xE3o. Se voc\xEA quiser mais controle sobre as unidades ao encontrar\
+    \ a diferen\xE7a acima em tempos, voc\xEA pode usar difftime (), que permite especificar\
+    \ um par\xE2metro de &#39;unidades&#39;."
+- AnswerTests: match_call("difftime(Sys.time(), t1, units = 'days')")
+  Class: cmd_question
+  CorrectAnswer: difftime(Sys.time(), t1, units = 'days')
+  Hint: "difftime (Sys.time (), t1, units = &#39;days&#39;) informar\xE1 quantos dias\
+    \ se passaram desde que t1 foi criado (o que deve ser menor que 1!)"
+  Output: "Use difftime (Sys.time (), t1, units = &#39;days&#39;) para encontrar a\
+    \ quantidade de tempo em DAYS que passou desde que voc\xEA criou t1."
+- Class: text
+  Output: "Nesta li\xE7\xE3o, voc\xEA aprendeu como trabalhar com datas e horas em\
+    \ R. Embora seja importante entender o b\xE1sico, se voc\xEA estiver trabalhando\
+    \ com datas e hor\xE1rios com frequ\xEAncia, talvez queira verificar o pacote\
+    \ de lubridatos de Hadley Wickham."
+- AnswerChoices: "Sim; N\xE3o"
+  AnswerTests: notify()
+  Class: mult_question
+  CorrectAnswer: null
+  Hint: null
+  Output: "Gostaria de informar a algu\xE9m sobre sua conclus\xE3o bem-sucedida desta\
+    \ li\xE7\xE3o via e-mail?"
