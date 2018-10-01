@@ -1,0 +1,249 @@
+- Author: Nick Carchedi
+  Class: meta
+  Course: R Programming
+  Lesson: Subsetting Vectors
+  Organization: JHU Biostat
+  Type: Standard
+  Version: 2.2.0
+- Class: text
+  Output: "Nesta li\xE7\xE3o, veremos como extrair elementos de um vetor com base\
+    \ em algumas condi\xE7\xF5es que especificamos."
+- Class: text
+  Output: "Por exemplo, podemos estar interessados \u200B\u200Bapenas nos primeiros\
+    \ 20 elementos de um vetor, ou apenas nos elementos que n\xE3o s\xE3o NA, ou apenas\
+    \ naqueles que s\xE3o positivos ou correspondem a uma vari\xE1vel espec\xEDfica\
+    \ de interesse. No final desta li\xE7\xE3o, voc\xEA saber\xE1 como lidar com cada\
+    \ um desses cen\xE1rios."
+- AnswerTests: omnitest(correctExpr='x')
+  Class: cmd_question
+  CorrectAnswer: x
+  Hint: "Digite x para visualizar seu conte\xFAdo."
+  Output: "Eu criei para voc\xEA um vetor chamado x que cont\xE9m um pedido aleat\xF3\
+    rio de 20 n\xFAmeros (de uma distribui\xE7\xE3o normal padr\xE3o) e 20 NAs. Digite\
+    \ x agora para ver como \xE9."
+- Class: text
+  Output: "A maneira como voc\xEA diz a R que deseja selecionar alguns elementos espec\xED\
+    ficos (isto \xE9, um &#39;subconjunto&#39;) de um vetor \xE9 colocando um &#39;vetor\
+    \ de \xEDndice&#39; entre colchetes imediatamente ap\xF3s o nome do vetor."
+- AnswerTests: omnitest(correctExpr='x[1:10]')
+  Class: cmd_question
+  CorrectAnswer: x[1:10]
+  Hint: Veja os primeiros dez elementos de x com x [1:10].
+  Output: Para um exemplo simples, tente x [1:10] para ver os primeiros dez elementos
+    de x.
+- Class: text
+  Output: "Os vetores de \xEDndices v\xEAm em quatro tipos diferentes - vetores l\xF3\
+    gicos, vetores de inteiros positivos, vetores de inteiros negativos e vetores\
+    \ de cadeias de caracteres - cada um dos quais abordaremos nesta li\xE7\xE3o."
+- Class: text
+  Output: "Vamos come\xE7ar indexando com vetores l\xF3gicos. Um cen\xE1rio comum\
+    \ ao trabalhar com dados do mundo real \xE9 que queremos extrair todos os elementos\
+    \ de um vetor que n\xE3o s\xE3o NA (ou seja, dados ausentes). Lembre-se de que\
+    \ is.na (x) produz um vetor de valores l\xF3gicos com o mesmo comprimento de x,\
+    \ com TRUEs correspondendo aos valores de NA em x e FALSEs correspondendo a valores\
+    \ n\xE3o-NA em x."
+- AnswerChoices: Um vetor de todos os NAs; Um vetor sem NAs; Um vetor de VERDADEIROS
+    e FALSOS; Um vetor de comprimento 0
+  AnswerTests: omnitest(correctVal="A vector of all NAs")
+  Class: mult_question
+  CorrectAnswer: Um vetor de todas as NAs
+  Hint: "Lembre-se de que is.na (x) nos diz onde os NAs est\xE3o em um vetor. Ent\xE3\
+    o, se subconcentrarmos x com base nisso, o que voc\xEA espera que aconte\xE7a?"
+  Output: "O que voc\xEA acha que x [is.na (x)] lhe dar\xE1?"
+- AnswerTests: omnitest(correctExpr='x[is.na(x)]')
+  Class: cmd_question
+  CorrectAnswer: x[is.na(x)]
+  Hint: "Digite x [is.na (x)] para ver se obt\xE9m todos os NAs, o que claramente\
+    \ n\xE3o \xE9 o que queremos!"
+  Output: Prove para si mesmo digitando x [is.na (x)].
+- AnswerTests: omnitest(correctExpr='y <- x[!is.na(x)]')
+  Class: cmd_question
+  CorrectAnswer: y <- x[!is.na(x)]
+  Hint: "Digite y &lt;- x [! Is.na (x)] para capturar todos os valores n\xE3o omissos\
+    \ de x."
+  Output: "Lembre que `!` Nos d\xE1 a nega\xE7\xE3o de uma express\xE3o l\xF3gica,\
+    \ ent\xE3o! Is.na (x) pode ser lido como &#39;n\xE3o \xE9 NA&#39;. Portanto, se\
+    \ quisermos criar um vetor chamado y que contenha todos os valores n\xE3o-NA de\
+    \ x, podemos usar y &lt;- x [! Is.na (x)]. De uma chance."
+- AnswerTests: omnitest(correctExpr='y')
+  Class: cmd_question
+  CorrectAnswer: y
+  Hint: "Digite y para visualizar seu conte\xFAdo."
+  Output: Imprima y no console.
+- Class: text
+  Output: "Agora que n\xF3s isolamos os valores n\xE3o-perdidos de x e os colocamos\
+    \ em y, podemos subjugar y como quisermos."
+- AnswerChoices: Um vetor de todos os elementos positivos de y; Um vetor de todos
+    os elementos negativos de y; Um vetor de todos os NAs; Um vetor de comprimento
+    0; Um vetor de TRUEs e FALSEs
+  AnswerTests: omnitest(correctVal="A vector of all the positive elements of y")
+  Class: mult_question
+  CorrectAnswer: Um vetor de todos os elementos positivos de y
+  Hint: "A express\xE3o l\xF3gica y&gt; 0 nos dar\xE1 TRUE para cada elemento de y\
+    \ que \xE9 positivo. Com base nisso, o que voc\xEA acha que y [y&gt; 0] retornar\xE1\
+    ?"
+  Output: "Lembre-se que a express\xE3o y&gt; 0 nos dar\xE1 um vetor de valores l\xF3\
+    gicos com o mesmo comprimento que y, com TRUEs correspondendo a valores de y que\
+    \ s\xE3o maiores que zero e FALSEs correspondendo a valores de y que s\xE3o menores\
+    \ ou iguais a zero. O que voc\xEA acha que [y&gt; 0] vai lhe dar?"
+- AnswerTests: omnitest(correctExpr='y[y > 0]')
+  Class: cmd_question
+  CorrectAnswer: y[y > 0]
+  Hint: Digite y [y&gt; 0] para visualizar apenas os elementos positivos de y.
+  Output: "Digite y [y&gt; 0] para ver se obtemos todos os elementos positivos de\
+    \ y, que tamb\xE9m s\xE3o os elementos positivos do nosso vetor x original."
+- AnswerTests: omnitest(correctExpr='x[x > 0]')
+  Class: cmd_question
+  CorrectAnswer: x[x > 0]
+  Hint: "Tente x [x&gt; 0] para ver por que n\xE3o usamos essa abordagem."
+  Output: "Voc\xEA pode se perguntar por que n\xE3o come\xE7amos apenas com x [x&gt;\
+    \ 0] para isolar os elementos positivos de x. Tente isso agora para ver o porqu\xEA\
+    ."
+- Class: text
+  Output: "Como NA n\xE3o \xE9 um valor, mas sim um espa\xE7o reservado para uma quantidade\
+    \ desconhecida, a express\xE3o NA&gt; 0 \xE9 avaliada como NA. Por isso, temos\
+    \ um monte de NAs misturados com nossos n\xFAmeros positivos quando fazemos isso."
+- AnswerTests: omnitest(correctExpr='x[!is.na(x) & x > 0]')
+  Class: cmd_question
+  CorrectAnswer: x[!is.na(x) & x > 0]
+  Hint: "Tente x [! Is.na (x) &amp; x&gt; 0] para ver o que voc\xEA obt\xE9m."
+  Output: "Combinando nosso conhecimento de operadores l\xF3gicos com nosso novo conhecimento\
+    \ de subconjuntos, poder\xEDamos fazer isso - x [! Is.na (x) &amp; x&gt; 0]. Experimente."
+- Class: text
+  Output: "Neste caso, solicitamos apenas valores de x que s\xE3o ambos n\xE3o ausentes\
+    \ E maiores que zero."
+- Class: text
+  Output: "Eu j\xE1 mostrei como subdividir apenas os primeiros dez valores de x usando\
+    \ x [1:10]. Nesse caso, estamos fornecendo um vetor de inteiros positivos dentro\
+    \ dos colchetes, que informa R para retornar apenas os elementos de x numerados\
+    \ de 1 a 10."
+- Class: text
+  Output: "Muitas linguagens de programa\xE7\xE3o usam o que \xE9 chamado de &#39;indexa\xE7\
+    \xE3o baseada em zero&#39;, o que significa que o primeiro elemento de um vetor\
+    \ \xE9 considerado elemento 0. R usa &#39;indexa\xE7\xE3o baseada em um&#39;,\
+    \ que voc\xEA adivinhou! Significa o primeiro elemento de um vetor. \xE9 considerado\
+    \ o elemento 1."
+- AnswerTests: omnitest(correctExpr='x[c(3, 5, 7)]')
+  Class: cmd_question
+  CorrectAnswer: x[c(3, 5, 7)]
+  Hint: "Crie um vetor de \xEDndices com c (3, 5, 7) e coloque-o dentro dos colchetes."
+  Output: "Voc\xEA consegue descobrir como subjugar\xEDamos os elementos 3, 5 e 7\
+    \ de x? Dica - Use a fun\xE7\xE3o c () para especificar os n\xFAmeros dos elementos\
+    \ como um vetor num\xE9rico."
+- AnswerTests: omnitest(correctExpr='x[0]')
+  Class: cmd_question
+  CorrectAnswer: x[0]
+  Hint: "Tente x [0] para ver o que acontece quando nos referimos ao elemento zeroth\
+    \ de um vetor, que n\xE3o est\xE1 definido em R."
+  Output: "\xC9 importante que, ao usar vetores inteiros para subconjunto de nosso\
+    \ vetor x, permane\xE7amos com o conjunto de \xEDndices {1, 2, ..., 40}, j\xE1\
+    \ que x possui apenas 40 elementos. O que acontece se pedirmos o elemento zeroth\
+    \ de x (ex: x [0])? De uma chance."
+- AnswerTests: omnitest(correctExpr='x[3000]')
+  Class: cmd_question
+  CorrectAnswer: x[3000]
+  Hint: "Solicite o 3000\xBA elemento de x (que n\xE3o existe) com x [3000]."
+  Output: "Como voc\xEA poderia esperar, n\xE3o temos nada \xFAtil. Infelizmente,\
+    \ R n\xE3o nos impede de fazer isso. E se pedirmos o 3000\xBA elemento de x? Experimente."
+- Class: text
+  Output: "Mais uma vez, nada de \xFAtil, mas R n\xE3o nos impede de pedir por isso.\
+    \ Este deve ser um conto preventivo. Voc\xEA deve sempre se certificar de que\
+    \ o que voc\xEA est\xE1 pedindo est\xE1 dentro dos limites do vetor que voc\xEA\
+    \ est\xE1 trabalhando."
+- Class: text
+  Output: "E se estivermos interessados \u200B\u200Bem todos os elementos de x EXCETO\
+    \ o segundo e o d\xE9cimo? Seria muito entediante construir um vetor contendo\
+    \ todos os n\xFAmeros de 1 a 40 EXCETO 2 e 10."
+- AnswerTests: omnitest(correctExpr='x[c(-2, -10)]')
+  Class: cmd_question
+  CorrectAnswer: x[c(-2, -10)]
+  Hint: "D\xEA x [c (-2, -10)] uma tentativa."
+  Output: "Felizmente, R aceita \xEDndices inteiros negativos. Enquanto x [c (2, 10)]\
+    \ nos d\xE1 APENAS o 2\xBA e o 10\xBA elementos de x, x [c (-2, -10)] nos d\xE1\
+    \ todos os elementos de x EXCEPT para o 2\xBA e 10 elementos. Tente x [c (-2,\
+    \ -10)] agora para ver isso."
+- AnswerTests: omnitest(correctExpr='x[-c(2, 10)]')
+  Class: cmd_question
+  CorrectAnswer: x[-c(2, 10)]
+  Hint: "Use x [-c (2, 10)] para simplificar um pouco as coisas. Isso poderia economizar\
+    \ tempo ao especificar muitos \xEDndices negativos."
+  Output: "Um modo abreviado de especificar v\xE1rios n\xFAmeros negativos \xE9 colocar\
+    \ o sinal negativo na frente do vetor de n\xFAmeros positivos. Digite x [-c (2,\
+    \ 10)] para obter o mesmo resultado exato."
+- Class: text
+  Output: "At\xE9 agora, cobrimos tr\xEAs tipos de vetores de \xEDndice - l\xF3gico,\
+    \ inteiro positivo e inteiro negativo. O \xFAnico tipo remanescente requer que\
+    \ introduzamos o conceito de elementos &#39;nomeados&#39;."
+- AnswerTests: omnitest(correctExpr='vect <- c(foo = 11, bar = 2, norf = NA)')
+  Class: cmd_question
+  CorrectAnswer: vect <- c(foo = 11, bar = 2, norf = NA)
+  Hint: Crie um vetor nomeado com vect &lt;- c (foo = 11, bar = 2, norf = NA).
+  Output: "Crie um vetor num\xE9rico com tr\xEAs elementos nomeados usando vect &lt;-\
+    \ c (foo = 11, bar = 2, norf = NA)."
+- AnswerTests: omnitest(correctExpr='vect')
+  Class: cmd_question
+  CorrectAnswer: vect
+  Hint: "Digite vect para visualizar seu conte\xFAdo."
+  Output: "Quando imprimimos o vect no console, voc\xEA ver\xE1 que cada elemento\
+    \ tem um nome. Experimente."
+- AnswerTests: omnitest(correctExpr='names(vect)')
+  Class: cmd_question
+  CorrectAnswer: names(vect)
+  Hint: Confira os resultados dos nomes (vect).
+  Output: "N\xF3s tamb\xE9m podemos obter os nomes de vect passando vect como um argumento\
+    \ para a fun\xE7\xE3o names (). D\xEA uma chance."
+- AnswerTests: omnitest(correctExpr='vect2 <- c(11, 2, NA)')
+  Class: cmd_question
+  CorrectAnswer: vect2 <- c(11, 2, NA)
+  Hint: "Crie um vetor comum (sem nome) chamado vect2 que cont\xE9m c (11, 2, NA)."
+  Output: "Alternativamente, podemos criar um vetor vect2 sem nome com c (11, 2, NA).\
+    \ Fa\xE7a isso agora."
+- AnswerTests: omnitest(correctExpr='names(vect2) <- c("foo", "bar", "norf")')
+  Class: cmd_question
+  CorrectAnswer: names(vect2) <- c("foo", "bar", "norf")
+  Hint: Adicione nomes ao vect2 com nomes (vect2) &lt;- c (&quot;foo&quot;, &quot;bar&quot;,
+    &quot;norf&quot;).
+  Output: "Ent\xE3o, podemos adicionar o atributo `names` ao vect2 ap\xF3s o fato\
+    \ com nomes (vect2) &lt;- c (&quot; foo &quot;,&quot; bar &quot;,&quot; norf &quot;).\
+    \ Continue."
+- AnswerTests: any_of_exprs('identical(vect, vect2)', 'identical(vect2, vect)')
+  Class: cmd_question
+  CorrectAnswer: identical(vect, vect2)
+  Hint: "A fun\xE7\xE3o id\xEAntica () nos diz se seus dois primeiros argumentos s\xE3\
+    o, bem, id\xEAnticos."
+  Output: "Agora, vamos verificar se vect e vect2 s\xE3o os mesmos, passando-os como\
+    \ argumentos para a fun\xE7\xE3o id\xEAntica ()."
+- Class: text
+  Output: "De fato, vect e vect2 s\xE3o vetores nomeados id\xEAnticos."
+- AnswerChoices: vect [&quot;bar&quot;]; vect [bar]; vect [&quot;2&quot;]
+  AnswerTests: omnitest(correctVal='vect["bar"]')
+  Class: mult_question
+  CorrectAnswer: vect [&quot;bar&quot;]
+  Hint: Se queremos o elemento chamado &quot;bar&quot; (ou seja, o segundo elemento
+    do vect), qual comando nos levaria a isso?
+  Output: "Agora, voltemos \xE0 quest\xE3o do subconjunto de um vetor por elementos\
+    \ nomeados. Qual dos seguintes comandos voc\xEA acha que nos daria o segundo elemento\
+    \ do vect?"
+- AnswerTests: omnitest(correctExpr='vect["bar"]')
+  Class: cmd_question
+  CorrectAnswer: vect["bar"]
+  Hint: Experimente o vect [&quot;bar&quot;].
+  Output: Agora, experimente.
+- AnswerTests: omnitest(correctExpr='vect[c("foo", "bar")]')
+  Class: cmd_question
+  CorrectAnswer: vect[c("foo", "bar")]
+  Hint: Use vect [c (&quot;foo&quot;, &quot;bar&quot;)] para obter apenas os elementos
+    do vect chamado &quot;foo&quot; e &quot;bar&quot;.
+  Output: Da mesma forma, podemos especificar um vetor de nomes com vect [c (&quot;foo&quot;,
+    &quot;bar&quot;)]. Experimente.
+- Class: text
+  Output: "Agora voc\xEA conhece todos os quatro m\xE9todos de subconjuntos de dados\
+    \ de vetores. Diferentes abordagens s\xE3o melhores em diferentes cen\xE1rios\
+    \ e, em caso de d\xFAvida, experimente!"
+- AnswerChoices: "Sim; N\xE3o"
+  AnswerTests: notify()
+  Class: mult_question
+  CorrectAnswer: null
+  Hint: null
+  Output: "Gostaria de informar a algu\xE9m sobre sua conclus\xE3o bem-sucedida desta\
+    \ li\xE7\xE3o via e-mail?"

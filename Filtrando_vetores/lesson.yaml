@@ -1,0 +1,268 @@
+- Class: meta
+  Course: Aprenda R no R
+  Lesson: Filtrando vetores
+  Author: Elthon Manhas de Freitas
+  Type: Standard
+  Organization: FIAP
+  Version: 1.0.0
+  
+- Class: text
+  Output: "Nesta lição, veremos como extrair elementos de um vetor com base em condições que podemos especificar."
+ 
+- Class: text
+  Output: "Vou dar alguns exemplos: Nós podemos estar interessados apenas nos\
+    \ 20 primeiros elementos de um vetor, ou apenas nos elementos que não são NA, ou apenas\
+    \ naqueles que são positivos ou correspondem a uma variável específica\
+    \ de interesse. No final desta lição, você saberá como lidar com cada\
+    \ um desses cenários."
+
+- AnswerTests: omnitest(correctExpr='x')
+  Class: cmd_question
+  CorrectAnswer: x
+  Hint: "Digite x para visualizar seu conteúdo."
+  Output: "Eu criei para você um vetor chamado x que contém 20 números aleatórios e 20 NAs. Digite\
+    \ x agora para ver seu conteúdo."
+    
+- Class: text
+  Output: A maneira como você diz ao R que deseja selecionar alguns elementos específicos (isto é, um "subconjunto") de um vetor é colocando um "vetor de índice" entre colchetes imediatamente após o nome do vetor.
+
+- AnswerTests: omnitest(correctExpr='x[1:10]')
+  Class: cmd_question
+  CorrectAnswer: x[1:10]
+  Hint: Veja os primeiros dez elementos de x com x[1:10].
+  Output: Para um exemplo simples, digite x[1:10] para ver os primeiros dez elementos de x.
+
+- Class: text
+  Output: Lembre-se que 1:10 resulta em um vetor de 10 posições. 
+
+- Class: text
+  Output: "Os vetores de índices (ou vetores de filtros) podem ser de quatro tipos diferentes - vetores ló\
+    gicos, vetores de inteiros positivos, vetores de inteiros negativos e vetores\
+    \ nomeados (com strings) - cada um dos quais abordaremos nesta lição."
+
+- Class: text
+  Output: "Vamos começar indexando com vetores lógicos. Um cenário comum\
+    \ ao trabalhar com dados do mundo real é quando queremos extrair todos os elementos\
+    \ de um vetor que não são NA (ou seja, dados ausentes). Lembre-se de que\
+    \ is.na(x) produz um vetor de valores lógicos com o mesmo comprimento de x,\
+    \ com TRUEs correspondendo aos valores de NA em x e FALSEs correspondendo a valores\
+    \ não-NA em x."
+ 
+- AnswerChoices: Um vetor de todos os NAs; Um vetor sem NAs; Um vetor de TRUEs e FALSEs; Um vetor de comprimento 0
+  AnswerTests: omnitest(correctVal="Um vetor de todos os NAs")
+  Class: mult_question
+  CorrectAnswer: Um vetor de todos os NAs
+  Hint: "Lembre-se de que is.na(x) nos diz onde os NAs estão em um vetor. Entã\
+    o, se subfiltrar x com base nisso, o que você espera que aconteça?"
+  Output: "O que você acha que x[is.na(x)] lhe dará?"
+  
+- AnswerTests: omnitest(correctExpr='x[is.na(x)]')
+  Class: cmd_question
+  CorrectAnswer: x[is.na(x)]
+  Hint: "Digite x[is.na(x)] para ver se obtém todos os NAs!"
+  Output: Veja se isso é verdade, digitando x[is.na(x)].
+
+- AnswerTests: omnitest(correctExpr='y <- x[!is.na(x)]')
+  Class: cmd_question
+  CorrectAnswer: y <- x[!is.na(x)]
+  Hint: "Digite y <- x[!is.na(x)] para capturar todos os valores não omissos\
+    \ de x."
+  Output: "Lembre que `!` Nos dá a negação de uma expressão lógica,\
+    \ então !is.na(x) pode ser lido como 'não é NA'. Portanto, se\
+    \ quisermos criar um vetor chamado y que contenha todos os valores não-NA de\
+    \ x, podemos usar y <- x[!is.na(x)]. Veja se funciona."
+    
+- AnswerTests: omnitest(correctExpr='y')
+  Class: cmd_question
+  CorrectAnswer: y
+  Hint: "Digite y para visualizar seu conteúdo."
+  Output: Imprima y no console.
+  
+- Class: text
+  Output: "Agora que nós isolamos os valores não-NA de x e os colocamos em y, podemos usar y como quisermos."
+  
+- AnswerChoices: Um vetor de todos os elementos positivos de y; Um vetor de todos os elementos negativos de y; Um vetor de todos os NAs; Um vetor de comprimento 0; Um vetor de TRUEs e FALSEs
+  AnswerTests: omnitest(correctVal="Um vetor de todos os elementos positivos de y")
+  Class: mult_question
+  CorrectAnswer: Um vetor de todos os elementos positivos de y
+  Hint: "A expressão lógica y > 0 nos dará TRUE para cada elemento de y\
+    \ que é positivo. Com base nisso, o que você acha que y[y > 0] retornará?"
+  Output: "Lembre-se que a expressão y > 0 nos dará um vetor de valores ló\
+    gicos com o mesmo comprimento que y, com TRUEs correspondendo a valores de y que\
+    \ são maiores que zero e FALSEs correspondendo a valores de y que são menores\
+    \ ou iguais a zero. O que você acha que y[y > 0] vai lhe dar?"
+    
+ 
+- AnswerTests: omnitest(correctExpr='y[y > 0]')
+  Class: cmd_question
+  CorrectAnswer: y[y > 0]
+  Hint: Digite y[y > 0] para visualizar apenas os elementos positivos de y.
+  Output: "Digite y[y > 0] para ver se obtemos todos os elementos positivos de\
+    \ y, que também são os elementos positivos do nosso vetor x original."
+    
+- AnswerTests: omnitest(correctExpr='x[x > 0]')
+  Class: cmd_question
+  CorrectAnswer: x[x > 0]
+  Hint: "Digite x[x > 0] para ver por que não usamos essa abordagem."
+  Output: "Você pode se perguntar por que não começamos apenas com x[x >\
+    \ 0] para isolar os elementos positivos de x. Tente isso agora para ver o motivo."
+    
+- Class: text
+  Output: "Como NA não é um valor, mas sim um espaço reservado para uma quantidade\
+    \ desconhecida, a expressão NA > 0 é avaliada como NA. Por isso, temos\
+    \ um monte de NAs misturados com nossos números positivos quando fazemos isso."
+    
+- AnswerTests: omnitest(correctExpr='x[!is.na(x) & x > 0]')
+  Class: cmd_question
+  CorrectAnswer: x[!is.na(x) & x > 0]
+  Hint: "Tente x[!is.na(x) & x > 0] para ver o que você obtém."
+  Output: "Combinando nosso conhecimento de operadores lógicos com nosso novo conhecimento\
+    \ de subconjuntos, poderíamos fazer isso: x[!is.na(x) & x > 0]. Experimente."
+    
+- Class: text
+  Output: "Neste caso, solicitamos apenas valores de x que são ambos não ausentes E maiores que zero."
+  
+- Class: text
+  Output: "Eu já mostrei como subdividir apenas os primeiros dez valores de x usando\
+    \ x[1:10]. Nesse caso, estamos fornecendo um vetor de inteiros positivos dentro\
+    \ dos colchetes, que informa R para retornar apenas os elementos de x numerados\
+    \ de 1 a 10."
+    
+- Class: text
+  Output: "Muitas linguagens de programação usam o que é chamado de 'indexaç\
+    ão baseada em zero', o que significa que o primeiro elemento de um vetor\
+    \ é considerado elemento 0. R usa 'indexação baseada em um',\
+    \ que você certamente já percebeu! Significa o primeiro elemento de um vetor. é considerado\
+    \ o elemento 1."
+    
+- AnswerTests: omnitest(correctExpr='x[c(3, 5, 7)]')
+  Class: cmd_question
+  CorrectAnswer: x[c(3, 5, 7)]
+  Hint: "Crie um vetor de índices com c(3, 5, 7) e coloque-o dentro dos colchetes. Está ficando mais difícil, né?"
+  Output: "Você consegue descobrir como filtrar os elementos 3, 5 e 7\
+    \ de x? Dica - Use a função c() para especificar os números dos elementos\
+    \ como um vetor numérico."
+
+- AnswerTests: omnitest(correctExpr='x[0]')
+  Class: cmd_question
+  CorrectAnswer: x[0]
+  Hint: "Digite x[0] para ver o que acontece quando nos referimos ao elemento zero\
+    \ de um vetor, que não está definido em R."
+  Output: "É importante que, ao usar vetores inteiros para subconjunto de nosso\
+    \ vetor x, permaneçamos apenas com o conjunto de índices {1, 2, ..., 40}, já\
+    \ que x possui apenas 40 elementos. O que acontece se tentar buscar o elemento zero\
+    \ de x (ex: x[0])? Tenta aí."
+    
+- AnswerTests: omnitest(correctExpr='x[3000]')
+  Class: cmd_question
+  CorrectAnswer: x[3000]
+  Hint: "Solicite o elemento de número 3000 de x (que não existe) com x[3000]."
+  Output: "Como você poderia esperar, não saiu nada útil para nós. Infelizmente,\
+    \ o R não nos impede de fazer isso. E se pedirmos o elemento de número 3000 de x? Experimente."
+    
+- Class: text
+  Output: "Mais uma vez, nada de útil, mas o R não nos impede de pedir por isso também.\
+    \ É importante você conhecer como o R funciona e você deve sempre se certificar de que\
+    \ o que você está pedindo está dentro dos limites do vetor que você\
+    \ está trabalhando."
+    
+- Class: text
+  Output: "E se estivermos interessados em todos os elementos de x EXCETO\
+    \ o segundo e o décimo? Seria muito entediante construir um vetor contendo\
+    \ todos os números de 1 a 40 EXCETO 2 e 10."
+
+- AnswerTests: omnitest(correctExpr='x[c(-2, -10)]')
+  Class: cmd_question
+  CorrectAnswer: x[c(-2, -10)]
+  Hint: "Digite x[c(-2, -10)] ."
+  Output: "Felizmente, o R aceita índices inteiros negativos. Enquanto x[c(2, 10)]\
+    \ nos dá APENAS o 2o e o 10o elementos de x, x[c(-2, -10)] nos dá\
+    \ todos os elementos de x EXCETO o 2o e 10o elementos. Digite x[c(-2, -10)] agora para ver isso."
+    
+- AnswerTests: omnitest(correctExpr='x[-c(2, 10)]')
+  Class: cmd_question
+  CorrectAnswer: x[-c(2, 10)]
+  Hint: "Digite x[-c(2, 10)] para simplificar um pouco as coisas. Isso poderia economizar tempo ao especificar muitos índices negativos."
+  Output: "Um modo abreviado de especificar vários números negativos é colocar\
+    \ o sinal negativo na frente do vetor de números positivos. Digite x[-c(2, 10)] para obter exatamente o mesmo resultado."
+ 
+- Class: text
+  Output: "Até agora, cobrimos três tipos de vetores de índice - lógico,\
+    \ inteiro positivo e inteiro negativo. O único tipo remanescente requer que\
+    \ introduzamos o conceito de elementos 'nomeados'. Já vimos isso na aula presencial, mas ainda não vimos isso aqui no curso interativo."
+    
+- AnswerTests: omnitest(correctExpr='vect <- c(foo = 11, bar = 2, norf = NA)')
+  Class: cmd_question
+  CorrectAnswer: vect <- c(foo = 11, bar = 2, norf = NA)
+  Hint: Crie um vetor nomeado com vect <- c(foo = 11, bar = 2, norf = NA).
+  Output: "Crie um vetor numérico com três elementos nomeados usando vect <- c(foo = 11, bar = 2, norf = NA)."
+
+- AnswerTests: omnitest(correctExpr='vect')
+  Class: cmd_question
+  CorrectAnswer: vect
+  Hint: "Digite vect para visualizar seu conteúdo."
+  Output: "Quando imprimimos o vect no console, você verá que cada elemento tem um nome. Experimente."
+    
+- AnswerTests: omnitest(correctExpr='names(vect)')
+  Class: cmd_question
+  CorrectAnswer: names(vect)
+  Hint: Confira os resultados dos nomes de vect com o comando names(vect).
+  Output: "Nós também podemos obter os nomes de vect passando vect como um argumento\
+    \ para a função names(). Experimente."
+    
+- AnswerTests: omnitest(correctExpr='vect2 <- c(11, 2, NA)')
+  Class: cmd_question
+  CorrectAnswer: vect2 <- c(11, 2, NA)
+  Hint: "Crie um vetor comum (sem nome) chamado vect2 que contém c(11, 2, NA)."
+  Output: "Também, podemos criar um vetor vect2 sem nome com c(11, 2, NA). Faça isso agora."
+  
+- AnswerTests: omnitest(correctExpr='names(vect2) <- c("foo", "bar", "norf")')
+  Class: cmd_question
+  CorrectAnswer: names(vect2) <- c("foo", "bar", "norf")
+  Hint: Adicione nomes ao vect2 com names(vect2) <- c("foo", "bar", "norf").
+  Output: Então, podemos adicionar o atributo `names` ao vetor vect2 usando a função names(vect2) <- c("foo", "bar", "norf"). Vai lá, você consegue!"
+    
+- AnswerTests: any_of_exprs('identical(vect, vect2)', 'identical(vect2, vect)')
+  Class: cmd_question
+  CorrectAnswer: identical(vect, vect2)
+  Hint: "A função identical() nos diz se os dois argumentos são idênticos. Digite identical(vect, vect2) ."
+  Output: "Agora, vamos verificar se vect e vect2 são iguais, passando-os como\
+    \ argumentos para a função identical()."
+    
+- Class: text
+  Output: "De fato, vect e vect2 são vetores nomeados idênticos."
+  
+- AnswerChoices: vect["bar"]; vect[bar]; vect["2"]
+  AnswerTests: omnitest(correctVal='vect["bar"]')
+  Class: mult_question
+  CorrectAnswer: vect["bar"]
+  Hint: Se queremos o elemento chamado "bar" (ou seja, o segundo elemento do vect), qual comando nos levaria a isso?
+  Output: "Agora, voltemos à questão do subconjunto de um vetor por elementos\
+    \ nomeados. Qual dos seguintes comandos você acha que nos daria o segundo elemento\
+    \ do vect?"
+    
+- AnswerTests: omnitest(correctExpr='vect["bar"]')
+  Class: cmd_question
+  CorrectAnswer: vect["bar"]
+  Hint: Digite vect["bar"].
+  Output: Agora, execute a instrução correspondente à opção que você escolheu.
+  
+- AnswerTests: omnitest(correctExpr='vect[c("foo", "bar")]')
+  Class: cmd_question
+  CorrectAnswer: vect[c("foo", "bar")]
+  Hint: Digite vect[c("foo", "bar")] para obter apenas os elementos
+    do vect chamado "foo" e "bar".
+  Output: Da mesma forma, podemos filtrar usando um vetor de nomes com vect[c("foo", "bar")]. Experimente.
+    
+- Class: text
+  Output: "Agora você conhece todos os quatro métodos de filtrar subconjuntos de dados\
+    \ de vetores. Diferentes abordagens são melhores em diferentes cenários\
+    \ . Em caso de dúvida, vai tentando!"
+
+- Class: mult_question
+  Output: "Gostaria de informar ao professor sobre a conclusão desta lição"
+  CorrectAnswer: TRUE
+  AnswerChoices: Sim; Não
+  AnswerTests: notify()
+  Hint: Na dúvida, escolha Sim :-)
+
