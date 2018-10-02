@@ -104,7 +104,7 @@
   Hint: "Como não podemos simplesmente mudar o nome da nossa variável my_vector,\
     \ vamos atribuir seu valor a uma nova variável com my_matrix <- my_vector."
   Output: "Poxa! 'É isso mesmo! Agora my_vector é uma matriz. Devemos armazená-lo em\
-    \ uma nova variável que nos ajude a lembrar o que é. Armazene o valor de\
+    \ uma variável mais adequada que nos ajude a lembrar o que é. Armazene o valor de\
     \ my_vector em uma nova variável chamada my_matrix."
   
 - Class: text
@@ -165,7 +165,7 @@
   Hint: "Digite cbind(patients, my_matrix) para adicionar os nomes de nossos pacientes\
     \ à matriz de números."
   Output: Agora vamos usar a função cbind() para "combinar colunas". 
-    Não se preocupe em armazenar o resultado em uma nova variável. Apenas 
+    Não se preocupe em armazenar o resultado em uma nova variável, veremos o resultado no console. Apenas 
     chame cbind() com dois argumentos - o vetor patients e a matriz my_matrix.
     
 - Class: text
