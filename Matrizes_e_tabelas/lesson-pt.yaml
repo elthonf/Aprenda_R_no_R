@@ -1,0 +1,237 @@
+- Author: Nick Carchedi
+  Class: meta
+  Course: R Programming
+  Lesson: Matrices and Data Frames
+  Organization: JHU Biostat
+  Type: Standard
+  Version: 2.2.0
+- Class: text
+  Output: "Nesta li\xE7\xE3o, abordaremos matrizes e quadros de dados. Ambos representam\
+    \ tipos de dados &#39;retangulares&#39;, o que significa que eles s\xE3o usados\
+    \ \u200B\u200Bpara armazenar dados tabulares, com linhas e colunas."
+- Class: text
+  Output: "A principal diferen\xE7a, como voc\xEA ver\xE1, \xE9 que as matrizes podem\
+    \ conter apenas uma \xFAnica classe de dados, enquanto os quadros de dados podem\
+    \ consistir em muitas classes diferentes de dados."
+- AnswerTests: omnitest(correctExpr='my_vector <- 1:20')
+  Class: cmd_question
+  CorrectAnswer: my_vector <- 1:20
+  Hint: "Voc\xEA aprendeu sobre o operador `:` na li\xE7\xE3o sobre seq\xFC\xEAncias.\
+    \ Se voc\xEA quisesse criar um vetor contendo os n\xFAmeros 1, 2 e 3 (nessa ordem),\
+    \ voc\xEA poderia usar c (1, 2, 3) ou 1: 3. Nesse caso, queremos que os n\xFA\
+    meros de 1 a 20 sejam armazenados em uma vari\xE1vel chamada my_vector. Al\xE9\
+    m disso, lembre-se de que voc\xEA n\xE3o precisa da fun\xE7\xE3o c () ao usar\
+    \ `:`."
+  Output: "Vamos criar um vetor contendo os n\xFAmeros de 1 a 20 usando o operador\
+    \ `:`. Armazene o resultado em uma vari\xE1vel chamada my_vector."
+- AnswerTests: omnitest(correctExpr='my_vector')
+  Class: cmd_question
+  CorrectAnswer: my_vector
+  Hint: "Digite my_vector para visualizar seu conte\xFAdo."
+  Output: "Veja o conte\xFAdo do vetor que voc\xEA acabou de criar."
+- AnswerTests: omnitest(correctExpr='dim(my_vector)')
+  Class: cmd_question
+  CorrectAnswer: dim(my_vector)
+  Hint: Basta digitar dim (my_vector) para ver o que acontece.
+  Output: "A fun\xE7\xE3o dim () nos diz as &#39;dimens\xF5es&#39; de um objeto. O\
+    \ que acontece se fizermos dim (my_vector)? De uma chance."
+- AnswerTests: omnitest(correctExpr='length(my_vector)')
+  Class: cmd_question
+  CorrectAnswer: length(my_vector)
+  Hint: "Digite length (my_vector) para visualizar o comprimento do vetor que voc\xEA\
+    \ acabou de criar."
+  Output: "Claramente, isso n\xE3o \xE9 muito \xFAtil! Como my_vector \xE9 um vetor,\
+    \ ele n\xE3o tem um atributo `dim` (por isso \xE9 apenas NULL), mas podemos encontrar\
+    \ seu tamanho usando a fun\xE7\xE3o length (). Tente isso agora."
+- AnswerTests: omnitest(correctExpr='dim(my_vector) <- c(4, 5)')
+  Class: cmd_question
+  CorrectAnswer: dim(my_vector) <- c(4, 5)
+  Hint: Digite dim (my_vector) &lt;- c (4, 5) para dar ao my_vector um atributo `dim`.
+  Output: "Ah! Isso \xE9 o que n\xF3s quer\xEDamos. Mas, o que acontece se dermos\
+    \ ao my_vector um atributo `dim`? Vamos tentar. Digite dim (my_vector) &lt;- c\
+    \ (4, 5)."
+- Class: text
+  Output: "Tudo bem se esse \xFAltimo comando pareceu um pouco estranho para voc\xEA\
+    . Deveria! A fun\xE7\xE3o dim () permite que voc\xEA obtenha OU configure o atributo\
+    \ `dim` para um objeto R. Neste caso, atribu\xEDmos o valor c (4, 5) ao atributo\
+    \ `dim` de my_vector."
+- AnswerTests: omnitest(correctExpr='dim(my_vector)')
+  Class: cmd_question
+  CorrectAnswer: dim(my_vector)
+  Hint: Apenas digite dim (my_vector) para ter certeza que o atributo `dim` foi definido.
+  Output: Use dim (my_vector) para confirmar que definimos corretamente o atributo
+    `dim`.
+- AnswerTests: omnitest(correctExpr='attributes(my_vector)')
+  Class: cmd_question
+  CorrectAnswer: attributes(my_vector)
+  Hint: "Os atributos de comando (my_vector) mostrar\xE3o todos os atributos do objeto\
+    \ my_vector."
+  Output: "Outra maneira de ver isso \xE9 chamando a fun\xE7\xE3o attributes () em\
+    \ my_vector. Tente agora."
+- Class: text
+  Output: "Assim como na aula de matem\xE1tica, ao lidar com um objeto bidimensional\
+    \ (pense em tabela retangular), o primeiro n\xFAmero \xE9 o n\xFAmero de linhas\
+    \ e o segundo \xE9 o n\xFAmero de colunas. Portanto, apenas demos ao my_vector\
+    \ 4 linhas e 5 colunas."
+- AnswerTests: omnitest(correctExpr='my_vector')
+  Class: cmd_question
+  CorrectAnswer: my_vector
+  Hint: "Digite my_vector para visualizar seu conte\xFAdo."
+  Output: "Mas espere! Isso n\xE3o soa mais como um vetor. Bem, n\xE3o \xE9. Agora\
+    \ \xE9 uma matriz. Veja o conte\xFAdo de my_vector agora para ver como \xE9."
+- AnswerTests: omnitest(correctExpr='class(my_vector)')
+  Class: cmd_question
+  CorrectAnswer: class(my_vector)
+  Hint: Digite class (my_vector) para visualizar a classe my_vector.
+  Output: "Agora, vamos confirmar que \xE9 realmente uma matriz usando a fun\xE7\xE3\
+    o class (). Digite class (my_vector) para ver o que quero dizer."
+- AnswerTests: omnitest(correctExpr='my_matrix <- my_vector')
+  Class: cmd_question
+  CorrectAnswer: my_matrix <- my_vector
+  Hint: "Como n\xE3o podemos simplesmente mudar o nome da nossa vari\xE1vel my_vector,\
+    \ vamos atribuir seu valor a uma nova vari\xE1vel com my_matrix &lt;- my_vector."
+  Output: "Com certeza, my_vector \xE9 agora uma matriz. Devemos armazen\xE1-lo em\
+    \ uma nova vari\xE1vel que nos ajude a lembrar o que \xE9. Armazene o valor de\
+    \ my_vector em uma nova vari\xE1vel chamada my_matrix."
+- Class: text
+  Output: "O exemplo que usamos at\xE9 agora foi concebido para ilustrar o fato de\
+    \ que uma matriz \xE9 simplesmente um vetor at\xF4mico com um atributo de dimens\xE3\
+    o. Um m\xE9todo mais direto de criar a mesma matriz usa a fun\xE7\xE3o matrix\
+    \ ()."
+- AnswerTests: omnitest(correctExpr='?matrix')
+  Class: cmd_question
+  CorrectAnswer: ?matrix
+  Hint: "A matriz de comando far\xE1 o truque."
+  Output: "Chame o arquivo de ajuda para a fun\xE7\xE3o matrix () agora usando a fun\xE7\
+    \xE3o `?`."
+- AnswerTests: calculates_same_value('matrix(1:20, nrow=4, ncol=5)'); expr_creates_var('my_matrix2')
+  Class: cmd_question
+  CorrectAnswer: my_matrix2 <- matrix(1:20, nrow=4, ncol=5)
+  Hint: "Chame a fun\xE7\xE3o matrix () com tr\xEAs argumentos - 1:20, o n\xFAmero\
+    \ de linhas e o n\xFAmero de colunas. Certifique-se de especificar argumentos\
+    \ por seus nomes pr\xF3prios e armazene o resultado em my_matrix2 (n\xE3o em my_matrix)."
+  Output: "Agora, olhe a documenta\xE7\xE3o para a fun\xE7\xE3o de matriz e veja se\
+    \ voc\xEA pode descobrir como criar uma matriz contendo os mesmos n\xFAmeros (1-20)\
+    \ e dimens\xF5es (4 linhas, 5 colunas) chamando a fun\xE7\xE3o matrix (). Armazene\
+    \ o resultado em uma vari\xE1vel chamada my_matrix2."
+- AnswerTests: any_of_exprs('identical(my_matrix, my_matrix2)', 'identical(my_matrix2,
+    my_matrix)')
+  Class: cmd_question
+  CorrectAnswer: identical(my_matrix, my_matrix2)
+  Hint: "Se voc\xEA n\xE3o tem certeza sobre este, ent\xE3o verifique a documenta\xE7\
+    \xE3o para id\xEAntico () usando a fun\xE7\xE3o `?`."
+  Output: "Finalmente, vamos confirmar que my_matrix e my_matrix2 s\xE3o realmente\
+    \ id\xEAnticas. A fun\xE7\xE3o id\xEAntica () nos dir\xE1 se os dois primeiros\
+    \ argumentos s\xE3o os mesmos. Experimente."
+- Class: text
+  Output: "Agora, imagine que os n\xFAmeros em nossa tabela representam algumas medidas\
+    \ de um experimento cl\xEDnico, em que cada linha representa um paciente e cada\
+    \ coluna representa uma vari\xE1vel para a qual as medidas foram tomadas."
+- Class: text
+  Output: "Podemos marcar as linhas para sabermos quais n\xFAmeros pertencem a cada\
+    \ paciente no experimento. Uma maneira de fazer isso \xE9 adicionar uma coluna\
+    \ \xE0 matriz, que cont\xE9m os nomes de todas as quatro pessoas."
+- AnswerTests: omnitest(correctExpr='patients <- c("Bill", "Gina", "Kelly", "Sean")')
+  Class: cmd_question
+  CorrectAnswer: patients <- c("Bill", "Gina", "Kelly", "Sean")
+  Hint: "Certifique-se de capitalizar a primeira letra de cada nome e armazenar o\
+    \ resultado em uma vari\xE1vel chamada pacientes. Al\xE9m disso, n\xE3o confunda\
+    \ a ordem dos pacientes! Isso seria um desastre!"
+  Output: "Vamos come\xE7ar criando um vetor de caracteres contendo os nomes de nossos\
+    \ pacientes - Bill, Gina, Kelly e Sean. Lembre-se que as aspas duplas dizem ao\
+    \ R que algo \xE9 uma cadeia de caracteres. Armazene o resultado em uma vari\xE1\
+    vel chamada pacientes."
+- AnswerTests: omnitest(correctExpr='cbind(patients, my_matrix)')
+  Class: cmd_question
+  CorrectAnswer: cbind(patients, my_matrix)
+  Hint: "Digite cbind (patients, my_matrix) para adicionar os nomes de nossos pacientes\
+    \ \xE0 matriz de n\xFAmeros."
+  Output: "Agora vamos usar a fun\xE7\xE3o cbind () para &quot;combinar colunas&quot;.\
+    \ N\xE3o se preocupe em armazenar o resultado em uma nova vari\xE1vel. Apenas\
+    \ chame cbind () com dois argumentos - o vetor de pacientes e minha_matriz."
+- Class: text
+  Output: "Algo \xE9 suspeito sobre o nosso resultado! Parece que combinar o vetor\
+    \ de caracteres com a nossa matriz de n\xFAmeros fez com que tudo fosse colocado\
+    \ entre aspas duplas. Isso significa que ficamos com uma matriz de caracteres,\
+    \ o que n\xE3o \xE9 bom."
+- Class: text
+  Output: If you remember back to the beginning of this lesson, I told you that matrices
+    can only contain ONE class of data. Therefore, when we tried to combine a character
+    vector with a numeric matrix, R was forced to 'coerce' the numbers to characters,
+    hence the double quotes.
+- Class: text
+  Output: "Isso \xE9 chamado de &quot;coer\xE7\xE3o impl\xEDcita&quot;, porque n\xE3\
+    o pedimos por isso. Apenas aconteceu. Mas por que n\xE3o apenas converter os nomes\
+    \ de nossos pacientes em n\xFAmeros? Vou deixar voc\xEA refletir sobre essa quest\xE3\
+    o por conta pr\xF3pria."
+- AnswerTests: omnitest(correctExpr='my_data <- data.frame(patients, my_matrix)')
+  Class: cmd_question
+  CorrectAnswer: my_data <- data.frame(patients, my_matrix)
+  Hint: Digite my_data &lt;- data.frame (patients, my_matrix), para que possamos explorar
+    o que acontece.
+  Output: "Ent\xE3o, ainda nos resta a quest\xE3o de como incluir os nomes de nossos\
+    \ pacientes na tabela sem destruir a integridade de nossos dados num\xE9ricos.\
+    \ Tente o seguinte - my_data &lt;- data.frame (patients, my_matrix)"
+- AnswerTests: omnitest(correctExpr='my_data')
+  Class: cmd_question
+  CorrectAnswer: my_data
+  Hint: "Digite my_data para visualizar seu conte\xFAdo."
+  Output: "Agora, veja o conte\xFAdo de my_data para ver o que criamos."
+- Class: text
+  Output: "Parece que a fun\xE7\xE3o data.frame () nos permitiu armazenar nosso vetor\
+    \ de caracteres de nomes ao lado de nossa matriz de n\xFAmeros. Isso \xE9 exatamente\
+    \ o que est\xE1vamos esperando!"
+- Class: text
+  Output: "Nos bastidores, a fun\xE7\xE3o data.frame () pega qualquer n\xFAmero de\
+    \ argumentos e retorna um \xFAnico objeto da classe `data.frame` que \xE9 composto\
+    \ dos objetos originais."
+- AnswerTests: omnitest(correctExpr='class(my_data)')
+  Class: cmd_question
+  CorrectAnswer: class(my_data)
+  Hint: "A fun\xE7\xE3o de classe recebe um argumento - o objeto do qual voc\xEA deseja\
+    \ determinar a classe."
+  Output: "Vamos confirmar isso chamando a fun\xE7\xE3o class () em nosso quadro de\
+    \ dados rec\xE9m-criado."
+- Class: text
+  Output: "Tamb\xE9m \xE9 poss\xEDvel atribuir nomes \xE0s linhas e colunas individuais\
+    \ de um quadro de dados, o que apresenta outra maneira poss\xEDvel de determinar\
+    \ qual linha de valores em nossa tabela pertence a cada paciente."
+- Class: text
+  Output: "No entanto, como j\xE1 resolvemos esse problema, vamos resolver um problema\
+    \ diferente, atribuindo nomes \xE0s colunas do nosso quadro de dados, para que\
+    \ saibamos que tipo de medida cada coluna representa."
+- AnswerTests: omnitest(correctExpr='cnames <- c("patient", "age", "weight", "bp",
+    "rating", "test")')
+  Class: cmd_question
+  CorrectAnswer: cnames <- c("patient", "age", "weight", "bp", "rating", "test")
+  Hint: "Certifique-se de que todos os nomes estejam em min\xFAsculas, entre aspas\
+    \ duplas e separados por v\xEDrgulas. N\xE3o esque\xE7a de usar a fun\xE7\xE3\
+    o c ()."
+  Output: "Como temos seis colunas (incluindo nomes de pacientes), primeiro precisamos\
+    \ criar um vetor contendo um elemento para cada coluna. Crie um vetor de caracteres\
+    \ chamado cnames que cont\xE9m os seguintes valores (em ordem) - &quot;patient&quot;,\
+    \ &quot;age&quot;, &quot;weight&quot;, &quot;bp&quot;, &quot;rating&quot;, &quot;test&quot;."
+- AnswerTests: omnitest(correctExpr='colnames(my_data) <- cnames')
+  Class: cmd_question
+  CorrectAnswer: colnames(my_data) <- cnames
+  Hint: Tente colnames (my_data) &lt;- cnames.
+  Output: "Agora, use a fun\xE7\xE3o colnames () para definir o atributo `colnames`\
+    \ para o nosso quadro de dados. Isso \xE9 semelhante ao modo como usamos a fun\xE7\
+    \xE3o dim () anteriormente nesta li\xE7\xE3o."
+- AnswerTests: omnitest(correctExpr='my_data')
+  Class: cmd_question
+  CorrectAnswer: my_data
+  Hint: "Imprima o conte\xFAdo de my_data no console."
+  Output: "Vamos ver se isso deu certo. Imprima o conte\xFAdo de my_data."
+- Class: text
+  Output: "Nesta li\xE7\xE3o, voc\xEA aprendeu o b\xE1sico de trabalhar com duas estruturas\
+    \ de dados muito importantes e comuns - matrizes e quadros de dados. H\xE1 muito\
+    \ mais a aprender e abordaremos t\xF3picos mais avan\xE7ados, principalmente em\
+    \ rela\xE7\xE3o a quadros de dados, em li\xE7\xF5es futuras."
+- AnswerChoices: "Sim; N\xE3o"
+  AnswerTests: notify()
+  Class: mult_question
+  CorrectAnswer: null
+  Hint: null
+  Output: "Gostaria de informar a algu\xE9m sobre sua conclus\xE3o bem-sucedida desta\
+    \ li\xE7\xE3o via e-mail?"
