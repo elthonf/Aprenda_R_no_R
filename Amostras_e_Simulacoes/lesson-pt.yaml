@@ -1,0 +1,232 @@
+- Author: Nick Carchedi
+  Class: meta
+  Course: R Programming
+  Lesson: Simulation
+  Organization: JHU Biostat
+  Type: Standard
+  Version: 2.2.11
+- Class: text
+  Output: "Uma das grandes vantagens de usar uma linguagem de programa\xE7\xE3o estat\xED\
+    stica como R \xE9 sua vasta cole\xE7\xE3o de ferramentas para simular n\xFAmeros\
+    \ aleat\xF3rios."
+- Class: text
+  Output: "Esta li\xE7\xE3o pressup\xF5e familiaridade com algumas distribui\xE7\xF5\
+    es de probabilidade comuns, mas esses t\xF3picos s\xF3 ser\xE3o discutidos com\
+    \ rela\xE7\xE3o \xE0 gera\xE7\xE3o de n\xFAmeros aleat\xF3rios. Mesmo que voc\xEA\
+    \ n\xE3o tenha experi\xEAncia pr\xE9via com esses conceitos, voc\xEA deve ser\
+    \ capaz de completar a li\xE7\xE3o e entender as principais ideias."
+- AnswerTests: omnitest(correctExpr='?sample')
+  Class: cmd_question
+  CorrectAnswer: ?sample
+  Hint: "Use &#39;? Sample&#39; para puxar a documenta\xE7\xE3o para a fun\xE7\xE3\
+    o sample ()."
+  Output: "A primeira fun\xE7\xE3o que usaremos para gerar n\xFAmeros aleat\xF3rios\
+    \ \xE9 sample (). Use? Sample para puxar a documenta\xE7\xE3o."
+- AnswerTests: match_call('sample(1:6, 4, replace = TRUE)')
+  Class: cmd_question
+  CorrectAnswer: sample(1:6, 4, replace = TRUE)
+  Hint: 'Digite sample (1: 6, 4, replace = TRUE) para simular a rolagem de quatro
+    dados de seis lados.'
+  Output: 'Vamos simular a rolagem de quatro dados de seis lados: sample (1: 6, 4,
+    replace = TRUE).'
+- AnswerTests: match_call('sample(1:6, 4, replace = TRUE)')
+  Class: cmd_question
+  CorrectAnswer: sample(1:6, 4, replace = TRUE)
+  Hint: 'Digite sample (1: 6, 4, replace = TRUE) para simular a rolagem de quatro
+    dados de seis lados novamente.'
+  Output: "Agora repita o comando para ver como seu resultado \xE9 diferente. (A probabilidade\
+    \ de rolar exatamente o mesmo resultado \xE9 (1/6) ^ 4 = 0,00077, o que \xE9 bem\
+    \ pequeno!)"
+- Class: text
+  Output: "sample (1: 6, 4, replace = TRUE) instrui R a selecionar aleatoriamente\
+    \ quatro n\xFAmeros entre 1 e 6, com substitui\xE7\xE3o de WITH. Amostragem com\
+    \ substitui\xE7\xE3o significa simplesmente que cada n\xFAmero \xE9 &quot;substitu\xED\
+    do&quot; depois de ser selecionado, para que o mesmo n\xFAmero possa aparecer\
+    \ mais de uma vez. \xC9 isso que queremos aqui, j\xE1 que o que voc\xEA joga em\
+    \ um dado n\xE3o deve afetar o que voc\xEA rola em nenhum dos outros."
+- AnswerTests: match_call('sample(1:20, 10)')
+  Class: cmd_question
+  CorrectAnswer: sample(1:20, 10)
+  Hint: "Digite a amostra (1:20, 10) para amostrar 10 n\xFAmeros entre 1 e 20, sem\
+    \ substitui\xE7\xE3o."
+  Output: "Agora, fa\xE7a uma amostragem de 10 n\xFAmeros entre 1 e 20, SEM substitui\xE7\
+    \xE3o. Para amostrar sem substitui\xE7\xE3o, simplesmente deixe o argumento &#39;replace&#39;."
+- Class: text
+  Output: "Desde o \xFAltimo comando amostrado sem substitui\xE7\xE3o, nenhum n\xFA\
+    mero aparece mais de uma vez na sa\xEDda."
+- AnswerTests: omnitest(correctExpr='LETTERS')
+  Class: cmd_question
+  CorrectAnswer: LETTERS
+  Hint: "Digite LETTERS para imprimir seu conte\xFAdo no console."
+  Output: "LETTERS \xE9 uma vari\xE1vel pr\xE9-definida em R contendo um vetor de\
+    \ todas as 26 letras do alfabeto Ingl\xEAs. D\xEA uma olhada agora."
+- AnswerTests: omnitest(correctExpr='sample(LETTERS)')
+  Class: cmd_question
+  CorrectAnswer: sample(LETTERS)
+  Hint: "Use amostra (LETTERS) para permutar todas as 26 letras do alfabeto Ingl\xEA\
+    s."
+  Output: "A fun\xE7\xE3o sample () tamb\xE9m pode ser usada para permutar ou reorganizar\
+    \ os elementos de um vetor. Por exemplo, experimente a amostra (LETTERS) para\
+    \ permutar todas as 26 letras do alfabeto ingl\xEAs."
+- Class: text
+  Output: "Isto \xE9 id\xEAntico a tirar uma amostra de tamanho 26 de LETTERS, sem\
+    \ substitui\xE7\xE3o. Quando o argumento &#39;tamanho&#39; para sample () n\xE3\
+    o \xE9 especificado, R leva uma amostra igual em tamanho ao vetor do qual voc\xEA\
+    \ est\xE1 amostrando."
+- Class: text
+  Output: "Agora, suponha que queremos simular 100 lan\xE7amentos de uma moeda de\
+    \ dois lados injusta. Esta moeda em particular tem uma probabilidade de 0,3 &#39;aterrissagem&#39;\
+    \ e uma probabilidade de 0,7 de aterrissagem &#39;cabe\xE7as&#39;."
+- AnswerTests: match_call('flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3,
+    0.7))')
+  Class: cmd_question
+  CorrectAnswer: flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))
+  Hint: "O comando a seguir produzir\xE1 100 viradas de uma moeda injusta e atribuir\xE1\
+    \ o resultado: flips &lt;- sample (c (0,1), 100, replace = TRUE, prob = c (0,3,\
+    \ 0,7))"
+  Output: "Deixe o valor 0 representar as caudas e o valor 1 representar as cabe\xE7\
+    as. Use sample () para desenhar uma amostra de tamanho 100 do vetor c (0,1), com\
+    \ substitui\xE7\xE3o. Como a moeda \xE9 injusta, devemos anexar probabilidades\
+    \ espec\xEDficas aos valores 0 (caudas) e 1 (caras) com um quarto argumento, prob\
+    \ = c (0,3, 0,7). Atribua o resultado a uma nova vari\xE1vel chamada flips."
+- AnswerTests: omnitest(correctExpr='flips')
+  Class: cmd_question
+  CorrectAnswer: flips
+  Hint: "Basta digitar flip para visualizar seu conte\xFAdo."
+  Output: "Veja o conte\xFAdo da vari\xE1vel flips."
+- AnswerTests: omnitest(correctExpr='sum(flips)')
+  Class: cmd_question
+  CorrectAnswer: sum(flips)
+  Hint: "soma (flips) adicionar\xE1 todos os 1s e 0s, dando-lhe o n\xFAmero total\
+    \ de 1s em flips."
+  Output: "Como definimos a probabilidade de que as cabe\xE7as de pouso em qualquer\
+    \ invers\xE3o sejam 0.7, esperamos que aproximadamente 70 de nossas invers\xF5\
+    es de moeda tenham o valor 1. Conte o n\xFAmero real de 1s contido nas invers\xF5\
+    es usando a fun\xE7\xE3o sum ()."
+- AnswerTests: omnitest(correctExpr='?rbinom')
+  Class: cmd_question
+  CorrectAnswer: ?rbinom
+  Hint: Digite? Rbinom para abrir o arquivo de ajuda para rbinom ().
+  Output: "Um coin flip \xE9 um resultado bin\xE1rio (0 ou 1) e estamos realizando\
+    \ 100 testes independentes (coin flips), para que possamos usar rbinom () para\
+    \ simular uma vari\xE1vel aleat\xF3ria binomial. Puxe a documenta\xE7\xE3o para\
+    \ rbinom () usando? Rbinom."
+- Class: text
+  Output: "Cada distribui\xE7\xE3o de probabilidade em R tem uma fun\xE7\xE3o r ***\
+    \ (para &quot;aleat\xF3rio&quot;), fun\xE7\xE3o ad *** (para &quot;densidade&quot;),\
+    \ ap *** (para &quot;probabilidade&quot;) e q *** (para &quot; quantile &quot;).\
+    \ N\xF3s estamos mais interessados \u200B\u200Bnas fun\xE7\xF5es desta li\xE7\xE3\
+    o, mas eu encorajo voc\xEA a explorar os outros por conta pr\xF3pria."
+- AnswerTests: match_call('rbinom(1, size = 100, prob = 0.7)')
+  Class: cmd_question
+  CorrectAnswer: rbinom(1, size = 100, prob = 0.7)
+  Hint: Chame rbinom () com n = 1, tamanho = 100 e prob = 0,7.
+  Output: "Uma vari\xE1vel aleat\xF3ria binomial representa o n\xFAmero de &#39;sucessos&#39;\
+    \ (cabe\xE7as) em um determinado n\xFAmero de &#39;tentativas&#39; independentes\
+    \ (lan\xE7amentos de moeda). Portanto, podemos gerar uma \xFAnica vari\xE1vel\
+    \ aleat\xF3ria que representa o n\xFAmero de cabe\xE7as em 100 lan\xE7amentos\
+    \ de nossa moeda injusta usando rbinom (1, tamanho = 100, prob = 0,7). Note que\
+    \ voc\xEA s\xF3 especifica a probabilidade de &#39;sucesso&#39; (cabe\xE7as) e\
+    \ N\xC3O a probabilidade de &#39;falha&#39; (caudas). Tente agora."
+- AnswerTests: match_call('flips2 <- rbinom(100, size = 1, prob = 0.7)')
+  Class: cmd_question
+  CorrectAnswer: flips2 <- rbinom(100, size = 1, prob = 0.7)
+  Hint: Chame rbinom () com n = 100, size = 1 e prob = 0.7 e atribua o resultado a
+    flips2.
+  Output: "Equivalentemente, se quisermos ver todos os 0s e 1s, podemos solicitar\
+    \ 100 observa\xE7\xF5es, cada uma de tamanho 1, com probabilidade de sucesso de\
+    \ 0,7. Experimente, atribuindo o resultado a uma nova vari\xE1vel chamada flips2."
+- AnswerTests: omnitest('flips2')
+  Class: cmd_question
+  CorrectAnswer: flips2
+  Hint: "Digite flips2 para visualizar seu conte\xFAdo."
+  Output: "Ver o conte\xFAdo de flips2."
+- AnswerTests: omnitest('sum(flips2)')
+  Class: cmd_question
+  CorrectAnswer: sum(flips2)
+  Hint: "Use sum (flips2) para contar o n\xFAmero de 1s."
+  Output: "Agora use sum () para contar o n\xFAmero de 1s (cabe\xE7as) em flips2.\
+    \ Deve estar perto de 70!"
+- AnswerTests: omnitest('?rnorm')
+  Class: cmd_question
+  CorrectAnswer: ?rnorm
+  Hint: Digite? Rnorm para visualizar seu arquivo de ajuda.
+  Output: "Semelhante a rbinom (), podemos usar R para simular n\xFAmeros aleat\xF3\
+    rios de muitas outras distribui\xE7\xF5es de probabilidade. Puxe a documenta\xE7\
+    \xE3o do rnorm () agora."
+- AnswerTests: omnitest('rnorm(10)')
+  Class: cmd_question
+  CorrectAnswer: rnorm(10)
+  Hint: "Use rnorm (10) para gerar 10 n\xFAmeros aleat\xF3rios a partir de uma distribui\xE7\
+    \xE3o normal padr\xE3o."
+  Output: "A distribui\xE7\xE3o normal padr\xE3o tem m\xE9dia 0 e desvio padr\xE3\
+    o 1. Como voc\xEA pode ver na se\xE7\xE3o &#39;Uso&#39; na documenta\xE7\xE3o,\
+    \ os valores padr\xE3o para os argumentos &#39;mean&#39; e &#39;sd&#39; para rnorm\
+    \ () s\xE3o 0 e 1, respectivamente. Assim, o rnorm (10) gerar\xE1 10 n\xFAmeros\
+    \ aleat\xF3rios a partir de uma distribui\xE7\xE3o normal padr\xE3o. De uma chance."
+- AnswerTests: match_call('rnorm(10, 100, 25)')
+  Class: cmd_question
+  CorrectAnswer: rnorm(10, 100, 25)
+  Hint: "Use rnorm (10, m\xE9dia = 100, dp = 25) para gerar 10 n\xFAmeros aleat\xF3\
+    rios a partir de uma distribui\xE7\xE3o normal com m\xE9dia de 100 e desvio padr\xE3\
+    o 25."
+  Output: "Agora fa\xE7a o mesmo, exceto com uma m\xE9dia de 100 e um desvio padr\xE3\
+    o de 25."
+- Class: text
+  Output: "Finalmente, e se quisermos simular 100 * grupos * de n\xFAmeros aleat\xF3\
+    rios, cada um contendo 5 valores gerados a partir de uma distribui\xE7\xE3o de\
+    \ Poisson com m\xE9dia de 10? Vamos come\xE7ar com um grupo de 5 n\xFAmeros, depois\
+    \ mostrarei como repetir a opera\xE7\xE3o 100 vezes de maneira conveniente e compacta."
+- AnswerTests: match_call('rpois(5, 10)')
+  Class: cmd_question
+  CorrectAnswer: rpois(5, 10)
+  Hint: "Use rpois (5, 10) para gerar 5 n\xFAmeros aleat\xF3rios a partir de uma distribui\xE7\
+    \xE3o de Poisson com m\xE9dia de 10."
+  Output: "Gere 5 valores aleat\xF3rios a partir de uma distribui\xE7\xE3o de Poisson\
+    \ com m\xE9dia 10. Verifique a documenta\xE7\xE3o de rpois () se precisar de ajuda."
+- AnswerTests: match_call('my_pois <- replicate(100, rpois(5, 10))')
+  Class: cmd_question
+  CorrectAnswer: my_pois <- replicate(100, rpois(5, 10))
+  Hint: "my_pois &lt;- replicate (100, rpois (5, 10)) repetir\xE1 a opera\xE7\xE3\
+    o 100 vezes e armazenar\xE1 o resultado."
+  Output: "Agora use replicate (100, rpois (5, 10)) para executar esta opera\xE7\xE3\
+    o 100 vezes. Armazene o resultado em uma nova vari\xE1vel chamada my_pois."
+- AnswerTests: omnitest('my_pois')
+  Class: cmd_question
+  CorrectAnswer: my_pois
+  Hint: "Imprima o conte\xFAdo de my_pois no console."
+  Output: "D\xEA uma olhada no conte\xFAdo de my_pois."
+- AnswerTests: omnitest('cm <- colMeans(my_pois)')
+  Class: cmd_question
+  CorrectAnswer: cm <- colMeans(my_pois)
+  Hint: "Use cm &lt;- colMeans (my_pois) para criar um vetor de m\xE9dias de coluna,\
+    \ armazenando o resultado em cm."
+  Output: "replicate () criou uma matriz, cada coluna cont\xE9m 5 n\xFAmeros aleat\xF3\
+    rios gerados a partir de uma distribui\xE7\xE3o de Poisson com m\xE9dia 10. Agora\
+    \ podemos encontrar a m\xE9dia de cada coluna em my_pois usando a fun\xE7\xE3\
+    o colMeans (). Armazene o resultado em uma vari\xE1vel chamada cm."
+- AnswerTests: omnitest('hist(cm)')
+  Class: cmd_question
+  CorrectAnswer: hist(cm)
+  Hint: "hist (cm) lhe dar\xE1 um histograma de m\xE9dias de coluna."
+  Output: "E vamos dar uma olhada na distribui\xE7\xE3o dos nossos meios de coluna,\
+    \ tra\xE7ando um histograma com hist (cm)."
+- Class: text
+  Output: "Parece que nossos meios de coluna s\xE3o quase normalmente distribu\xED\
+    dos, certo? Esse \xE9 o Teorema do Limite Central no trabalho, mas isso \xE9 uma\
+    \ li\xE7\xE3o para outro dia!"
+- Class: text
+  Output: "Todas as distribui\xE7\xF5es de probabilidade padr\xE3o s\xE3o constru\xED\
+    das em R, incluindo exponencial (rexp ()), qui-quadrado (rchisq ()), gama (rgamma\
+    \ ()), .... Bem, voc\xEA v\xEA o padr\xE3o."
+- Class: text
+  Output: "A simula\xE7\xE3o \xE9 praticamente um campo pr\xF3prio e n\xF3s apenas\
+    \ analisamos a superf\xEDcie do que \xE9 poss\xEDvel. Encorajo-vos a explorar\
+    \ estas e outras fun\xE7\xF5es por conta pr\xF3pria."
+- AnswerChoices: "Sim; N\xE3o"
+  AnswerTests: notify()
+  Class: mult_question
+  CorrectAnswer: null
+  Hint: null
+  Output: "Gostaria de informar a algu\xE9m sobre sua conclus\xE3o bem-sucedida desta\
+    \ li\xE7\xE3o via e-mail?"

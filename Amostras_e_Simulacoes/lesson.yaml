@@ -1,0 +1,249 @@
+- Class: meta
+  Course: Aprenda R no R
+  Lesson: Amostras e Simulações
+  Author: Elthon Manhas de Freitas
+  Type: Standard
+  Organization: FIAP
+  Version: 1.0.0
+  
+- Class: text
+  Output: Olá alunos de R!
+
+- Class: text
+  Output: Uma das grandes vantagens de usar uma linguagem de programação estatística
+    como o R é a sua vasta coleção de ferramentas para gerar números aleatórios, 
+    também conhecida como simular valores.
+
+- Class: text
+  Output: Esta lição pressupõe uma familiaridade com algumas distribuições de probabilidade
+    comuns, mas esses tópicos só serão discutidos com relação à geração de números
+    aleatórios. Mesmo que você não tenha experiência prévia com esses conceitos, você
+    deve ser capaz de completar a lição e entender as principais ideias.
+
+- AnswerTests: omnitest(correctExpr='?sample')
+  Class: cmd_question
+  CorrectAnswer: ?sample
+  Hint: Digite '?sample' para ver a documentação para a função sample().
+  Output: A primeira função que usaremos para gerar números aleatórios é sample().
+    Digite ?sample para ver a documentação.
+
+- Class: text
+  Output: Se você já leu, vamos ao que interessa.
+
+- AnswerTests: omnitest(correctExpr='sample(1:6, 4, replace = TRUE)')
+  Class: cmd_question
+  CorrectAnswer: sample(1:6, 4, replace = TRUE)
+  Hint: 'Digite sample(1:6, 4, replace = TRUE) para simular a rolagem de quatro
+    dados de seis lados.'
+  Output: 'Vamos simular a rolagem de quatro dados de seis lados. Para isso digite: sample(1:6, 4, replace = TRUE).'
+
+- AnswerTests: omnitest(correctExpr='sample(1:6, 4, replace = TRUE)')
+  Class: cmd_question
+  CorrectAnswer: sample(1:6, 4, replace = TRUE)
+  Hint: 'Digite sample(1:6, 4, replace = TRUE) para simular a rolagem de quatro
+    dados de seis lados novamente.'
+  Output: Agora repita o comando para ver como seu resultado será diferente. (A probabilidade
+    de dar exatamente o mesmo resultado é (1/6) ^ 4 = 0,00077, o que é bem pequeno!)
+
+- Class: text
+  Output: 'sample(1:6, 4, replace = TRUE) diz ao R a selecionar aleatoriamente
+    quatro números entre 1 e 6, com reposição. Amostragem com reposição
+    significa simplesmente que cada número é "reposto" depois de ser
+    selecionado, para que o mesmo número possa aparecer mais de uma vez. É isso que
+    queremos aqui, já que o que dá em um dado não deve afetar o que dá 
+    em nenhum dos outros.'
+
+- AnswerTests: omnitest(correctExpr='sample(1:20, 10)')
+  Class: cmd_question
+  CorrectAnswer: sample(1:20, 10)
+  Hint: Digite sample(1:20, 10) para obter 10 números entre 1 e 20, sem reposição.
+  Output: Agora, faça uma amostragem de 10 números entre 1 e 20, SEM reposição.
+    Para amostras sem reposição, simplesmente remova o argumento 'replace'.
+
+- Class: text
+  Output: Desta vez, perceba que nenhum número apareceu mais de uma vez na saída.
+
+- AnswerTests: omnitest(correctExpr='LETTERS')
+  Class: cmd_question
+  CorrectAnswer: LETTERS
+  Hint: Digite LETTERS para imprimir seu conteúdo no console.
+  Output: LETTERS é uma variável pré-definida em R contendo um vetor de todas as 26
+    letras do alfabeto Inglês. Seja o conteúdo deste vetor.
+
+- AnswerTests: omnitest(correctExpr='sample(LETTERS)')
+  Class: cmd_question
+  CorrectAnswer: sample(LETTERS)
+  Hint: Digite sample(LETTERS) para permutar todas as 26 letras do alfabeto Inglês.
+  Output: A função sample() também pode ser usada para permutar ou reorganizar os
+    elementos de um vetor. Por exemplo, digite sample(LETTERS) para permutar
+    todas as 26 letras do alfabeto.
+
+- Class: text
+  Output: Isto é a mesma coisa que tirar uma amostra de tamanho 26 de LETTERS, sem substituição.
+    Quando o argumento 'size' para sample() não é especificado, o R gera
+    uma amostra igual em tamanho ao vetor do qual você está amostrando.
+
+- Class: text
+  Output: Agora, suponha que queremos simular 100 lançamentos de uma moeda viciada de dois
+    lado. Esta moeda em particular tem uma probabilidade de 0,3 ser 'coroa'
+    e uma probabilidade de 0,7 de ser 'cara'.
+
+- AnswerTests: omnitest(correctExpr='flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))')
+  Class: cmd_question
+  CorrectAnswer: flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))
+  Hint: 'O comando a seguir produzirá 100 viradas de uma moeda injusta e atribuirá
+    o resultado: flips <- sample(c(0,1), 100, replace = TRUE, prob = c(0.3, 0.7))'
+  Output: Deixe o valor 0 representar as coroas e o valor 1 representar as caras.
+    Use sample() para gerar uma amostra de tamanho 100 do vetor c(0,1), com substituição.
+    Como a moeda é injusta, devemos especificar probabilidade aos valores
+    0 (coroas) e 1 (caras) com um quarto argumento, prob = c(0.3, 0.7). Atribua o
+    resultado a uma nova variável chamada flips.
+
+- AnswerTests: omnitest(correctExpr='flips')
+  Class: cmd_question
+  CorrectAnswer: flips
+  Hint: Basta digitar flip para visualizar seu conteúdo.
+  Output: Veja o conteúdo da variável flips.
+
+- AnswerTests: omnitest(correctExpr='sum(flips)')
+  Class: cmd_question
+  CorrectAnswer: sum(flips)
+  Hint: sum(flips) somará todos os 1s e 0s, dando-lhe o número total de 1s em flips.
+  Output: Como definimos a probabilidade de que tirar uma cara é de 
+    0.7, esperamos que aproximadamente 70 de nossas jogadas de moeda tenham
+    o valor 1. Conte o número real de 1s contido nas inversões usando a função sum().
+
+- AnswerTests: omnitest(correctExpr='?rbinom')
+  Class: cmd_question
+  CorrectAnswer: ?rbinom
+  Hint: Digite ?rbinom para ver a ajuda para rbinom().
+  Output: Uma jogada de moeda é um resultado binário (0 ou 1) e estamos realizando 100 testes
+    independentes (coin flips). Podemos também usar outra função, a rbinom() para simular uma
+    variável aleatória binomial. Veja a documentação para rbinom() digitando ?rbinom.
+
+- Class: text
+  Output: Cada distribuição de probabilidade em R tem uma função r*** (para "sorteio aleatório"),
+    função ad*** (para "densidade"), ap*** (para "probabilidade")
+    e q*** (para "quantile"). Nós veremos algumas funções
+    nesta lição, mas eu encorajo você a explorar as outras por conta própria.
+
+- AnswerTests: omnitest(correctExpr='rbinom(1, size = 100, prob = 0.7)')
+  Class: cmd_question
+  CorrectAnswer: rbinom(1, size = 100, prob = 0.7)
+  Hint: Execute rbinom() com n = 1, size = 100 e prob = 0,7.
+  Output: Uma variável aleatória binomial representa o número de 'sucessos'
+    (caras) em um determinado número de 'tentativas' independentes (lançamentos
+    de moeda). Portanto, podemos gerar uma única variável aleatória que representa
+    o número de caras em 100 lançamentos de nossa moeda viciada usando rbinom(1,
+    size = 100, prob = 0.7). Note que você só especifica a probabilidade de 'sucesso'
+    (caras) e NÃO a probabilidade de 'falhas' (coroas). Digite este comando para ver.
+
+- AnswerTests: omnitest(correctExpr='flips2 <- rbinom(100, size = 1, prob = 0.7)')
+  Class: cmd_question
+  CorrectAnswer: flips2 <- rbinom(100, size = 1, prob = 0.7)
+  Hint: Digite rbinom() com n = 100, size = 1 e prob = 0.7 e atribua o resultado a flips2.
+  Output: De modo equivalente, se quisermos ver todos os 0s e 1s, usando esta mesma função podemos solicitar 100
+    observações, cada uma de tamanho 1, com probabilidade de sucesso de 0.7. Experimente,
+    atribuindo o resultado a uma nova variável chamada flips2. Parece um pouco confuso, mas se você errar eu te dou uma boa dica.
+
+- AnswerTests: omnitest('flips2')
+  Class: cmd_question
+  CorrectAnswer: flips2
+  Hint: Digite flips2 para visualizar seu conteúdo.
+  Output: Veja o conteúdo de flips2.
+
+- AnswerTests: omnitest('sum(flips2)')
+  Class: cmd_question
+  CorrectAnswer: sum(flips2)
+  Hint: Digite sum(flips2) para contar o número de 1s.
+  Output: Agora use sum() para contar o número de 1s (caras) em flips2. Deve estar perto de 70 também!
+
+- AnswerTests: omnitest('?rnorm')
+  Class: cmd_question
+  CorrectAnswer: ?rnorm
+  Hint: Digite ?rnorm para visualizar seu arquivo de ajuda.
+  Output: Semelhante a rbinom(), podemos usar o R para simular números aleatórios de
+    muitas outras distribuições de probabilidade. Veja a documentação do rnorm() agora.
+
+- AnswerTests: omnitest('rnorm(10)')
+  Class: cmd_question
+  CorrectAnswer: rnorm(10)
+  Hint: Digite rnorm(10) para gerar 10 números aleatórios a partir de uma distribuição normal padrão.
+  Output: A função de distribuição normal padrão tem média 0 e desvio padrão 1. Como você pode
+    ver na documentação, os valores padrão para os argumentos
+    'mean' e 'sd' para rnorm() são 0 e 1, respectivamente. Assim,
+    o rnorm(10) gerará 10 números aleatórios a partir de uma distribuição normal
+    padrão. Tente aí.
+
+- AnswerTests: omnitest(correctExpr='rnorm(10, 100, 25)')
+  Class: cmd_question
+  CorrectAnswer: rnorm(10, 100, 25)
+  Hint: Digite rnorm(10, mean = 100, sd = 25) para gerar 10 números aleatórios a partir
+    de uma distribuição normal com média 100 e desvio padrão 25.
+  Output: Agora faça o mesmo, mas com uma média de 100 e um desvio padrão de 25.
+
+- Class: text
+  Output: Agora um problema mais difícil. E se quisermos simular 100 "grupos" de números aleatórios,
+    cada um contendo 5 valores gerados a partir de uma distribuição de Poisson com
+    média de 10? Vamos começar com um grupo de 5 números, depois mostrarei como repetir
+    a operação 100 vezes de maneira conveniente e compacta.
+
+- AnswerTests: omnitest(correctExpr='rpois(5, 10)')
+  Class: cmd_question
+  CorrectAnswer: rpois(5, 10)
+  Hint: Digite rpois(5, 10) para gerar 5 números aleatórios a partir de uma distribuição
+    de Poisson com média de 10.
+  Output: Gere 5 valores aleatórios a partir de uma distribuição de Poisson com média
+    10. Veja a documentação de rpois() se precisar de ajuda.
+
+- AnswerTests: omnitest(correctExpr='my_pois <- replicate(100, rpois(5, 10))')
+  Class: cmd_question
+  CorrectAnswer: my_pois <- replicate(100, rpois(5, 10))
+  Hint: my_pois <- replicate(100, rpois(5, 10)) repetirá a operação 100 vezes
+    e armazenará o resultado.
+  Output: Agora use a instrução replicate(100, rpois(5, 10)) para executar esta operação 100
+    vezes. Armazene o resultado em uma nova variável chamada my_pois.
+
+- AnswerTests: omnitest('my_pois')
+  Class: cmd_question
+  CorrectAnswer: my_pois
+  Hint: Imprima o conteúdo de my_pois no console.
+  Output: Dê uma olhada no conteúdo de my_pois.
+
+- AnswerTests: omnitest('cm <- colMeans(my_pois)')
+  Class: cmd_question
+  CorrectAnswer: cm <- colMeans(my_pois)
+  Hint: Use cm <- colMeans(my_pois) para criar um vetor de médias de coluna, armazenando
+    o resultado em cm.
+  Output: replicate() criou uma matriz, cada coluna contém 5 números aleatórios gerados
+    a partir de uma distribuição de Poisson com média 10. Agora podemos encontrar
+    a média de cada coluna em my_pois usando a função colMeans(). Armazene o resultado
+    em uma variável chamada cm.
+
+- AnswerTests: omnitest('hist(cm)')
+  Class: cmd_question
+  CorrectAnswer: hist(cm)
+  Hint: hist(cm) lhe dará um histograma de médias de coluna.
+  Output: E vamos dar uma olhada na distribuição em um gráfico de colunas, trace um histograma com hist(cm).
+
+- Class: text
+  Output: Parece que nossas colunas são quase "normalmente distribuídas", certo?
+    Esse é o Teorema do Limite Central, mas isso é uma lição para as aulas de estatística!
+
+- Class: text
+  Output: Todas as distribuições de probabilidade padrão estão no R, incluindo
+    exponencial (rexp()), qui-quadrado (rchisq()), gama (rgamma()), .... Bem, você já se ligou do padrão.
+
+- Class: text
+  Output: Fazer simulações é praticamente um campo próprio dentro da estatística e nós apenas analisamos a superfície
+    do que é possível. Existem muitas outras opções e funções que vocês podem 
+    explorar por conta própria. Este foi só o primeiro passo!
+
+- Class: mult_question
+  Output: "Gostaria de informar ao professor sobre a conclusão desta lição"
+  CorrectAnswer: TRUE
+  AnswerChoices: Sim; Não
+  AnswerTests: notify()
+  Hint: Na dúvida, escolha Sim :-)
+
+
