@@ -5,16 +5,16 @@ notify <- function() {
   # Get info
   info = list()
   
-  info$class <- toupper( readline_clean("Qual o c\xF3digo da sua turma? (exemplo FIAP-01IA)") )
+  info$class <- toupper( readline_clean("Qual o código da sua turma? (exemplo FIAP-01IA)") )
   repeat{
-    info$user <- toupper( readline_clean("Qual seu c\xF3digo de aluno?") )
+    info$user <- toupper( readline_clean("Qual seu código de aluno?") )
     if( !is.na(as.numeric(info$user)) ){
       break
     }
-    message('O c\xF3digo deve ser num\xE9rico.')
+    message('O código deve ser numérico.')
   }
   info$username <- readline_clean("Qual seu nome?")
-  info$comment <- readline_clean("O que achou deste exerc\xEDcio?")
+  info$comment <- readline_clean("O que achou deste exercício?")
     
 
   # Get course and lesson names

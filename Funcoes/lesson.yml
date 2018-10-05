@@ -1,0 +1,339 @@
+- Class: meta
+  Course: Aprenda R no R
+  Lesson: Funções
+  Author: Elthon Manhas de Freitas
+  Type: Standard
+  Organization: FIAP
+  Version: 1.0.0
+
+- Class: text
+  Output: As funções são fundamentais em qualquer linguagem de programação, inclusive na linguagem R.
+    São pequenos pedaços de código reutilizável que podem ser tratados como qualquer
+    outro objeto R.
+    
+- Class: text
+  Output: Se você já fez qualquer outra lição deste curso, provavelmente
+    já usou algumas funções criadas por outras pessoas. As funções são geralmente caracterizadas pelo nome da
+    função seguido por parênteses.
+    
+- AnswerTests: omnitest(correctExpr='Sys.Date()')
+  Class: cmd_question
+  CorrectAnswer: Sys.Date()
+  Hint: 'Exibe a data de hoje digitando: Sys.Date()'
+  Output: Vamos tentar usar algumas funções básicas apenas por diversão. A função
+    Sys.Date() retorna uma string representando a data de hoje. Digite Sys.Date()
+    e veja o que acontece.
+    
+- Class: text
+  Output: A maioria das funções em R retorna um valor. Funções como Sys.Date() retornam
+    um valor com base no ambiente do seu computador, enquanto outras funções manipulam
+    dados de entrada para calcular um valor de saída (o valor de retorno).
+    
+- AnswerTests: omnitest(correctExpr='mean(c(2, 4, 5))')
+  Class: cmd_question
+  CorrectAnswer: mean(c(2, 4, 5))
+  Hint: 'Calcule a média de 2, 4 e 5, digitando: mean(c(2, 4, 5))'
+  Output: A função mean() usa um vetor de números como entrada e retorna a média
+    de todos os números do vetor. Entradas para funções são freqüentemente
+    chamadas de argumentos ou parâmetros. Os argumentos que você quer passar para
+    uma função vão dentro dos parênteses da função. Tente passar o argumento c(2, 4, 5) para a função mean().
+    
+- Class: text
+  Output: Funções geralmente enxergam os parâmetros como variáveis com as quais a função
+    pode trabalhar. Por exemplo, a função mean() usa um vetor como argumento, como no caso
+    mean(c(2,6,8)). A função mean(), em seguida, soma todos os números
+    do vetor e divide essa soma pelo comprimento do vetor.
+
+- Class: text
+  Output: Antes de fazermos nossa primeira função, preciso falar uma coisa importante sobre a estrutura
+    de uma função no R. No console, quando você digita uma expressão sem atribuir a uma variável o R exibe o valor da expressão, certo?
+    Algo similar acontece com as funções. Em uma função, se a última expressão 'executada'
+    não for atribuída a uma variável se tornará o valor de retorno da função.
+    Também é possível definir o retorno com a instrução return() como nas linguagens tradicionais. Você perceberá
+    isso ao longo desta lição, mas achei interessante fazer esta introdução primeiro.
+    
+- Class: text
+  Output: Agora, vamos ao que interessa ...
+    
+- Class: text
+  Output: Na próxima questão, você será solicitado a modificar um script que aparecerá
+    na sua tela. Quando terminar de modificar o script, salve
+    suas alterações e digite submit() para que eu possa avaliar magicamente teu script! Haverá
+    alguns comentários com instruções no script que será aberto, portanto, leia-os!
+    
+- AnswerTests: test_func1()
+  Class: script
+  Hint: Certifique-se de excluir o comentário para que a última expressão na função
+    seja apenas x.
+  Output: Queremos que esta função receba um argumento x, e retorne x
+    sem modificá-lo. Exclua o comentário para que x seja retornado sem qualquer
+    modificação. Certifique-se de salvar seu script antes de digitar submit().
+  Script: boring_function.R
+  
+- AnswerTests: omnitest(correctExpr="boring_function('Minha primeira função!')")
+  Class: cmd_question
+  CorrectAnswer: boring_function('Minha primeira função!')
+  Hint: 'Teste a função boring_function digitando: boring_function ("Minha primeira função!")'
+  Output: 'Agora que você criou sua primeira função, vamos testá-la! Digite: boring_function("Minha primeira função!").
+    Se a sua função funcionar, ela deve retornar a string: "Minha primeira função!"'
+    
+- Class: text
+  Output: 'Parabéns por escrever sua primeira função. Ao escrever funções, você pode
+    começar a entender melhor como o R funciona. Como John Chambers, o criador de R
+    disse uma vez: Para entender os cálculos em R, duas coisas são úteis: 1. Tudo
+    o que existe é um objeto. 2. Tudo o que acontece é uma chamada de função.'
+
+- AnswerTests: omnitest(correctExpr='boring_function')
+  Class: cmd_question
+  CorrectAnswer: boring_function
+  Hint: 'Para ver o código fonte para boring_function, basta digitar: boring_function'
+  Output: 'Se você quiser ver o código-fonte de qualquer função, basta digitar o nome
+    da função sem argumentos ou parênteses. Vamos tentar isso com a função que você
+    acabou de criar. Digite: boring_function para visualizar seu código-fonte.'
+    
+- Class: text
+  Output: 'Hora de fazer uma função mais útil! Vamos replicar a funcionalidade da
+    função mean() criando uma função chamada: my_mean(). Lembre-se de que, para
+    calcular a média de todos os números em um vetor, você encontra a soma de todos
+    os números no vetor e depois divide essa soma pela quantidade de números no vetor.'
+
+- AnswerTests: test_func2()
+  Class: script
+  Hint: Use a função sum () para encontrar a soma de todos os números no vetor. Use
+    a função length () para encontrar o tamanho do vetor.
+  Output: Certifique-se de salvar seu script antes de digitar submit().
+  Script: my_mean.R
+
+- AnswerTests: omnitest(correctExpr='my_mean(c(4, 5, 10))')
+  Class: cmd_question
+  CorrectAnswer: my_mean(c(4, 5, 10))
+  Hint: Execute o comando my_mean(c(4, 5, 10)) para testar sua nova função.
+  Output: Agora teste sua função my_mean() encontrando a média do vetor c(4, 5, 10).
+  
+- Class: text
+  Output: Agora vamos escrever uma função com argumentos que possuem valor padrão. Isso pode ser
+    útil se você acha que alguém que usa sua função irá definir um determinado argumento
+    para o mesmo valor na maioria das vezes.
+
+- AnswerTests: test_func3()
+  Class: script
+  Hint: Lembre-se de definir os valores padrão da função! Certifique-se de salvar seu script antes de digitar submit().
+  Output: Certifique-se de salvar seu script antes de digitar submit(). Só assim eu consigo avaliar magicamente a sua função.
+  Script: remainder.R
+
+- AnswerTests: omnitest(correctExpr='remainder(5)')
+  Class: cmd_question
+  CorrectAnswer: remainder(5)
+  Hint: 'Vamos testar sua função remainder executando: remainder(5)'
+  Output: Vamos fazer alguns testes da função remainder que você criou. Execute remainder(5) e veja
+    o que acontece.
+    
+- Class: text
+  Output: Vamos analisar por um momento o que acabou de acontecer. Você forneceu um
+    argumento para a função e o R entendeu que este argumento era o parâmetro "num", já que
+    "num" é o primeiro parâmetro. O valor padrão para "divisor" é
+    2, então a função usou o valor padrão, já que você não forneceu um valor específico.
+    
+- AnswerTests: omnitest(correctExpr='remainder(11, 5)')
+  Class: cmd_question
+  CorrectAnswer: remainder(11, 5)
+  Hint: 'Vamos testar sua função remainder executando: remainder(11, 5)'
+  Output: 'Agora vamos testar a função remainder fornecendo dois argumentos. Digite:
+    remainder(11, 5) e vamos ver o que acontece.'
+
+- Class: text
+  Output: Mais uma vez, os argumentos foram definidos corretamente.
+  
+- AnswerTests: omnitest(correctExpr='remainder(divisor = 11, num = 5)')
+  Class: cmd_question
+  CorrectAnswer: remainder(divisor = 11, num = 5)
+  Hint: 'A ordem não importa mais quando você explicita o nome dos parâmetros!
+    Teste isso digitando: remainder(divisor = 11, num = 5)'
+  Output: 'Você também pode especificar explicitamente parâmetros ao chamar uma função. Quando
+    você define explicitamente valores de argumentos por nome, a ordenação dos argumentos
+    perde a importância. Você pode tentar isso digitando: remainder(divisor = 11, num = 5)'
+    
+- Class: text
+  Output: Como você pode ver, há uma diferença significativa entre o remainder(11, 5) e remainder(divisor = 11, num = 5)!
+    O primeiro exemplo é equivalente a remainder(num = 11, divisor = 5), o segundo é o oposto.
+  
+- AnswerTests: omnitest(correctExpr='remainder(4, div = 2)')
+  Class: cmd_question
+  CorrectAnswer: remainder(4, div = 2)
+  Hint: 'Teste a correspondência parcial do nome do parâmetro digitando: remainder(4, div = 2)'
+  Output: O R também pode encontrar parcialmente o nome dos parâmetros. Tente digitar remainder(4, div = 2) para ver esse recurso em ação.
+
+- Class: text
+  Output: 'Uma dica de quem já pastou com isso: em geral, você quer tornar seu código tão fácil
+    de entender quanto possível. Alternar as ordens de argumentos especificando seus
+    nomes ou usando apenas nomes parciais de argumentos pode ser confuso. É bom você conhecer estes recursos
+    para o caso de você ler códigos feitos por outras pessoas, mas evite fazer códigos assim!'
+
+- AnswerTests: omnitest(correctExpr='args(remainder)')
+  Class: cmd_question
+  CorrectAnswer: args(remainder)
+  Hint: 'Veja os argumentos da função remainder digitando: args(remainder)'
+  Output: 'Com toda essa conversa sobre argumentos, você pode estar se perguntando
+    se existe uma maneira de ver os argumentos de uma função sem precisar abrir a documentação.
+    Siiiiiim! Você pode usar a função args()! Digite: args(remainder) para examinar
+    os argumentos da função remainder.'
+
+- Class: text
+  Output: 'Você pode não perceber, mas eu enganei você para fazer algo muito
+    interessante! args() é uma função, remainder() é uma função, mas remainder era um
+    argumento para args(). Sim, é verdade: você pode passar funções como argumentos!
+    Este é um conceito muito poderoso. Vamos escrever um script para ver como funciona.'
+
+- AnswerTests: test_func4()
+  Class: script
+  Hint: Certifique-se de que quando você passa uma função como um parâmetro, você
+    passa o nome da função sem parênteses!
+  Output: Certifique-se de salvar seu script antes de digitar submit().
+  Script: evaluate.R
+
+- AnswerTests: omnitest(correctExpr='evaluate(sd, c(1.4, 3.6, 7.9, 8.8))')
+  Class: cmd_question
+  CorrectAnswer: evaluate(sd, c(1.4, 3.6, 7.9, 8.8))
+  Hint: 'A função para desvio padrão é chamada sd(). Certifique-se de que quando você
+    passa uma função como um argumento, você passa o nome da função sem parênteses!
+    Deve ficar assim o seu comando: evaluate(sd, c(1.4, 3.6, 7.9, 8.8))'
+  Output: Vamos pegar sua nova função evaluate() e testar! Chame evaluate para
+    encontrar o desvio padrão do vetor c(1.4, 3.6, 7.9, 8.8).
+    
+- Class: text
+  Output: A ideia de passar funções como parâmetros para outras funções é um conceito
+    importante e fundamental em programação.
+    
+- Class: text
+  Output: Você pode se surpreender ao saber que pode passar uma função como um argumento
+    sem primeiro definir a função passada. Funções que não são nomeadas são apropriadamente
+    conhecidas como funções anônimas, ou ainda pelo apelido "lâmbda".
+    
+- Class: text
+  Output: Vamos usar a função evaluate que você criou para explorar como funcionam as funções
+    anônimas. Para o primeiro argumento da função evaluate, vamos escrever uma pequena
+    função que se encaixa em uma linha. No segundo argumento, passaremos alguns dados que serão usados
+    pela função anônima.
+
+- AnswerTests: test_eval1()
+  Class: cmd_question
+  CorrectAnswer: evaluate(function(x){x+1}, 6)
+  Hint: Apenas digite o comando evaluate(function (x) {x + 1}, 6)
+  Output: 'Digite o seguinte comando e depois discutiremos como ele funciona: evaluate(function (x) {x + 1}, 6)'
+    
+- Class: text
+  Output: O primeiro argumento é uma pequena função anônima. Esta função pega um argumento
+    `x` e retorna `x + 1`. Nós passamos o número 6 para essa função, então a expressão
+    inteira retornou 7.
+    
+- AnswerTests: test_eval2()
+  Class: cmd_question
+  CorrectAnswer: evaluate(function(x){x[1]}, c(8, 4, 0))
+  Hint: Você pode precisar se lembrar como fitlrar vetore. Lembre-se que
+    sua função anônima deve ter apenas um argumento, e esse argumento deve ser chamado `x`.  Como esta é difícil vou dar uma super dica ...
+    Você deve chamar a função evaluate() passando o vetor c(8, 4, 0) no segundo parâmetro e uma função como esta "function(x){x[1]}" no primeiro
+  Output: Tente usar a sua função evaluate() junto com uma função anônima para retornar o primeiro
+    elemento do vetor c(8, 4, 0). Para isso você deve se lembrar da aula de filtrar vetores. Sua função anônima deve ter apenas um argumento
+    que deve ser uma variável `x`.
+
+- Class: text
+  Output: Acredite, mesmo para programadores calejados as funções anônimas podem ser difíceis de entender.
+    
+- AnswerTests: test_eval3()
+  Class: cmd_question
+  CorrectAnswer: evaluate(function(x){x[length(x)]}, c(8, 4, 0))
+  Hint: Veja a respposta do exercício anterior, e troque x[1] por x[length(x)]. Isso fará você retornar o último elemento ao invés do primeiro.
+  Output: Agora tente usar evaluate() junto com uma função anônima para retornar
+    o ÚLTIMO elemento do vetor c(8, 4, 0). Sua função anônima deve ter apenas um
+    argumento que deve ser uma variável `x`. Veja que é muito parecido ao exercício
+    anterior, mas ao invés do primeiro elemento eu espero o último.
+    
+- AnswerTests: omnitest(correctExpr='?paste')
+  Class: cmd_question
+  CorrectAnswer: ?paste
+  Hint: "Basta digitar: ?paste"
+  Output: Para o resto da lição (e do curso), vamos usar bastante a função paste(). Digite ?paste
+    para que possamos dar uma olhada na documentação para a função.
+    
+- Class: text
+  Output: Como você pode ver, o primeiro argumento de paste () é `...`, que é chamado
+    de reticências, elipse ou simplesmente 3-pontos ou dot-dot-dot. As reticências permitem que um número
+    indefinido de argumentos seja passado para uma função. No caso de paste(), qualquer
+    número de strings pode ser passado como argumentos e paste() retornará todas
+    as strings combinadas em uma única string.
+
+- AnswerTests: omnitest(correctExpr='paste("Programar", "é", "divertido!")')
+  Class: cmd_question
+  CorrectAnswer: paste("Programar", "é", "divertido!")
+  Hint: 'Basta digitar: paste("Programar", "é", "divertido!")'
+  Output: Apenas para ver na prática como o paste() funciona, digite paste("Programar", "é", "divertido!")
+
+- Class: text
+  Output: Viu como funciona né ... agora é hora de escrever nossa própria versão modificada de paste().
+
+- AnswerTests: test_func5()
+  Class: script
+  Hint: Lembre-se que os argumentos podem vir depois de ...
+  Output: Certifique-se de salvar seu script antes de digitar submit().
+  Script: telegram.R
+
+- AnswerTests: expr_uses_func('telegram')
+  Class: cmd_question
+  CorrectAnswer: telegram()
+  Hint: Use a função telegram() com qualquer argumento que você desejar.
+  Output: Agora vamos testar sua função telegram(). Use sua nova função
+    passando qualquer argumento que desejar!
+
+- Class: text
+  Output: Agora vamos para a próxima. Vou abrir um novo script na sua tela.
+
+- AnswerTests: test_func6()
+  Class: script
+  Hint: 'Sua função deve ter três trechos: capturar as reticências em uma lista list(),
+    descompactar os argumentos das reticências e atribuí-los às variáveis. Em
+    seguida, deve passar essas variáveis para paste().'
+  Output: Certifique-se de salvar seu script antes de digitar submit().
+  Script: mad_libs.R
+
+- AnswerTests: expr_uses_func('mad_libs')
+  Class: cmd_question
+  CorrectAnswer: mad_libs(adjective = "", place = "", noun = "")
+  Hint: Use a função mad_libs e certifique-se de nomear argumentos de lugar, adjetivo
+    e substantivo.
+  Output: Hora de usar sua função mad_libs. Certifique-se de nomear os argumentos
+    place, adjective e noun para que a sua função funcione.
+    
+- Class: text
+  Output: Estamos chegando ao final desta lição, mas ainda há mais um conceito do qual você deve conhecer.
+  
+- Class: text
+  Output: Você está familiarizado com a adição, subtração, multiplicação e divisão
+    de números em R. Para fazer isso, você usa os símbolos +, -, * e /. Esses símbolos
+    são chamados de operadores binários porque eles usam duas entradas, uma entrada
+    da esquerda e uma entrada da direita.
+    
+- Class: text
+  Output: No R você pode definir seus próprios operadores binários. Vou abrir um arquivo com um roteiro, para você fazer isso.
+
+- AnswerTests: test_func7()
+  Class: script
+  Hint: "Lembre-se: 'Olá' %p% 'aluno!' é como você deve usar o novo operador binário %p%.'"
+  Output: Certifique-se de salvar seu script antes de digitar submit().
+  Script: bin_op.R
+
+- AnswerTests: omnitest(correctExpr="'Eu' %p% 'adoro' %p% 'R!'")
+  Class: cmd_question
+  CorrectAnswer: "'Eu' %p% 'adoro' %p% 'R!'"
+  Hint: "Use %p% entre cada string. 'Eu', 'adoro', 'R!'"
+  Output: "Você fez seu próprio operador binário! Vamos testar isso. Digite as
+    strings 'Eu', 'adoro', 'R!' usando seu novo operador binário."
+
+- Class: text
+  Output: Chegamos ao final da nossa aula! Vá lá e escreva ótimas funções!
+
+- Class: mult_question
+  Output: "Gostaria de informar ao professor sobre a conclusão desta lição"
+  CorrectAnswer: TRUE
+  AnswerChoices: Sim; Não
+  AnswerTests: notify()
+  Hint: Na dúvida, escolha Sim :-)
