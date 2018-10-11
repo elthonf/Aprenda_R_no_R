@@ -157,7 +157,7 @@
     \ c(TRUE, FALSE, FALSE)."
     
 - Class: text
-  Output: "O que acontece nesse caso é que o operando da esquerda &quot;TRUE&quot;\
+  Output: "O que acontece nesse caso é que o operando da esquerda TRUE\
     \ é reciclado em todos os elementos no vetor do operando da direita. Esta é\
     \ a declaração equivalente a c(TRUE, TRUE, TRUE) &\
     \ c(TRUE, FALSE, FALSE)."
