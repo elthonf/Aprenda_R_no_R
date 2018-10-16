@@ -37,5 +37,5 @@ mad_libs <- function(...){
   # Don't modify any code below this comment.
   # Notice the variables you'll need to create in order for the code below to
   # be functional!
-  paste("News from", place, "today where", adjective, "students took to the streets in protest of the new", noun, "being installed on campus.")
+  paste("Novidades diretas de", place, ". Hoje, pessoas", adjective, "tomaram as ruas em protesto contra o(a) novo(a)", noun, "que foi instalado(a) na cidade.")
 }
