@@ -1,0 +1,256 @@
+- Author: David Kane
+  Class: meta
+  Course: R Programming
+  Lesson: Base Graphics
+  Organization: Williams College
+  Type: Standard
+  Version: 0.1.1
+- Class: text
+  Output: "Um dos maiores pontos fortes do R, em rela\xE7\xE3o a outras linguagens\
+    \ de programa\xE7\xE3o, \xE9 a facilidade com a qual podemos criar gr\xE1ficos\
+    \ com qualidade de publica\xE7\xE3o. Nesta li\xE7\xE3o, voc\xEA aprender\xE1 sobre\
+    \ gr\xE1ficos de base em R."
+- Class: text
+  Output: "N\xF3s n\xE3o cobrimos as por\xE7\xF5es mais avan\xE7adas de gr\xE1ficos\
+    \ em R nesta li\xE7\xE3o. Estes incluem treli\xE7a, ggplot2 e ggvis."
+- Class: text
+  Output: "Existe uma escola de pensamento que esta abordagem \xE9 para tr\xE1s, que\
+    \ devemos ensinar ggplot2 primeiro. Veja http://varianceexplained.org/r/teach_ggplot2_to_beginners/\
+    \ para um esbo\xE7o desta vis\xE3o."
+- AnswerTests: omnitest(correctExpr='data(cars)')
+  Class: cmd_question
+  CorrectAnswer: data(cars)
+  Hint: Digite dados (carros) para carregar os dados.
+  Output: "Carregue os carros do quadro de dados inclu\xEDdos com dados (carros)."
+- Class: text
+  Output: "Para corrigir ideias, vamos trabalhar com quadros de dados simples. Nosso\
+    \ objetivo principal \xE9 introduzir v\xE1rias fun\xE7\xF5es de plotagem e seus\
+    \ argumentos. Toda a sa\xEDda ficaria mais interessante com conjuntos de dados\
+    \ maiores e mais complexos."
+- AnswerTests: any_of_exprs('?cars', 'help(cars)', 'help("plot")')
+  Class: cmd_question
+  CorrectAnswer: ?cars
+  Hint: "Digite carros ou ajuda (carros) para visualizar uma p\xE1gina de ajuda com\
+    \ detalhes sobre o quadro de dados do carro."
+  Output: "Puxe a p\xE1gina de ajuda para carros."
+- Class: text
+  Output: "Como voc\xEA pode ver na p\xE1gina de ajuda, o conjunto de dados de carros\
+    \ tem apenas duas vari\xE1veis: velocidade e dist\xE2ncia de parada. Note que\
+    \ os dados s\xE3o da d\xE9cada de 1920."
+- AnswerTests: omnitest(correctExpr='head(cars)')
+  Class: cmd_question
+  CorrectAnswer: head(cars)
+  Hint: Digite head (cars) para ver o topo do quadro de dados dos carros.
+  Output: "Corra a cabe\xE7a () nos dados dos carros."
+- Class: text
+  Output: "Antes de plotar, \xE9 sempre uma boa ideia ter uma no\xE7\xE3o dos dados.\
+    \ Os comandos chave R para fazer isso incluem, dim (), nomes (), head (), tail\
+    \ () e summary ()."
+- AnswerTests: omnitest(correctExpr='plot(cars)')
+  Class: cmd_question
+  CorrectAnswer: plot(cars)
+  Hint: "Digite plot (carros) para criar um gr\xE1fico do quadro de dados dos carros."
+  Output: Execute o comando plot () no quadro de dados de carros.
+- Class: text
+  Output: "Como sempre, R se esfor\xE7a muito para lhe dar algo sensato, dada a informa\xE7\
+    \xE3o que voc\xEA forneceu a ele. Primeiro, R observa que o frame de dados que\
+    \ voc\xEA deu a ele tem apenas duas colunas, ent\xE3o assume que voc\xEA quer\
+    \ plotar uma coluna versus a outra."
+- Class: text
+  Output: "Segundo, como n\xE3o fornecemos r\xF3tulos para nenhum eixo, o R usa os\
+    \ nomes das colunas. Terceiro, ele cria marcas de eixo nos n\xFAmeros arredondados\
+    \ e os rotula de acordo. Em quarto lugar, ele usa os outros padr\xF5es fornecidos\
+    \ na plotagem ()."
+- Class: text
+  Output: "Agora, passaremos algum tempo explorando o enredo, mas muitos dos t\xF3\
+    picos abordados aqui ser\xE3o aplicados \xE0 maioria das outras fun\xE7\xF5es\
+    \ gr\xE1ficas de R. Note que &#39;plot&#39; \xE9 a abreviatura de scatterplot."
+- AnswerTests: any_of_exprs('?plot', 'help(plot)')
+  Class: cmd_question
+  CorrectAnswer: ?plot
+  Hint: "Digite? Plot ou help (plot) para visualizar uma p\xE1gina de ajuda para plot\
+    \ ()."
+  Output: "Procure a p\xE1gina de ajuda para o gr\xE1fico ()."
+- Class: text
+  Output: "A p\xE1gina de ajuda para plot () destaca os diferentes argumentos que\
+    \ a fun\xE7\xE3o pode executar. Os dois mais importantes s\xE3o x e y, as vari\xE1\
+    veis \u200B\u200Bque ser\xE3o plotadas. Para o pr\xF3ximo conjunto de perguntas,\
+    \ inclua os nomes dos argumentos em suas respostas. Ou seja, n\xE3o digite plot\
+    \ (carros $ speed, carros $ dist), embora isso funcione. Em vez disso, use o enredo\
+    \ (x = cars $ speed, y = cars $ dist)."
+- AnswerTests: omnitest(correctExpr='plot(x = cars$speed, y = cars$dist)')
+  Class: cmd_question
+  CorrectAnswer: plot(x = cars$speed, y = cars$dist)
+  Hint: "Digite plot (x = cars $ speed, y = cars $ dist) para criar o gr\xE1fico."
+  Output: "Use o comando plot () para mostrar a velocidade no eixo xe dist no eixo\
+    \ y a partir do quadro de dados de carros. Use a forma do comando de plotagem\
+    \ em que vetores s\xE3o explicitamente passados \u200B\u200Bcomo argumentos para\
+    \ x e y."
+- Class: text
+  Output: "Note que isso produz uma resposta ligeiramente diferente do que o enredo\
+    \ (carros). Nesse caso, R n\xE3o tem certeza do que voc\xEA deseja usar como r\xF3\
+    tulos nos eixos, portanto, ele usa apenas os argumentos que voc\xEA passa, o nome\
+    \ do quadro de dados e os cifr\xF5es inclu\xEDdos."
+- Class: text
+  Output: "Note que existem outras maneiras de chamar o comando plot, ou seja, usando\
+    \ a interface &quot;formula&quot;. Por exemplo, obtemos um gr\xE1fico semelhante\
+    \ ao acima com plot (dist ~ speed, carros). No entanto, vamos esperar at\xE9 mais\
+    \ tarde na li\xE7\xE3o antes de usar a interface da f\xF3rmula."
+- AnswerTests: omnitest(correctExpr='plot(x = cars$dist, y = cars$speed)')
+  Class: cmd_question
+  CorrectAnswer: plot(x = cars$dist, y = cars$speed)
+  Hint: Digite plot (x = carros $ dist, y = cars $ speed) para criar o enredo.
+  Output: "Use o comando plot () para mostrar dist no eixo xe velocidade no eixo y\
+    \ a partir do quadro de dados de carros. Isso \xE9 o oposto do que fizemos acima."
+- Class: text
+  Output: "Provavelmente, faz mais sentido a velocidade ir no eixo x, j\xE1 que parar\
+    \ a dist\xE2ncia \xE9 uma fun\xE7\xE3o da velocidade mais do que o inverso. Portanto,\
+    \ para o restante das perguntas nesta parte da li\xE7\xE3o, sempre atribua os\
+    \ argumentos de acordo."
+- Class: text
+  Output: "Na verdade, voc\xEA pode supor que as respostas para as pr\xF3ximas perguntas\
+    \ s\xE3o todas do tipo enredo (x = carros $ velocidade, y = carros $ dist, ...)\
+    \ mas com v\xE1rios argumentos usados \u200B\u200Bno lugar do ..."
+- AnswerTests: omnitest(correctExpr='plot(x = cars$speed, y = cars$dist, xlab = "Speed")')
+  Class: cmd_question
+  CorrectAnswer: plot(x = cars$speed, y = cars$dist, xlab = "Speed")
+  Hint: "Digite plot (x = cars $ speed, y = carros $ dist, xlab = &quot;Speed&quot;)\
+    \ para criar o gr\xE1fico."
+  Output: "Recrie o gr\xE1fico com o r\xF3tulo do eixo x definido como &quot;Velocidade&quot;."
+- AnswerTests: omnitest(correctExpr='plot(x = cars$speed, y = cars$dist, ylab = "Stopping
+    Distance")')
+  Class: cmd_question
+  CorrectAnswer: plot(x = cars$speed, y = cars$dist, ylab = "Stopping Distance")
+  Hint: "Digite plot (x = cars $ speed, y = carros $ dist, ylab = &quot;Dist\xE2ncia\
+    \ de parada&quot;) para criar o gr\xE1fico."
+  Output: "Recrie o gr\xE1fico com o r\xF3tulo do eixo y definido como &quot;Dist\xE2\
+    ncia de parada&quot;."
+- AnswerTests: omnitest(correctExpr='plot(x = cars$speed, y = cars$dist, xlab = "Speed",
+    ylab = "Stopping Distance")')
+  Class: cmd_question
+  CorrectAnswer: plot(x = cars$speed, y = cars$dist, xlab = "Speed", ylab = "Stopping
+    Distance")
+  Hint: "Digite plot (x = cars $ speed, y = carros $ dist, xlab = &quot;Velocidade&quot;,\
+    \ ylab = &quot;Dist\xE2ncia de parada&quot;) para criar o gr\xE1fico."
+  Output: "Recrie o gr\xE1fico com &quot;Velocidade&quot; e &quot;Dist\xE2ncia de\
+    \ parada&quot; como r\xF3tulos de eixo."
+- Class: text
+  Output: "A raz\xE3o pela qual os gr\xE1ficos (carros) funcionavam no in\xEDcio da\
+    \ li\xE7\xE3o era que R era inteligente o suficiente para saber que o primeiro\
+    \ elemento (ou seja, a primeira coluna) em carros deveria ser atribu\xEDdo ao\
+    \ argumento x e o segundo elemento ao argumento y . Para economizar na digita\xE7\
+    \xE3o, o pr\xF3ximo conjunto de respostas ser\xE1 da forma, plotagem (carros,\
+    \ ...) com v\xE1rios argumentos adicionados."
+- Class: text
+  Output: "Para cada quest\xE3o, queremos apenas um argumento adicional de cada vez.\
+    \ Claro, voc\xEA pode passar em mais de um argumento ao fazer um projeto real."
+- AnswerTests: omnitest(correctExpr='plot(cars, main = "My Plot")')
+  Class: cmd_question
+  CorrectAnswer: plot(cars, main = "My Plot")
+  Hint: "Digite plot (cars, main = &quot;My Plot&quot;) para criar o gr\xE1fico."
+  Output: "Plot carros com um t\xEDtulo principal de &quot;My Plot&quot;. Note que\
+    \ o argumento para o t\xEDtulo principal \xE9 &quot;main&quot; e n\xE3o &quot;title&quot;."
+- AnswerTests: omnitest(correctExpr='plot(cars, sub = "My Plot Subtitle")')
+  Class: cmd_question
+  CorrectAnswer: plot(cars, sub = "My Plot Subtitle")
+  Hint: "Digite plot (cars, sub = &quot;My Plot Subtitle&quot;) para criar o gr\xE1\
+    fico."
+  Output: "Plotar carros com um subt\xEDtulo &quot;Minha legenda de plotagem&quot;."
+- Class: text
+  Output: "A p\xE1gina de ajuda do gr\xE1fico (gr\xE1fico) cobre apenas um pequeno\
+    \ n\xFAmero dos muitos argumentos que podem ser passados \u200B\u200Bpara o gr\xE1\
+    fico () e para outras fun\xE7\xF5es gr\xE1ficas. Para come\xE7ar a explorar as\
+    \ muitas outras op\xE7\xF5es, veja o par. Vamos dar uma olhada em alguns dos mais\
+    \ usados. Continue usando o enredo (carros, ...) como a resposta b\xE1sica para\
+    \ essas quest\xF5es."
+- AnswerTests: omnitest(correctExpr='plot(cars, col = 2)')
+  Class: cmd_question
+  CorrectAnswer: plot(cars, col = 2)
+  Hint: Digite enredo (carros, col = 2) para criar o enredo.
+  Output: "Plote carros para que os pontos tra\xE7ados sejam coloridos em vermelho.\
+    \ (Use col = 2 para obter esse efeito.)"
+- AnswerTests: omnitest(correctExpr='plot(cars, xlim = c(10, 15))')
+  Class: cmd_question
+  CorrectAnswer: plot(cars, xlim = c(10, 15))
+  Hint: "Digite plot (carros, xlim = c (10, 15)) para criar o gr\xE1fico."
+  Output: Plote carros enquanto limita o eixo x de 10 a 15. (Use xlim = c (10, 15)
+    para obter esse efeito.)
+- Class: text
+  Output: "Voc\xEA tamb\xE9m pode alterar a forma dos s\xEDmbolos na plotagem. A p\xE1\
+    gina de ajuda para pontos (pontos) fornece os detalhes."
+- AnswerTests: omnitest(correctExpr='plot(cars, pch = 2)')
+  Class: cmd_question
+  CorrectAnswer: plot(cars, pch = 2)
+  Hint: "Digite plot (cars, pch = 2) para criar o gr\xE1fico."
+  Output: "Plotar carros usando tri\xE2ngulos. (Use pch = 2 para obter esse efeito.)"
+- Class: text
+  Output: "Argumentos como &quot;col&quot; e &quot;pch&quot; podem n\xE3o parecer\
+    \ muito intuitivos. E isso \xE9 porque eles n\xE3o s\xE3o! Ent\xE3o, muitas pessoas\
+    \ usam pacotes mais modernos, como o ggplot2, para criar seus gr\xE1ficos no R."
+- Class: text
+  Output: "No entanto, \xE9 \xFAtil ter uma introdu\xE7\xE3o aos gr\xE1ficos de base,\
+    \ porque muitos dos idiomas em lattice e ggplot2 s\xE3o modelados neles."
+- Class: text
+  Output: "Vamos agora olhar para algumas outras fun\xE7\xF5es em gr\xE1ficos de base\
+    \ que podem ser \xFAteis, come\xE7ando com boxplots."
+- AnswerTests: omnitest(correctExpr='data(mtcars)')
+  Class: cmd_question
+  CorrectAnswer: data(mtcars)
+  Hint: Digite dados (mtcars) para carregar os dados.
+  Output: Carregue o quadro de dados mtcars.
+- Class: text
+  Output: "Sempre que voc\xEA carregar um novo quadro de dados, voc\xEA deve explor\xE1\
+    -lo antes de us\xE1-lo. No meio de uma aula de redemoinho, basta digitar play\
+    \ (). Isso suspende temporariamente a li\xE7\xE3o (sem perder o trabalho que voc\xEA\
+    \ j\xE1 fez) e permite que voc\xEA emita comandos como dim (mtcars) e head (mtcars).\
+    \ Quando terminar de examinar os dados, basta digitar nxt () e a li\xE7\xE3o ser\xE1\
+    \ retomada de onde parou."
+- AnswerTests: any_of_exprs('?boxplot', 'help(boxplot)')
+  Class: cmd_question
+  CorrectAnswer: ?boxplot
+  Hint: "Digite boxplot ou help (boxplot) para visualizar uma p\xE1gina de ajuda com\
+    \ detalhes sobre boxplot."
+  Output: "Procure a p\xE1gina de ajuda para boxplot ()."
+- Class: text
+  Output: "Em vez de adicionar colunas de dados diretamente como argumentos de entrada,\
+    \ como fizemos com plot (), geralmente \xE9 \xFAtil passar o quadro de dados inteiro.\
+    \ Isso \xE9 o que o argumento &quot;data&quot; no boxplot () permite."
+- Class: text
+  Output: "boxplot (), como muitas fun\xE7\xF5es R, tamb\xE9m recebe um argumento\
+    \ &quot;formula&quot;, geralmente uma express\xE3o com um til (&quot;~&quot;)\
+    \ que indica a rela\xE7\xE3o entre as vari\xE1veis \u200B\u200Bde entrada. Isso\
+    \ permite que voc\xEA insira algo como mpg ~ cyl para representar graficamente\
+    \ a rela\xE7\xE3o entre cyl (n\xFAmero de cilindros) no eixo xe mpg (milhas por\
+    \ gal\xE3o) no eixo y."
+- AnswerTests: omnitest(correctExpr='boxplot(formula = mpg ~ cyl, data = mtcars)')
+  Class: cmd_question
+  CorrectAnswer: boxplot(formula = mpg ~ cyl, data = mtcars)
+  Hint: "Digite boxplot (formula = mpg ~ cyl, data = mtcars) para criar o gr\xE1fico."
+  Output: "Use boxplot () com formula = mpg ~ cyl e data = mtcars para criar um gr\xE1\
+    fico de caixa."
+- Class: text
+  Output: "O enredo mostra que o mpg \xE9 muito menor para carros com mais cilindros.\
+    \ Note que podemos usar o mesmo conjunto de argumentos que exploramos com plot\
+    \ () acima para adicionar r\xF3tulos de eixo, t\xEDtulos e assim por diante."
+- Class: text
+  Output: "Ao olhar para uma \xFAnica vari\xE1vel, histogramas s\xE3o uma ferramenta\
+    \ \xFAtil. hist () \xE9 a fun\xE7\xE3o R associada. Como plot (), hist () \xE9\
+    \ melhor usado apenas passando em um \xFAnico vetor."
+- AnswerTests: any_of_exprs('hist(mtcars$mpg)', 'hist(x = mtcars$mpg)')
+  Class: cmd_question
+  CorrectAnswer: hist(mtcars$mpg)
+  Hint: "Digite hist (mtcars $ mpg) para criar o gr\xE1fico."
+  Output: Use hist () com o vetor mtcars $ mpg para criar um histograma.
+- Class: text
+  Output: "Nesta li\xE7\xE3o, voc\xEA aprendeu a trabalhar com gr\xE1ficos de base\
+    \ em R. O melhor lugar para ir a partir daqui \xE9 estudar o pacote ggplot2. Se\
+    \ voc\xEA quiser explorar outros elementos de gr\xE1ficos base, esta p\xE1gina\
+    \ da Web (http://www.ling.upenn.edu/~joseff/rstudy/week4.html) fornece uma vis\xE3\
+    o geral \xFAtil."
+- AnswerChoices: "Sim; N\xE3o"
+  AnswerTests: notify()
+  Class: mult_question
+  CorrectAnswer: null
+  Hint: null
+  Output: "Gostaria de informar a algu\xE9m sobre sua conclus\xE3o bem-sucedida desta\
+    \ li\xE7\xE3o via e-mail?"
