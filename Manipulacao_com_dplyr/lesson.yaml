@@ -1,0 +1,457 @@
+- Class: meta
+  Course: Aprenda R no R
+  Lesson: Manipulação com dplyr
+  Author: Elthon Manhas de Freitas
+  Type: Standard
+  Organization: FIAP
+  Version: 1.0.0
+  
+- Class: text
+  Output: Nesta lição, você aprenderá como manipular dados usando o dplyr. O dplyr
+    é um pacote R rápido e poderoso escrito por Hadley Wickham e Romain Francois,
+    que fornece uma gramática consistente e concisa para manipular dados tabulares (dados de tabelas).
+    
+- Class: text
+  Output: Um aspecto único do dplyr é que o mesmo conjunto de ferramentas permite
+    que você trabalhe com dados tabulares de uma variedade de fontes, incluindo data frames (data.frame),
+    tabelas de dados, bancos de dados e até arrays multidimensionais. Nesta
+    lição, vamos nos concentrar nos data frames, mas tudo que você aprender se
+    aplicará também aos outros formatos.
+    
+- Class: text
+  Output: Saiba que "o CRAN é uma rede de servidores ftp e web em
+    todo o mundo que armazena versões idênticas e atualizadas de código e documentação
+    para o R" (http://cran.rstudio.com/). O RStudio mantém um desses
+    "espelhos CRAN" e eles generosamente disponibilizam seus
+    registros de download (http://cran-logs.rstudio.com/). Trabalharemos com o registro
+    de 8 de julho de 2014, que contém informações sobre aproximadamente 225.000 downloads
+    de pacotes (tudo isso em um único dia!).
+
+- AnswerTests: omnitest(correctExpr='mydf <- read.csv(path2csv, stringsAsFactors = FALSE)')
+  Class: cmd_question
+  CorrectAnswer: mydf <- read.csv(path2csv, stringsAsFactors = FALSE)
+  Hint: Armazene o resultado de read.csv(path2csv, stringsAsFactors = FALSE) em uma
+    nova variável chamada mydf.
+  Output: Eu criei uma variável chamada path2csv, que contém o caminho completo do
+    arquivo do dataset. Chame read.csv() com dois argumentos, path2csv
+    e stringsAsFactors = FALSE, e salve o resultado em uma nova variável chamada mydf.
+    Digite ?read.csv se precisar de ajuda.
+
+- AnswerTests: omnitest(correctExpr='dim(mydf)')
+  Class: cmd_question
+  CorrectAnswer: dim(mydf)
+  Hint: dim(mydf) lhe dará as dimensões do conjunto de dados.
+  Output: Use dim() para ver as dimensões do mydf.
+  
+  
+- AnswerTests: omnitest(correctExpr='head(mydf)')
+  Class: cmd_question
+  CorrectAnswer: head(mydf)
+  Hint: head(mydf) mostrará as seis primeiras linhas do mydf.
+  Output: Agora use head() para visualizar os primeiros dados.
+  
+- AnswerTests: omnitest(correctExpr='library(dplyr)')
+  Class: cmd_question
+  CorrectAnswer: library(dplyr)
+  Hint: Digite library(dplyr) para carregar o pacote dplyr.
+  Output: O pacote dplyr foi instalado automaticamente (se necessário) e carregado
+    no início desta lição. Normalmente, isso é algo que você teria que fazer sozinho.
+    Apenas para construir o hábito, digite library(dplyr) agora para carregar o pacote
+    novamente.
+    
+- AnswerTests: omnitest(correctExpr='packageVersion("dplyr")')
+  Class: cmd_question
+  CorrectAnswer: packageVersion("dplyr")
+  Hint: Verifique qual versão do dplyr você tem com a função packageVersion("dplyr").
+  Output: É importante que você tenha a versão 0.4.0 ou posterior do dplyr. Para confirmar
+    isso, digite packageVersion("dplyr").
+    
+- Class: text
+  Output: Se a sua versão do dplyr não for pelo menos 0.4.0, você deve pressionar
+    a tecla Esc agora, reinstalar dplyr e continuar esta lição de onde parou.
+    
+- AnswerTests: omnitest(correctExpr='cran <- tbl_df(mydf)')
+  Class: cmd_question
+  CorrectAnswer: cran <- tbl_df(mydf)
+  Hint: Digite cran <- tbl_df(mydf) para criar um novo tbl_df chamado cran.
+  Output: "A primeira etapa do trabalho com dados no dplyr é carregar os dados no
+    que os autores do pacote chamam de data.frame_tbl ou tbl_df.
+    Use o código a seguir para criar um novo tbl_df chamado cran: cran <- tbl_df(mydf)."
+
+- Class: text
+  Output: O dataset novo, chamado cran, é uma especialização do data.frame. Se quiser, veja as classes deste dataset.
+
+- Class: text
+  Output: E se quiser saber mais sobre a classe tbl_df, digite o comando ?tbl_df.
+    
+- AnswerTests: omnitest(correctExpr='rm("mydf")')
+  Class: cmd_question
+  CorrectAnswer: rm("mydf")
+  Hint: Use rm("mydf") para remover o data.frame original do seu espaço de trabalho.
+  Output: Para evitar confusão e manter as coisas funcionando sem problemas, vamos
+    remover o data.frame original de sua área de trabalho com rm("mydf").
+    
+- AnswerTests: omnitest(correctExpr='cran')
+  Class: cmd_question
+  CorrectAnswer: cran
+  Hint: Digite cran para imprimir nosso tbl_df no console.
+  Output: A principal vantagem de usar um tbl_df ao invés de um data.frame regular é a impressão na tela. 
+    Vamos ver o que isso significa. Digite cran para imprimir nosso tbl_df no console.
+
+- Class: text
+  Output: Essa saída é muito mais informativa e compacta do que obteríamos se imprimíssemos
+    o quadro de dados original (mydf) no console.
+
+- Class: text
+  Output: Primeiro, mostramos a classe e as dimensões do conjunto de dados. Logo abaixo
+    disso, temos uma prévia dos dados. Em vez de tentar imprimir o conjunto de dados
+    inteiro, dplyr nos mostra apenas as primeiras 10 linhas de dados e apenas quantas
+    colunas se encaixam perfeitamente em nosso console. Na parte inferior, vemos os
+    nomes e as classes de quaisquer variáveis que não se encaixam em nossa tela.
+
+- Class: text
+  Output: De acordo com a vinheta "Introduction to dplyr" escrita pelos
+    autores do pacote, "A filosofia dplyr é ter pequenas funções que fazem uma
+    coisa bem feita." Especificamente, o dplyr fornece cinco 'funções principais' que cobrem
+    a maioria das tarefas fundamentais de manipulação de dados select(), filter(), arrange(), mutate() e summarize().
+
+- AnswerTests: omnitest(correctExpr='?select')
+  Class: cmd_question
+  CorrectAnswer: ?select
+  Hint: '?select exibirá a documentação para a função select () do dplyr.'
+  Output: Digite ?select para puxar a documentação para a primeira dessas funções principais.
+  
+- Class: text
+  Output: O help para as outras funções estão acessíveis da mesma maneira.
+  
+- AnswerTests: omnitest(correctExpr='select(cran, ip_id, package, country)')
+  Class: cmd_question
+  CorrectAnswer: select(cran, ip_id, package, country)
+  Hint: Digite select(cran, ip_id, package, country) para selecionar apenas as variáveis
+    ip_id, package e country do dataset do cran.
+  Output: Como muitas vezes pode ser o caso, particularmente com conjuntos de dados
+    maiores, estamos interessados apenas em algumas das variáveis. Use select(cran,
+    ip_id, package, country) para selecionar apenas as variáveis/colunas ip_id, package
+    e country do dataset do cran.
+    
+- Class: text
+  Output: "A primeira coisa a notar é que não precisamos digitar cran$ip_id, cran$package e cran$country, como normalmente faríamos ao nos referirmos a colunas
+    de um data.frame. A função select() sabe que estamos nos referindo às colunas
+    do conjunto de dados do cran."
+    
+- Class: text
+  Output: Além disso, observe que as colunas são retornadas para nós na ordem que
+    especificamos, embora ip_id seja a coluna mais à direita no dataset original.
+    
+- AnswerTests: omnitest(correctExpr='5:20')
+  Class: cmd_question
+  CorrectAnswer: 320
+  Hint: "Digite 5:20 para ver como `:` pode ser usado para criar uma seqüência de números."
+  Output: "Lembre-se que no R, o operador `:` fornece uma notação compacta para criar
+    uma sequência de números. Por exemplo, digite 5:20 para relembrar."
+    
+- AnswerTests: omnitest(correctExpr='select(cran, r_arch:country)')
+  Class: cmd_question
+  CorrectAnswer: select(cran, r_arch:country)
+  Hint: "select(cran, r_arch:country) selecionará todas as colunas de r_arch até
+    country (da esquerda para a direita)."
+  Output: "Normalmente, essa notação é reservada para números, mas select() permite
+    que você especifique uma sequência de colunas dessa maneira, o que pode economizar
+    um monte de digitação. Use select(cran, r_arch:country) para selecionar todas
+    as colunas a partir de r_arch e terminando com country."
+    
+- AnswerTests: omnitest(correctExpr='select(cran, country:r_arch)')
+  Class: cmd_question
+  CorrectAnswer: select(cran, country:r_arch)
+  Hint: 'select(cran, country:r_arch) selecionará todas as colunas começando de
+    country e terminando com r_arch (direita para esquerda).'
+  Output: Também podemos selecionar as mesmas colunas na ordem inversa. Tenta aí.
+  
+  
+- AnswerTests: omnitest(correctExpr='cran')
+  Class: cmd_question
+  CorrectAnswer: cran
+  Hint: Imprima o cran no console para se lembrar de como ele se parece.
+  Output: Imprima o conjunto de dados inteiro novamente, apenas para se lembrar de
+    como ele é. Você pode fazer isso a qualquer momento durante a aula.
+    
+- AnswerTests: omnitest(correctExpr='select(cran, -time)')
+  Class: cmd_question
+  CorrectAnswer: select(cran, -time)
+  Hint: Use select(cran, -time) para se livrar da coluna de tempo.
+  Output: Em vez de especificar as colunas que queremos manter, também podemos especificar
+    as colunas que queremos descartar. Para ver como isso funciona, use select(cran, -time) para omitir a coluna de tempo.
+    
+    
+- AnswerTests: omnitest(correctExpr='-5:20')
+  Class: cmd_question
+  CorrectAnswer: -5:20
+  Hint: 'Veja o que -5:20 nos dá.'
+  Output: 'O sinal negativo na frente de time informa ao select() que NÃO queremos
+    a coluna de tempo. Agora, vamos combinar estratégias para omitir todas as colunas
+    do X através do size(X:size). Para ver como isso pode funcionar, vamos
+    ver um exemplo numérico com -5:20.'
+    
+- AnswerTests: omnitest(correctExpr='-(5:20)')
+  Class: cmd_question
+  CorrectAnswer: -(5:20)
+  Hint: '-(5:20) fará o trabalho.'
+  Output: Opa! Isso nos dá um vetor de números de -5 a 20, o que não é o que queremos. 
+    Em vez disso, queremos negar toda a seqüência de números de 5 a 20, de modo a obtermos 
+    -5, -6, -7, ..., -18, -19, -20. Tente a mesma coisa, com -(5:20), é com parênteses! 
+    Desso modo o R saberá que nós queremos que primeiro surja a sequência de números, 
+    depois aplique o sinal negativo à coisa toda.
+    
+- AnswerTests: omnitest(correctExpr='select(cran, -(X:size))')
+  Class: cmd_question
+  CorrectAnswer: select(cran, -(X:size))
+  Hint: 'Use select(cran, -(X:size)) para omitir todas as colunas de X através
+    do tamanho.'
+  Output: 'Use este padrão para omitir todas as colunas X:size usando select().'
+  
+- Class: text
+  Output: Agora que você sabe como selecionar um subconjunto de colunas usando select
+    (), uma próxima pergunta natural é "Como eu seleciono um subconjunto de linhas?"
+    É aí que entra a função filter().
+    
+- AnswerTests: omnitest(correctExpr='filter(cran, package == "swirl")')
+  Class: cmd_question
+  CorrectAnswer: filter(cran, package == "swirl")
+  Hint: filter(cran, package == "swirl") lhe dará apenas as linhas para
+    as quais a variável package é igual a "swirl".
+  Output: Use filter(cran, package == "swirl") para selecionar todas
+    as linhas para as quais a variável do pacote é igual a "swirl". Certifique-se
+    de usar dois sinais de igual!
+    
+- Class: text
+  Output: Novamente, note que filter() reconhece 'package' como uma coluna
+    de cran, sem que você tenha que especificar explicitamente o cran$package.
+    
+- Class: text
+  Output: O operador == pergunta se o valor à esquerda é igual ao valor à direita.
+    Se sim, então retorna TRUE. Se não, FALSE. Neste caso, package é um vetor
+    inteiro (coluna) de valores, então package == "swirl" retorna um vetor
+    de TRUEs e FALSEs. Em seguida, filter() retorna apenas as linhas do cran correspondendo
+    aos TRUEs.
+    
+- AnswerTests: any_of_exprs('filter(cran, r_version == "3.1.1", country == "US")',
+    'filter(cran, country == "US", r_version == "3.1.1")')
+  Class: cmd_question
+  CorrectAnswer: filter(cran, r_version == "3.1.1", country == "US")
+  Hint: filter(cran, r_version == "3.1.1", country == "US") retornará
+    todas as linhas de referência correspondentes aos downloads dos usuários nos EUA
+    que executam a versão R 3.1.1. Não esqueça as citações em torno de 3.1.1 e EUA!
+  Output: Você pode especificar quantas condições desejar, separadas por vírgulas.
+    Por exemplo, filter(cran, r_version == "3.1.1", country == "US")
+    retornará todas as linhas de referência correspondentes aos downloads dos usuários
+    nos EUA que executam a versão R 3.1.1. Experimente.
+    
+- AnswerTests: omnitest(correctExpr='?Comparison')
+  Class: cmd_question
+  CorrectAnswer: ?Comparison
+  Hint: O comando ?Comparison irá abrir o arquivo de ajuda que queremos.
+  Output: As condições transmitidas para filter() podem fazer uso de qualquer um
+    dos operadores de comparação padrão. A documentação desses operadores é feita com "Comparison"
+    (que é um C maiúsculo).
+    
+- AnswerTests: any_of_exprs('filter(cran, r_version <= "3.0.2", country == "IN")',
+    'filter(cran, country == "IN", r_version <= "3.0.2")')
+  Class: cmd_question
+  CorrectAnswer: filter(cran, r_version <= "3.0.2", country == "IN")
+  Hint: filter(cran, r_version <= "3.0.2", country == "IN")
+    retornará todas as linhas para as quais r_version é menor ou igual a "3.0.2"
+    e country é igual a "IN".
+  Output: Edite sua chamada anterior para filter() para retornar as linhas correspondentes
+    aos usuários em "IN" (Índia) executando uma versão R que seja menor
+    ou igual a "3.0.2". A seta para cima no teclado pode ser útil aqui.
+    Não esqueça suas aspas duplas!
+    
+- AnswerTests: any_of_exprs('filter(cran, country == "US" | country == "IN")', 'filter(cran, country == "IN" | country == "US")')
+  Class: cmd_question
+  CorrectAnswer: filter(cran, country == "US" | country == "IN")
+  Hint: filter(cran, country == "US" | country == "IN") retornará
+    todas as linhas cujo país é igual a "US" ou "IN". O símbolo
+    `|` (chamado operador de pipe) provavelmente compartilha uma chave com a barra
+    invertida no seu teclado.
+  Output: Nossas últimas duas chamadas para filter() solicitaram todas as linhas
+    para as quais alguma condição E outra condição foram TRUE. Também podemos solicitar
+    linhas para as quais UMA condição OU outra condição são VERDADEIRAS. Por exemplo,
+    filter(cran, country == "US" | country == "IN") nos dará
+    todas as linhas para as quais a variável country é igual a "US" ou "IN".
+    Tenta aí.
+
+- AnswerTests: any_of_exprs('filter(cran, size > 100500, r_os == "linux-gnu")', 'filter(cran,
+    r_os == "linux-gnu", size > 100500)')
+  Class: cmd_question
+  CorrectAnswer: filter(cran, size > 100500, r_os == "linux-gnu")
+  Hint: Isso é complicado né! filter(cran, size > 100500, r_os == "linux-gnu")
+    nos dará todas as linhas cujo tamanho é estritamente maior que 100500 e r_os é
+    "linux-gnu".
+  Output: 'Agora, use filter() para buscar todas as linhas cujo size é estritamente
+    maior que (>) 100500 (sem aspas, já que o size é numérico) e r_os é igual
+    a "linux-gnu". Dica: Você está passando três argumentos para filter(): o nome do conjunto de dados, a primeira condição e a segunda condição.'
+    
+- Class: text
+  Output: Finalmente, queremos obter apenas as linhas para as quais a r_version não
+    está faltando. R representa valores ausentes com NA e esses valores ausentes podem
+    ser detectados usando a função is.na().
+
+- AnswerTests: omnitest('is.na(c(3, 5, NA, 10))')
+  Class: cmd_question
+  CorrectAnswer: is.na(c(3, 5, NA, 10))
+  Hint: Digite is.na(c(3, 5, NA, 10)) para ver como funciona a função is.na().
+  Output: Para ver como isso funciona, digite is.na(c(3, 5, NA, 10)).
+  
+- AnswerTests: omnitest('!is.na(c(3, 5, NA, 10))')
+  Class: cmd_question
+  CorrectAnswer: '!is.na(c(3, 5, NA, 10))'
+  Hint: '!is.na(c(3, 5, NA, 10)) negará o comando anterior, dizendo-nos o que NÃO é NA.'
+  Output: "Agora, coloque um ponto de exclamação (!) Antes de is.na() para mudar todos os TRUEs para FALSEs e todos os FALSEs para TRUEs, dizendo-nos o que NÃO é NA: !is.na (c (3, 5, NA, 10))."
+
+- AnswerTests: omnitest('filter(cran, !is.na(r_version))')
+  Class: cmd_question
+  CorrectAnswer: filter(cran, !is.na(r_version))
+  Hint: Este é outro complicado. filter(cran, !is.na (r_version)) retornará todas
+    as linhas do cran para as quais r_version NÃO é NA.
+  Output: 'Ok, pronto para colocar tudo isso junto? Use filter() para retornar todas
+    as linhas do cran para as quais r_version NÃO é NA. Dica: Você precisará usar !is.na() como parte de seu segundo argumento para filter().'
+    
+- Class: text
+  Output: Vimos como selecionar um subconjunto de colunas e linhas do nosso conjunto
+    de dados usando select() e filter(), respectivamente. Saiba que select()
+    também era a capacidade de ordenar nossas colunas selecionadas em qualquer ordem
+    que desejássemos.
+    
+- Class: text
+  Output: Às vezes, queremos ordenar as linhas de um dataset de acordo com
+    os valores de uma variável específica. Este é o trabalho de arrange().
+    
+- AnswerTests: omnitest('cran2 <- select(cran, size:ip_id)')
+  Class: cmd_question
+  CorrectAnswer: cran2 <- select(cran, size:ip_id)
+  Hint: 'Use select(cran, size:ip_id) para selecionar todas as colunas de size a de ip_id. Armazene o resultado na variável cran2.'
+  Output: Para ver como o arrange() funciona, vamos primeiro pegar um subconjunto
+    do cran. selecione (com select) todas as colunas de size a ip_id e armazene
+    o resultado em cran2.
+    
+- AnswerTests: omnitest('arrange(cran2, ip_id)')
+  Class: cmd_question
+  CorrectAnswer: arrange(cran2, ip_id)
+  Hint: arrange(cran2, ip_id) irá ordenar as linhas do cran2 do menor ip_id para o maior ip_id.
+  Output: Agora, para ordenar as linhas de cran2 para que ip_id esteja em ordem crescente
+    (de pequeno a grande), digite arrange(cran2, ip_id). Você pode querer maximizar
+    seu console para ver ip_id, que é a última coluna.
+    
+- AnswerTests: omnitest('arrange(cran2, desc(ip_id))')
+  Class: cmd_question
+  CorrectAnswer: arrange(cran2, desc(ip_id))
+  Hint: arrange(cran2, desc(ip_id)) ordenará as linhas do nosso dataset
+    do maior ip_id para o menor ip_id.
+  Output: Para fazer o mesmo, mas em ordem decrescente, mude o segundo argumento para
+    desc(ip_id), onde desc() significa 'descendente'. Vai lá.
+    
+- AnswerTests: omnitest('arrange(cran2, package, ip_id)')
+  Class: cmd_question
+  CorrectAnswer: arrange(cran2, package, ip_id)
+  Hint: Use arrange(cran2, package, ip_id) para classificar os dados primeiramente
+    pelo nome do pacote e depois pelo ip_id.
+  Output: Nós também podemos organizar os dados de acordo com os valores de múltiplas
+    variáveis. Por exemplo, arrange(cran2, package, ip_id) primeiro organiza por
+    nome dos pacotes (crescente alfabeticamente), depois por ip_id. Isso significa
+    que, se houver várias linhas com o mesmo valor para o pacote, elas serão classificadas
+    por ip_id (numericamente ascendente). Digite arrange(cran2, package, ip_id)
+    agora.
+    
+- AnswerTests: omnitest('arrange(cran2, country, desc(r_version), ip_id)')
+  Class: cmd_question
+  CorrectAnswer: arrange(cran2, country, desc(r_version), ip_id)
+  Hint: arrange(cran2, country, desc(r_version), ip_id) classificará os dados
+    por country (ascendente) primeiro, depois por r_version (descendente) e, finalmente,
+    por ip_id (ascendente).
+  Output: 'Ordene o dataset cran2 pelas três variáveis a seguir, nesta ordem: country
+    (crescente), r_version (decrescente) e ip_id (ascendente).'
+    
+- AnswerTests: omnitest('cran3 <- select(cran, ip_id, package, size)')
+  Class: cmd_question
+  CorrectAnswer: cran3 <- select(cran, ip_id, package, size)
+  Hint: O cran3 <- select(cran, ip_id, package, size) armazenará apenas estas três colunas em uma nova variável chamada cran3.
+  Output: Para ilustrar a próxima função das principais do dplyr, vamos pegar outro subconjunto
+    de nossos dados. Use select() para pegar 3 colunas de cran. Eu quero as colunas ip_id, package
+    e size (nessa ordem) - e armazene o resultado em uma nova variável chamada cran3.
+    
+- AnswerTests: any_of_exprs('cran3', 'print(cran3)')
+  Class: cmd_question
+  CorrectAnswer: cran3
+  Hint: Digite cran3 para visualizar seu conteúdo.
+  Output: Dê uma olhada no cran3 agora.
+  
+- Class: text
+  Output: É comum criar uma nova variável com base no valor de uma ou mais variáveis de um dataset. A função mutate() faz essa mágica.
+
+- Class: text
+  Output: A variável size representa o tamanho do download em bytes, que são
+    unidades de memória do computador. Atualmente, megabytes (MB) são a unidade
+    de medida mais comum. Um megabyte é igual a 2 ^ 20 bytes. Isso é 2 elevado
+    a 20, que é de aproximadamente um milhão de bytes!
+    
+- AnswerTests: omnitest('mutate(cran3, size_mb = size / 2^20)')
+  Class: cmd_question
+  CorrectAnswer: mutate(cran3, size_mb = size / 2^20)
+  Hint: mutate(cran3, size_mb = size / 2 ^ 20) adicionará uma nova coluna chamada
+    size_mb que contém o tamanho do download em megabytes.
+  Output: 'Queremos adicionar uma coluna chamada size_mb que contém o tamanho do download
+    em megabytes. Aqui está o código para fazer isso: mutate(cran3, size_mb = size / 2 ^ 20)'
+
+- Class: text
+  Output: Uma unidade de medida ainda maior é um gigabyte (GB), que é igual a 2 ^ 10 megabytes.
+    Podemos também adicionar outra coluna para o tamanho do download em gigabytes!
+    
+- AnswerTests: omnitest('mutate(cran3, size_mb = size / 2^20, size_gb = size_mb / 2^10)')
+  Class: cmd_question
+  CorrectAnswer: mutate(cran3, size_mb = size / 2^20, size_gb = size_mb / 2^10)
+  Hint: Digite mutate(cran3, size_mb = size / 2^20, size_gb = size_mb / 2^10) 
+    para criar duas novas colunas chamadas size_mb e size_gb, respectivamente.
+  Output: Um recurso muito interessante de mutate () é que você pode usar o valor
+    calculado para sua segunda coluna (size_mb) para criar uma terceira coluna, tudo
+    na mesma linha de código. Para ver isso em ação, repita exatamente o mesmo comando
+    acima, exceto adicionar um terceiro argumento criando uma coluna chamada size_gb que é igual a size_mb / 2 ^ 10.
+    
+- AnswerTests: omnitest('mutate(cran3, correct_size = size + 1000)')
+  Class: cmd_question
+  CorrectAnswer: mutate(cran3, correct_size = size + 1000)
+  Hint: mutate(cran3, correct_size = size + 1000) criará uma nova coluna que é igual
+    aos tamanhos originais mais 1000.
+  Output: Vamos fazer mais um para praticar. Finja que descobrimos uma falha no sistema
+    que forneceu os valores originais para a variável de tamanho. Todos os valores
+    no cran3 são 1000 bytes menores do que deveriam ser. Usando o cran3, crie apenas
+    uma nova coluna chamada correct_size que contenha o tamanho correto.
+    
+- AnswerTests: omnitest('summarize(cran, avg_bytes = mean(size))')
+  Class: cmd_question
+  CorrectAnswer: summarize(cran, avg_bytes = mean(size))
+  Hint: summarize(cran, avg_bytes = mean (size)) nos dará o tamanho médio e rotularemos o resultado 'avg_bytes'.
+  Output: O último dos cinco comandos principais de dplyr, é o summarize(). Ele agrupa o conjunto de
+    dados em uma única linha. Digamos que estamos interessados em saber o tamanho
+    médio de download. summarize(cran, avg_bytes = mean(size)) irá gerar o valor médio
+    da variável size. Aqui nós escolhemos rotular o resultado 'avg_bytes',
+    mas poderíamos ter nomeado com qualquer outro nome. Vai lá, tenta isso.
+
+- Class: text
+  Output: Isso não é particularmente interessante. summary() é mais útil ao trabalhar
+    com dados que foram agrupados pelos valores de uma variável específica.
+    
+- Class: text
+  Output: A ideia é que summarize() pode fornecer o valor solicitado para CADA grupo em seu conjunto de dados. Mas isso deixamos para ver em sala.
+
+- Class: text
+  Output: Nesta lição, você aprendeu como manipular dados usando as cinco principais
+    funções do dplyr. Ainda existe muitos outros recursos
+    úteis do dplyr para facilitar muito a sua vida como analista de dados.
+
+- Class: mult_question
+  Output: "Gostaria de informar ao professor sobre a conclusão desta lição"
+  CorrectAnswer: TRUE
+  AnswerChoices: Sim; Não
+  AnswerTests: notify()
+  Hint: Na dúvida, escolha Sim :-)
+

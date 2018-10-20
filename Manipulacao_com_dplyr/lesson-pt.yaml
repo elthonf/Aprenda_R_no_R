@@ -1,0 +1,429 @@
+- Author: Nick Carchedi
+  Class: meta
+  Course: Getting and Cleaning Data
+  Lesson: Manipulating Data with dplyr
+  Organization: JHU Biostat
+  Type: Standard
+  Version: 2.2.12
+- Class: text
+  Output: "Nesta li\xE7\xE3o, voc\xEA aprender\xE1 como manipular dados usando o dplyr.\
+    \ O dplyr \xE9 um pacote R r\xE1pido e poderoso escrito por Hadley Wickham e Romain\
+    \ Francois, que fornece uma gram\xE1tica consistente e concisa para manipular\
+    \ dados tabulares."
+- Class: text
+  Output: "Um aspecto \xFAnico do dplyr \xE9 que o mesmo conjunto de ferramentas permite\
+    \ que voc\xEA trabalhe com dados tabulares de uma variedade de fontes, incluindo\
+    \ quadros de dados, tabelas de dados, bancos de dados e matrizes multidimensionais.\
+    \ Nesta li\xE7\xE3o, vamos nos concentrar nos quadros de dados, mas tudo que voc\xEA\
+    \ aprender se aplicar\xE1 igualmente a outros formatos."
+- Class: text
+  Output: "Como voc\xEA deve saber, &quot;o CRAN \xE9 uma rede de servidores ftp e\
+    \ web em todo o mundo que armazena vers\xF5es id\xEAnticas e atualizadas de c\xF3\
+    digo e documenta\xE7\xE3o para o R&quot; (http://cran.rstudio.com/). O RStudio\
+    \ mant\xE9m um desses chamados &quot;espelhos CRAN&quot; e eles generosamente\
+    \ disponibilizam publicamente seus registros de download (http://cran-logs.rstudio.com/).\
+    \ Trabalharemos com o registro de 8 de julho de 2014, que cont\xE9m informa\xE7\
+    \xF5es sobre aproximadamente 225.000 downloads de pacotes."
+- AnswerTests: omnitest(correctExpr='mydf <- read.csv(path2csv, stringsAsFactors =
+    FALSE)')
+  Class: cmd_question
+  CorrectAnswer: mydf <- read.csv(path2csv, stringsAsFactors = FALSE)
+  Hint: "Armazene o resultado de read.csv (path2csv, stringsAsFactors = FALSE) em\
+    \ uma nova vari\xE1vel chamada mydf."
+  Output: "Eu criei uma vari\xE1vel chamada path2csv, que cont\xE9m o caminho completo\
+    \ do arquivo para o conjunto de dados. Chame read.csv () com dois argumentos,\
+    \ path2csv e stringsAsFactors = FALSE, e salve o resultado em uma nova vari\xE1\
+    vel chamada mydf. Marque? Read.csv se precisar de ajuda."
+- AnswerTests: omnitest(correctExpr='dim(mydf)')
+  Class: cmd_question
+  CorrectAnswer: dim(mydf)
+  Hint: "dim (mydf) lhe dar\xE1 as dimens\xF5es do conjunto de dados."
+  Output: "Use dim () para ver as dimens\xF5es do mydf."
+- AnswerTests: omnitest(correctExpr='head(mydf)')
+  Class: cmd_question
+  CorrectAnswer: head(mydf)
+  Hint: "cabe\xE7a (mydf) mostrar\xE1 as seis primeiras linhas do mydf."
+  Output: Agora use head () para visualizar os dados.
+- AnswerTests: omnitest(correctExpr='library(dplyr)')
+  Class: cmd_question
+  CorrectAnswer: library(dplyr)
+  Hint: Use a biblioteca (dplyr) para carregar o pacote dplyr.
+  Output: "O pacote dplyr foi instalado automaticamente (se necess\xE1rio) e carregado\
+    \ no in\xEDcio desta li\xE7\xE3o. Normalmente, isso \xE9 algo que voc\xEA teria\
+    \ que fazer sozinho. Apenas para construir o h\xE1bito, digite library (dplyr)\
+    \ agora para carregar o pacote novamente."
+- AnswerTests: omnitest(correctExpr='packageVersion("dplyr")')
+  Class: cmd_question
+  CorrectAnswer: packageVersion("dplyr")
+  Hint: "Verifique qual vers\xE3o do dplyr voc\xEA tem com o packageVersion (&quot;dplyr&quot;)."
+  Output: "\xC9 importante que voc\xEA tenha a vers\xE3o 0.4.0 ou posterior do dplyr.\
+    \ Para confirmar isso, digite packageVersion (&quot;dplyr&quot;)."
+- Class: text
+  Output: "Se a sua vers\xE3o do dplyr n\xE3o for pelo menos 0.4.0, voc\xEA deve pressionar\
+    \ a tecla Esc agora, reinstalar dplyr e continuar esta li\xE7\xE3o de onde parou."
+- AnswerTests: omnitest(correctExpr='cran <- tbl_df(mydf)')
+  Class: cmd_question
+  CorrectAnswer: cran <- tbl_df(mydf)
+  Hint: Digite cran &lt;- tbl_df (mydf) para criar um novo tbl_df chamado cran.
+  Output: "A primeira etapa do trabalho com dados no dplyr \xE9 carregar os dados\
+    \ no que os autores do pacote chamam de &#39;frame de dados tbl&#39; ou &#39;tbl_df&#39;.\
+    \ Use o c\xF3digo a seguir para criar um novo tbl_df chamado cran: cran &lt;-\
+    \ tbl_df (mydf)."
+- AnswerTests: omnitest(correctExpr='rm("mydf")')
+  Class: cmd_question
+  CorrectAnswer: rm("mydf")
+  Hint: "Use rm (&quot;mydf&quot;) para remover o quadro de dados original do seu\
+    \ espa\xE7o de trabalho."
+  Output: "Para evitar confus\xE3o e manter as coisas funcionando sem problemas, vamos\
+    \ remover o quadro de dados original de sua \xE1rea de trabalho com rm (&quot;mydf&quot;)."
+- AnswerTests: omnitest(correctExpr='cran')
+  Class: cmd_question
+  CorrectAnswer: cran
+  Hint: Digite cran para imprimir nosso tbl_df no console.
+  Output: "De? Tbl_df, &quot;A principal vantagem de usar um tbl_df em um quadro de\
+    \ dados regular \xE9 a impress\xE3o.&quot; Vamos ver o que isso significa. Digite\
+    \ cran para imprimir nosso tbl_df no console."
+- Class: text
+  Output: "Essa sa\xEDda \xE9 muito mais informativa e compacta do que obter\xEDamos\
+    \ se imprim\xEDssemos o quadro de dados original (mydf) para o console."
+- Class: text
+  Output: "Primeiro, mostramos a classe e as dimens\xF5es do conjunto de dados. Logo\
+    \ abaixo disso, temos uma pr\xE9via dos dados. Em vez de tentar imprimir o conjunto\
+    \ de dados inteiro, dplyr nos mostra apenas as primeiras 10 linhas de dados e\
+    \ apenas quantas colunas se encaixam perfeitamente em nosso console. Na parte\
+    \ inferior, vemos os nomes e as classes de quaisquer vari\xE1veis \u200B\u200B\
+    que n\xE3o se encaixam em nossa tela."
+- Class: text
+  Output: "De acordo com a vinheta &quot;Introduction to dplyr&quot; escrita pelos\
+    \ autores do pacote, &quot;A filosofia dplyr \xE9 ter pequenas fun\xE7\xF5es que\
+    \ fazem uma coisa bem.&quot; Especificamente, o dplyr fornece cinco &#39;verbos&#39;\
+    \ que cobrem a maioria das tarefas fundamentais de manipula\xE7\xE3o de dados:\
+    \ select (), filter (), arrange (), mutate () e summarize ()."
+- AnswerTests: omnitest(correctExpr='?select')
+  Class: cmd_question
+  CorrectAnswer: ?select
+  Hint: "? select exibir\xE1 a documenta\xE7\xE3o para a fun\xE7\xE3o select () do\
+    \ dplyr."
+  Output: "Use? Select para puxar a documenta\xE7\xE3o para a primeira dessas fun\xE7\
+    \xF5es principais."
+- Class: text
+  Output: "Os arquivos de ajuda para as outras fun\xE7\xF5es est\xE3o acess\xEDveis\
+    \ da mesma maneira."
+- AnswerTests: omnitest(correctExpr='select(cran, ip_id, package, country)')
+  Class: cmd_question
+  CorrectAnswer: select(cran, ip_id, package, country)
+  Hint: "Digite select (cran, ip_id, package, country) para selecionar apenas as vari\xE1\
+    veis \u200B\u200Bip_id, package e country do dataset do cran."
+  Output: "Como muitas vezes pode ser o caso, particularmente com conjuntos de dados\
+    \ maiores, estamos interessados \u200B\u200Bapenas em algumas das vari\xE1veis.\
+    \ Use select (cran, ip_id, package, country) para selecionar apenas as vari\xE1\
+    veis \u200B\u200Bip_id, package e country do dataset do cran."
+- Class: text
+  Output: "A primeira coisa a notar \xE9 que n\xE3o precisamos digitar cran $ ip_id,\
+    \ cran $ package e cran $ country, como normalmente far\xEDamos ao nos referirmos\
+    \ a colunas de um frame de dados. A fun\xE7\xE3o select () sabe que estamos nos\
+    \ referindo \xE0s colunas do conjunto de dados do cran."
+- Class: text
+  Output: "Al\xE9m disso, observe que as colunas s\xE3o retornadas para n\xF3s na\
+    \ ordem que especificamos, embora ip_id seja a coluna mais \xE0 direita no conjunto\
+    \ de dados original."
+- AnswerTests: omnitest(correctExpr='5:20')
+  Class: cmd_question
+  CorrectAnswer: 320
+  Hint: "Digite 5:20 para ver como `:` pode ser usado para criar uma seq\xFC\xEAncia\
+    \ de n\xFAmeros."
+  Output: "Lembre-se que em R, o operador `:` fornece uma nota\xE7\xE3o compacta para\
+    \ criar uma sequ\xEAncia de n\xFAmeros. Por exemplo, tente 5:20."
+- AnswerTests: omnitest(correctExpr='select(cran, r_arch:country)')
+  Class: cmd_question
+  CorrectAnswer: select(cran, r_arch:country)
+  Hint: "select (cran, r_arch: country) selecionar\xE1 todas as colunas de r_arch\
+    \ atrav\xE9s do pa\xEDs (da esquerda para a direita)."
+  Output: "Normalmente, essa nota\xE7\xE3o \xE9 reservada para n\xFAmeros, mas select\
+    \ () permite que voc\xEA especifique uma sequ\xEAncia de colunas dessa maneira,\
+    \ o que pode economizar um monte de digita\xE7\xE3o. Use select (cran, r_arch:\
+    \ country) para selecionar todas as colunas a partir de r_arch e terminando com\
+    \ country."
+- AnswerTests: omnitest(correctExpr='select(cran, country:r_arch)')
+  Class: cmd_question
+  CorrectAnswer: select(cran, country:r_arch)
+  Hint: "select (cran, country: r_arch) selecionar\xE1 todas as colunas come\xE7ando\
+    \ do pa\xEDs e terminando com r_arch (direita para esquerda)."
+  Output: "Tamb\xE9m podemos selecionar as mesmas colunas na ordem inversa. De uma\
+    \ chance."
+- AnswerTests: omnitest(correctExpr='cran')
+  Class: cmd_question
+  CorrectAnswer: cran
+  Hint: Imprima o cran no console para se lembrar de como ele se parece.
+  Output: "Imprima o conjunto de dados inteiro novamente, apenas para se lembrar de\
+    \ como ele \xE9. Voc\xEA pode fazer isso a qualquer momento durante a aula."
+- AnswerTests: omnitest(correctExpr='select(cran, -time)')
+  Class: cmd_question
+  CorrectAnswer: select(cran, -time)
+  Hint: Use select (cran, -time) para se livrar da coluna de tempo.
+  Output: "Em vez de especificar as colunas que queremos manter, tamb\xE9m podemos\
+    \ especificar as colunas que queremos descartar. Para ver como isso funciona,\
+    \ selecione (cran, -time) para omitir a coluna de tempo."
+- AnswerTests: omnitest(correctExpr='-5:20')
+  Class: cmd_question
+  CorrectAnswer: -320
+  Hint: "Veja o que -5: 20 nos d\xE1."
+  Output: "O sinal negativo na frente do tempo informa ao select () que N\xC3O queremos\
+    \ a coluna de tempo. Agora, vamos combinar estrat\xE9gias para omitir todas as\
+    \ colunas do X atrav\xE9s do tamanho (X: tamanho). Para ver como isso pode funcionar,\
+    \ vamos ver um exemplo num\xE9rico com -5: 20."
+- AnswerTests: omnitest(correctExpr='-(5:20)')
+  Class: cmd_question
+  CorrectAnswer: -(5:20)
+  Hint: "- (5:20) far\xE1 o trabalho."
+  Output: Oops! That gaves us a vector of numbers from -5 through 20, which is not
+    what we want. Instead, we want to negate the entire sequence of numbers from 5
+    through 20, so that we get -5, -6, -7, ... , -18, -19, -20. Try the same thing,
+    except surround 5:20 with parentheses so that R knows we want it to first come
+    up with the sequence of numbers, then apply the negative sign to the whole thing.
+- AnswerTests: omnitest(correctExpr='select(cran, -(X:size))')
+  Class: cmd_question
+  CorrectAnswer: select(cran, -(X:size))
+  Hint: "Use select (cran, - (X: size)) para omitir todas as colunas de X atrav\xE9\
+    s do tamanho."
+  Output: 'Use este conhecimento para omitir todas as colunas X: size usando select
+    ().'
+- Class: text
+  Output: "Agora que voc\xEA sabe como selecionar um subconjunto de colunas usando\
+    \ select (), uma pr\xF3xima pergunta natural \xE9 &quot;Como eu seleciono um subconjunto\
+    \ de linhas?&quot; \xC9 a\xED que entra a fun\xE7\xE3o filter ()."
+- AnswerTests: omnitest(correctExpr='filter(cran, package == "swirl")')
+  Class: cmd_question
+  CorrectAnswer: filter(cran, package == "swirl")
+  Hint: "filter (cran, package == &quot;swirl&quot;) lhe dar\xE1 apenas as linhas\
+    \ para as quais a vari\xE1vel package \xE9 igual a &quot;swirl&quot;."
+  Output: "Use o filtro (cran, package == &quot;swirl&quot;) para selecionar todas\
+    \ as linhas para as quais a vari\xE1vel do pacote \xE9 igual a &quot;swirl&quot;.\
+    \ Certifique-se de usar dois sinais de igual lado a lado!"
+- Class: text
+  Output: "Novamente, note que filter () reconhece &#39;package&#39; como uma coluna\
+    \ de cran, sem que voc\xEA tenha que especificar explicitamente o cran $ package."
+- Class: text
+  Output: "O operador == pergunta se a coisa \xE0 esquerda \xE9 igual \xE0 coisa \xE0\
+    \ direita. Se sim, ent\xE3o retorna TRUE. Se n\xE3o, ent\xE3o FALSE. Neste caso,\
+    \ package \xE9 um vetor inteiro (coluna) de valores, ent\xE3o package == &quot;swirl&quot;\
+    \ retorna um vetor de TRUEs e FALSEs. filter (), em seguida, retorna apenas as\
+    \ linhas do cran correspondendo aos TRUEs."
+- AnswerTests: any_of_exprs('filter(cran, r_version == "3.1.1", country == "US")',
+    'filter(cran, country == "US", r_version == "3.1.1")')
+  Class: cmd_question
+  CorrectAnswer: filter(cran, r_version == "3.1.1", country == "US")
+  Hint: "filter (cran, r_version == &quot;3.1.1&quot;, country == &quot;US&quot;)\
+    \ retornar\xE1 todas as linhas de refer\xEAncia correspondentes aos downloads\
+    \ dos usu\xE1rios nos EUA que executam a vers\xE3o R 3.1.1. N\xE3o esque\xE7a\
+    \ as cita\xE7\xF5es em torno de 3.1.1 e EUA!"
+  Output: "Voc\xEA pode especificar quantas condi\xE7\xF5es desejar, separadas por\
+    \ v\xEDrgulas. Por exemplo, o filtro (cran, r_version == &quot;3.1.1&quot;, country\
+    \ == &quot;US&quot;) retornar\xE1 todas as linhas de refer\xEAncia correspondentes\
+    \ aos downloads dos usu\xE1rios nos EUA que executam a vers\xE3o R 3.1.1. Experimente."
+- AnswerTests: omnitest(correctExpr='?Comparison')
+  Class: cmd_question
+  CorrectAnswer: ?Comparison
+  Hint: "A compara\xE7\xE3o ir\xE1 puxar o arquivo de ajuda relevante."
+  Output: "As condi\xE7\xF5es transmitidas para filter () podem fazer uso de qualquer\
+    \ um dos operadores de compara\xE7\xE3o padr\xE3o. Puxe a documenta\xE7\xE3o relevante\
+    \ com &quot;Comparison&quot; (que \xE9 um C mai\xFAsculo)."
+- AnswerTests: any_of_exprs('filter(cran, r_version <= "3.0.2", country == "IN")',
+    'filter(cran, country == "IN", r_version <= "3.0.2")')
+  Class: cmd_question
+  CorrectAnswer: filter(cran, r_version <= "3.0.2", country == "IN")
+  Hint: "filter (cran, r_version &lt;= &quot;3.0.2&quot;, country == &quot;IN&quot;)\
+    \ retornar\xE1 todas as linhas para as quais r_version \xE9 menor ou igual a &quot;3.0.2&quot;\
+    \ e country \xE9 igual a &quot;IN&quot;."
+  Output: "Edite sua chamada anterior para filter () para retornar as linhas correspondentes\
+    \ aos usu\xE1rios em &quot;IN&quot; (\xCDndia) executando uma vers\xE3o R que\
+    \ seja menor ou igual a &quot;3.0.2&quot;. A seta para cima no teclado pode ser\
+    \ \xFAtil aqui. N\xE3o esque\xE7a suas aspas duplas!"
+- AnswerTests: any_of_exprs('filter(cran, country == "US" | country == "IN")', 'filter(cran,
+    country == "IN" | country == "US")')
+  Class: cmd_question
+  CorrectAnswer: filter(cran, country == "US" | country == "IN")
+  Hint: "filter (cran, country == &quot;US&quot; | country == &quot;IN&quot;) retornar\xE1\
+    \ todas as linhas cujo pa\xEDs \xE9 igual a &quot;US&quot; ou &quot;IN&quot;.\
+    \ O s\xEDmbolo `|` (chamado operador de pipe) provavelmente compartilha uma chave\
+    \ com a barra invertida no seu teclado."
+  Output: "Nossas \xFAltimas duas chamadas para filter () solicitaram todas as linhas\
+    \ para as quais alguma condi\xE7\xE3o E outra condi\xE7\xE3o foram TRUE. Tamb\xE9\
+    m podemos solicitar linhas para as quais UMA condi\xE7\xE3o OU outra condi\xE7\
+    \xE3o s\xE3o VERDADEIRAS. Por exemplo, filter (cran, country == &quot;US&quot;\
+    \ | country == &quot;IN&quot;) nos dar\xE1 todas as linhas para as quais a vari\xE1\
+    vel country \xE9 igual a &quot;US&quot; ou &quot;IN&quot;. D\xEA uma chance."
+- AnswerTests: any_of_exprs('filter(cran, size > 100500, r_os == "linux-gnu")', 'filter(cran,
+    r_os == "linux-gnu", size > 100500)')
+  Class: cmd_question
+  CorrectAnswer: filter(cran, size > 100500, r_os == "linux-gnu")
+  Hint: "Isso \xE9 complicado. filter (cran, tamanho&gt; 100500, r_os == &quot;linux-gnu&quot;)\
+    \ nos dar\xE1 todas as linhas cujo tamanho \xE9 estritamente maior que 100500\
+    \ e r_os \xE9 &quot;linux-gnu&quot;."
+  Output: "Agora, use filter () para buscar todas as linhas cujo tamanho \xE9 estritamente\
+    \ maior que (&gt;) 100500 (sem aspas, j\xE1 que o tamanho \xE9 num\xE9rico) AND\
+    \ r_os \xE9 igual a &quot;linux-gnu&quot;. Dica: Voc\xEA est\xE1 passando tr\xEA\
+    s argumentos para filter (): o nome do conjunto de dados, a primeira condi\xE7\
+    \xE3o e a segunda condi\xE7\xE3o."
+- Class: text
+  Output: "Finalmente, queremos obter apenas as linhas para as quais a r_version n\xE3\
+    o est\xE1 faltando. R representa valores ausentes com NA e esses valores ausentes\
+    \ podem ser detectados usando a fun\xE7\xE3o is.na ()."
+- AnswerTests: omnitest('is.na(c(3, 5, NA, 10))')
+  Class: cmd_question
+  CorrectAnswer: is.na(c(3, 5, NA, 10))
+  Hint: Tente is.na (c (3, 5, NA, 10)) para ver como funciona is.na ().
+  Output: Para ver como isso funciona, tente is.na (c (3, 5, NA, 10)).
+- AnswerTests: omnitest('!is.na(c(3, 5, NA, 10))')
+  Class: cmd_question
+  CorrectAnswer: '!is.na(c(3, 5, NA, 10))'
+  Hint: "! is.na (c (3, 5, NA, 10)) negar\xE1 o comando anterior, dizendo-nos o que\
+    \ N\xC3O \xE9 NA."
+  Output: "Agora, coloque um ponto de exclama\xE7\xE3o (!) Antes de is.na () para\
+    \ mudar todos os TRUEs para FALSEs e todos os FALSEs para TRUEs, dizendo-nos o\
+    \ que N\xC3O \xE9 NA:! Is.na (c (3, 5, NA, 10))."
+- AnswerTests: omnitest('filter(cran, !is.na(r_version))')
+  Class: cmd_question
+  CorrectAnswer: filter(cran, !is.na(r_version))
+  Hint: "Este \xE9 outro complicado. filter (cran,! is.na (r_version)) retornar\xE1\
+    \ todas as linhas do cran para as quais r_version N\xC3O \xE9 NA."
+  Output: "Ok, pronto para colocar tudo isso junto? Use filter () para retornar todas\
+    \ as linhas do cran para as quais r_version N\xC3O \xE9 NA. Dica: Voc\xEA precisar\xE1\
+    \ usar! Is.na () como parte de seu segundo argumento para filter ()."
+- Class: text
+  Output: "Vimos como selecionar um subconjunto de colunas e linhas do nosso conjunto\
+    \ de dados usando select () e filter (), respectivamente. Inherent in select ()\
+    \ tamb\xE9m era a capacidade de organizar nossas colunas selecionadas em qualquer\
+    \ ordem que desej\xE1ssemos."
+- Class: text
+  Output: "\xC0s vezes, queremos ordenar as linhas de um conjunto de dados de acordo\
+    \ com os valores de uma vari\xE1vel espec\xEDfica. Este \xE9 o trabalho de organizar\
+    \ ()."
+- AnswerTests: omnitest('cran2 <- select(cran, size:ip_id)')
+  Class: cmd_question
+  CorrectAnswer: cran2 <- select(cran, size:ip_id)
+  Hint: "Use select (cran, size: ip_id) para selecionar todas as colunas de tamanho\
+    \ atrav\xE9s de ip_id. Armazene o resultado no cran2."
+  Output: "Para ver como o arranjo () funciona, vamos primeiro pegar um subconjunto\
+    \ do cran. selecione () todas as colunas do tamanho atrav\xE9s de ip_id e armazene\
+    \ o resultado em cran2."
+- AnswerTests: omnitest('arrange(cran2, ip_id)')
+  Class: cmd_question
+  CorrectAnswer: arrange(cran2, ip_id)
+  Hint: "organize (cran2, ip_id) ir\xE1 ordenar as linhas do cran2 do menor ip_id\
+    \ para o maior ip_id."
+  Output: "Agora, para ordenar as linhas de cran2 para que ip_id esteja em ordem crescente\
+    \ (de pequeno a grande), digite providenciar (cran2, ip_id). Voc\xEA pode querer\
+    \ tornar seu console grande o suficiente para que voc\xEA possa ver ip_id, que\
+    \ \xE9 a \xFAltima coluna."
+- AnswerTests: omnitest('arrange(cran2, desc(ip_id))')
+  Class: cmd_question
+  CorrectAnswer: arrange(cran2, desc(ip_id))
+  Hint: "arranje (cran2, desc (ip_id)) ordenar\xE1 as linhas do nosso conjunto de\
+    \ dados do maior ip_id para o menor ip_id."
+  Output: Para fazer o mesmo, mas em ordem decrescente, mude o segundo argumento para
+    desc (ip_id), onde desc () significa &#39;descendente&#39;. Continue.
+- AnswerTests: omnitest('arrange(cran2, package, ip_id)')
+  Class: cmd_question
+  CorrectAnswer: arrange(cran2, package, ip_id)
+  Hint: Use o arranjo (cran2, package, ip_id) para classificar os dados principalmente
+    pelo nome do pacote e secundariamente pelo ip_id.
+  Output: "N\xF3s tamb\xE9m podemos organizar os dados de acordo com os valores de\
+    \ m\xFAltiplas vari\xE1veis. Por exemplo, organize (cran2, package, ip_id) primeiro\
+    \ organizar por nomes de pacotes (crescente alfabeticamente), depois por ip_id.\
+    \ Isso significa que, se houver v\xE1rias linhas com o mesmo valor para o pacote,\
+    \ elas ser\xE3o classificadas por ip_id (numericamente ascendente). Tente organizar\
+    \ (cran2, package, ip_id) agora."
+- AnswerTests: omnitest('arrange(cran2, country, desc(r_version), ip_id)')
+  Class: cmd_question
+  CorrectAnswer: arrange(cran2, country, desc(r_version), ip_id)
+  Hint: "organizar (cran2, country, desc (r_version), ip_id) classificar\xE1 os dados\
+    \ por pa\xEDs (ascendente) primeiro, depois por r_version (descendente) e, finalmente,\
+    \ por ip_id (ascendente)."
+  Output: "Organize o cran2 pelas tr\xEAs vari\xE1veis \u200B\u200Ba seguir, nesta\
+    \ ordem: country (crescente), r_version (decrescente) e ip_id (ascendente)."
+- AnswerTests: omnitest('cran3 <- select(cran, ip_id, package, size)')
+  Class: cmd_question
+  CorrectAnswer: cran3 <- select(cran, ip_id, package, size)
+  Hint: "O cran3 &lt;- select (cran, ip_id, package, size) armazenar\xE1 apenas estas\
+    \ tr\xEAs colunas em uma nova vari\xE1vel chamada cran3."
+  Output: "Para ilustrar a pr\xF3xima fun\xE7\xE3o principal em dplyr, vamos pegar\
+    \ outro subconjunto de nossos dados originais. Use select () para pegar 3 colunas\
+    \ de cran-ip_id, package e size (nessa ordem) - e armazene o resultado em uma\
+    \ nova vari\xE1vel chamada cran3."
+- AnswerTests: any_of_exprs('cran3', 'print(cran3)')
+  Class: cmd_question
+  CorrectAnswer: cran3
+  Hint: "Digite cran3 para visualizar seu conte\xFAdo."
+  Output: "D\xEA uma olhada no cran3 agora."
+- Class: text
+  Output: "\xC9 comum criar uma nova vari\xE1vel com base no valor de uma ou mais\
+    \ vari\xE1veis \u200B\u200Bj\xE1 em um conjunto de dados. A fun\xE7\xE3o mutate\
+    \ () faz exatamente isso."
+- Class: text
+  Output: "A vari\xE1vel de tamanho representa o tamanho do download em bytes, que\
+    \ s\xE3o unidades de mem\xF3ria do computador. Atualmente, megabytes (MB) s\xE3\
+    o uma unidade de medida mais comum. Um megabyte \xE9 igual a 2 ^ 20 bytes. Isso\
+    \ \xE9 2 para o poder de 20, que \xE9 de aproximadamente um milh\xE3o de bytes!"
+- AnswerTests: omnitest('mutate(cran3, size_mb = size / 2^20)')
+  Class: cmd_question
+  CorrectAnswer: mutate(cran3, size_mb = size / 2^20)
+  Hint: "mutate (cran3, size_mb = size / 2 ^ 20) adicionar\xE1 uma nova coluna chamada\
+    \ size_mb que cont\xE9m o tamanho do download em megabytes."
+  Output: "Queremos adicionar uma coluna chamada size_mb que cont\xE9m o tamanho do\
+    \ download em megabytes. Aqui est\xE1 o c\xF3digo para fazer isso: mutate (cran3,\
+    \ size_mb = size / 2 ^ 20)"
+- Class: text
+  Output: An even larger unit of memory is a gigabyte (GB), which equals 2^10 megabytes.
+    We might as well add another column for download size in gigabytes!
+- AnswerTests: omnitest('mutate(cran3, size_mb = size / 2^20, size_gb = size_mb /
+    2^10)')
+  Class: cmd_question
+  CorrectAnswer: mutate(cran3, size_mb = size / 2^20, size_gb = size_mb / 2^10)
+  Hint: Use mutate (cran3, size_mb = tamanho / 2 ^ 20, size_gb = size_mb / 2 ^ 10)
+    para criar duas novas colunas chamadas size_mb e size_gb, respectivamente.
+  Output: "Um recurso muito interessante de mutate () \xE9 que voc\xEA pode usar o\
+    \ valor calculado para sua segunda coluna (size_mb) para criar uma terceira coluna,\
+    \ tudo na mesma linha de c\xF3digo. Para ver isso em a\xE7\xE3o, repita exatamente\
+    \ o mesmo comando acima, exceto adicionar um terceiro argumento criando uma coluna\
+    \ chamada size_gb e igual a size_mb / 2 ^ 10."
+- AnswerTests: omnitest('mutate(cran3, correct_size = size + 1000)')
+  Class: cmd_question
+  CorrectAnswer: mutate(cran3, correct_size = size + 1000)
+  Hint: "mutate (cran3, correct_size = size + 1000) criar\xE1 uma nova coluna que\
+    \ \xE9 igual aos tamanhos originais mais 1000."
+  Output: "Vamos tentar mais um para praticar. Finja que descobrimos uma falha no\
+    \ sistema que forneceu os valores originais para a vari\xE1vel de tamanho. Todos\
+    \ os valores no cran3 s\xE3o 1000 bytes menores do que deveriam ser. Usando o\
+    \ cran3, crie apenas uma nova coluna chamada correct_size que contenha o tamanho\
+    \ correto."
+- AnswerTests: omnitest('summarize(cran, avg_bytes = mean(size))')
+  Class: cmd_question
+  CorrectAnswer: summarize(cran, avg_bytes = mean(size))
+  Hint: "resumir (cran, avg_bytes = mean (size)) nos dar\xE1 o tamanho m\xE9dio e\
+    \ rotularemos o resultado &#39;avg_bytes&#39;."
+  Output: "O \xFAltimo dos cinco verbos core dplyr, summarize (), recolhe o conjunto\
+    \ de dados em uma \xFAnica linha. Digamos que estamos interessados \u200B\u200B\
+    em saber o tamanho m\xE9dio de download. Resumir (cran, avg_bytes = mean (size))\
+    \ ir\xE1 gerar o valor m\xE9dio da vari\xE1vel size. Aqui n\xF3s escolhemos rotular\
+    \ o resultado &#39;avg_bytes&#39;, mas poder\xEDamos ter nomeado qualquer coisa.\
+    \ De uma chance."
+- Class: text
+  Output: "Isso n\xE3o \xE9 particularmente interessante. summary () \xE9 mais \xFA\
+    til ao trabalhar com dados que foram agrupados pelos valores de uma vari\xE1vel\
+    \ espec\xEDfica."
+- Class: text
+  Output: "Veremos os dados agrupados na pr\xF3xima li\xE7\xE3o, mas a ideia \xE9\
+    \ que resume () pode fornecer o valor solicitado para CADA grupo em seu conjunto\
+    \ de dados."
+- Class: text
+  Output: "Nesta li\xE7\xE3o, voc\xEA aprendeu como manipular dados usando as cinco\
+    \ principais fun\xE7\xF5es do dplyr. Na pr\xF3xima li\xE7\xE3o, veremos como aproveitar\
+    \ alguns outros recursos \xFAteis do dplyr para facilitar muito a sua vida como\
+    \ analista de dados."
+- AnswerChoices: "Sim n\xE3o"
+  AnswerTests: coursera_on_demand()
+  Class: mult_question
+  CorrectAnswer: null
+  Hint: ''
+  Output: "Voc\xEA gostaria de receber cr\xE9dito por concluir este curso no Coursera.org?"
