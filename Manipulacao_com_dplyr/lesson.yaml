@@ -311,7 +311,7 @@
 - AnswerTests: omnitest('filter(cran, !is.na(r_version))')
   Class: cmd_question
   CorrectAnswer: filter(cran, !is.na(r_version))
-  Hint: Este é outro complicado. filter(cran, !is.na (r_version)) retornará todas
+  Hint: Este é outro complicado. filter(cran, !is.na(r_version)) retornará todas
     as linhas do cran para as quais r_version NÃO é NA.
   Output: 'Ok, pronto para colocar tudo isso junto? Use filter() para retornar todas
     as linhas do cran para as quais r_version NÃO é NA. Dica: Você precisará usar !is.na() como parte de seu segundo argumento para filter().'
