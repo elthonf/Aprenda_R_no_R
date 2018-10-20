@@ -251,7 +251,7 @@
 
 - Class: mult_question
   Output: "Gostaria de informar ao professor sobre a conclus\xE3o desta li\xE7\xE3o"
-  CorrectAnswer: NULL
+  CorrectAnswer: TRUE
   AnswerChoices: Sim; Não
   AnswerTests: notify()
   Hint: Na dúvida, digite Sim :-)

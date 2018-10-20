@@ -138,18 +138,50 @@ notify <- function() {
   info$course <- attr(e$les, "course_name")
   info$lesson <- attr(e$les, "lesson_name")
   
-  #Sendo through http
-  response = httr::GET('https://us-central1-emf-teacher.cloudfunctions.net/function-save-test', 
-                       query = info)
-  
-  print ( rawToChar(response$content)  )
-  
-  hrule()
-  message("\nSeu resultado foi salvo!\n")
-  hrule()
+  sucesso = FALSE
+  tentativas = 1
+  url = 'https://us-central1-emf-teacher.cloudfunctions.net/function-save-test'
+  while (!sucesso & tentativas <= 10) {
+    print(paste0("Tentando submeter ao professor, tentativa ", tentativas, " ... (max 10) ..."))
+    sucesso = tryCatch(
+      {
+        #Sendo through http
+        response = httr::GET(url, query = info)
+        
+        print ( rawToChar(response$content)  )
+        
+        if(response$status_code != 200 ){
+          message(paste( "Error code: ", response$status_code ) )
+        }
+        
+        hrule()
+        message("\nSeu resultado foi salvo!\n")
+        hrule()
+        return (TRUE)
+      },
+      error=function(cond){
+        message("URL does not seem to exist.")
+        message("Here's the original error message:")
+        message(cond)
+        # Choose a return value in case of error
+        Sys.sleep(2)
+        return(FALSE)
+      },
+      warning=function(cond){
+        message("URL caused a warning.")
+        message("Here's the original warning message:")
+        message(cond)
+        # Choose a return value in case of warning
+        Sys.sleep(2)
+        return(FALSE)
+      }
+    )
+    
+    tentativas = tentativas + 1
+  }
   
   # Return TRUE to satisfy swirl and return to course menu
-  TRUE
+  return(sucesso)
 }
 
 readline_clean <- function(prompt = "") {
