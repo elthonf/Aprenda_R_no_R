@@ -163,7 +163,7 @@
 - AnswerTests: omnitest(correctExpr='plot(cars, sub = "Meu subtitulo")')
   Class: cmd_question
   CorrectAnswer: plot(cars, sub = "Meu subtitulo")
-  Hint: Digite plot (cars, sub = "Meu subtitulo") para criar o gráfico.
+  Hint: Digite plot(cars, sub = "Meu subtitulo") para criar o gráfico.
   Output: Plote o data.frame cars com o subtítulo "Meu subtitulo".
   
 - Class: text
