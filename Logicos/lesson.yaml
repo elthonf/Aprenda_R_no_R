@@ -208,10 +208,10 @@
 - AnswerTests: omnitest(correctExpr='5 > 8 || 6 != 8 && 4 > 3.9')
   Class: cmd_question
   CorrectAnswer: 5 > 8 || 6 != 8 && 4 > 3.9
-  Hint: "Veja como funciona a ordem das operações digitando: 5 > 8 || 6 != 8 e 4 > 3.9"
+  Hint: "Veja como funciona a ordem das operações digitando: 5 > 8 || 6 != 8 && 4 > 3.9"
   Output: "Como você deve se lembrar, a aritmética tem uma ordem de operaç\
     ões e também expressões lógicas. Todos os operadores AND são avaliados\
-    \ antes dos operadores OR. Vamos ver um exemplo de um caso amb\xEDguo. Tipo: 5 > 8 || 6 != 8 e 4 > 3.9"
+    \ antes dos operadores OR. Vamos ver um exemplo de um caso amb\xEDguo. Tipo: 5 > 8 || 6 != 8 && 4 > 3.9"
     
 - Class: text
   Output: "Vamos percorrer a ordem das operações no caso acima. Primeiro, os\
