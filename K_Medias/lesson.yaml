@@ -1,0 +1,451 @@
+- Class: meta
+  Course: Aprenda R no R
+  Lesson: K-Médias
+  Author: Elthon Manhas de Freitas
+  Type: Standard
+  Organization: FIAP
+  Version: 1.0.0
+  
+- Class: text
+  Output: Nesta lição, aprenderemos sobre o agrupamento em cluster k-means, outra
+    maneira simples de examinar e organizar dados multidimensionais. Tal como acontece
+    com o agrupamento hierárquico, essa técnica é mais útil nos estágios iniciais
+    de análise quando você está tentando obter uma compreensão dos dados, por exemplo,
+    encontrar algum padrão ou relação entre diferentes fatores ou variáveis.
+    
+- Class: text
+  Output: A documentação do R nos diz que o método k-means "visa particionar
+    os pontos em k grupos de forma que a soma quadrática das distâncias dos pontos aos centros
+    do cluster designados seja minimizada."
+    
+- Class: text
+  Output: Como o processo organiza os pontos de dados que estão próximos em grupos,
+    vamos assumir que decidimos uma medida de distância, por exemplo, euclidiana.
+
+- Class: figure
+  Figure: ranPoints.R
+  FigureType: new
+  Output: Para ilustrar o método, usaremos esses pontos aleatórios que acabei de gerar. Demonstrarei o
+    agrupamento k-means em várias etapas, mas primeiro explicarei a ideia geral.
+    
+- Class: text
+  Output: Como disse, k-means é uma abordagem de agrupamento que requer que você
+    adivinhe quantos clusters você tem (ou deseja). Depois de corrigir esse número,
+    você cria aleatoriamente um "centróide" (um ponto fantasma) para cada
+    cluster e atribui cada ponto ou observação em seu conjunto de dados ao centróide
+    ao qual ele está mais próximo. Uma vez que cada ponto é atribuído a um centróide,
+    você reajusta a posição do centróide, fazendo com que seja a média dos pontos
+    atribuídos a ele.
+
+- Class: text
+  Output: Uma vez que você tenha reposicionado os centróides, você deve recalcular
+    a distância das observações para os centróides e reatribuir, se necessário,
+    ao centróide mais próximo a eles. Novamente, depois que as reatribuições forem
+    concluídas, reajuste as posições dos centróides com base na nova associação do
+    cluster. O processo é interrompido quando você alcança uma iteração na qual nenhum
+    ajuste é feito ou quando você atinge um número máximo predeterminado de iterações.
+    
+- AnswerChoices: Uma métrica de distância definida; Um número de clusters; Um palpite inicial quanto aos centróides de cluster; Todas as alternativas
+  AnswerTests: omnitest(correctVal='Todas as alternativas')
+  Class: mult_question
+  CorrectAnswer: Todas as alternativas
+  Hint: Qual escolha mais agrangente?
+  Output: Conforme descrito, o que esse processo exige?
+  
+- AnswerChoices: Uma estimativa final de centróides de cluster; Uma atribuição de cada ponto a um cluster; Todas as alternativas
+  AnswerTests: omnitest(correctVal='Todas as alternativas')
+  Class: mult_question
+  CorrectAnswer: Todas as alternativas
+  Hint: Qual alternativa mais abrangente.
+  Output: Portanto, o agrupamento k-means requer alguma métrica de distância (digamos,
+    euclidiana), um número fixo de clusters hipotético e uma estimativa inicial dos
+    centróides de cluster. Como descrito, o que esse processo produz?
+    
+- Class: text
+  Output: Quando terminar, o agrupamento k-means  retorna uma posição final do centróide
+    de cada cluster, bem como a atribuição de cada ponto de dados ou observação a
+    um cluster.
+    
+- Class: text
+  Output: Agora vamos percorrer este processo usando nossos pontos aleatórios como
+    nossos dados. As coordenadas destes 12 pontos foram armazenadas em 2 vetores, x e y. Nós olhamos
+    a tela e só de olhar imaginamos que existem 3 clusters. Nós vamos escolher 3 posições de centróides,
+    uma para cada cluster.
+    
+- AnswerTests: omnitest(correctExpr='cmat')
+  Class: cmd_question
+  CorrectAnswer: cmat
+  Hint: Digite cmat no console.
+  Output: Criei dois vetores de 3 números para você, cx e cy. Estes, respectivamente,
+    mantêm as coordenadas x e y para 3 centróides propostos. Por conveniência, também
+    os armazenei em uma matriz 2 por 3, chamada cmat. As coordenadas x estão na primeira
+    linha e as coordenadas y na segunda. Veja a matriz cmat agora.
+    
+- AnswerTests: omnitest(correctExpr='points(cx,cy,col=c("red","orange","purple"),pch=3,cex=2,lwd=2)')
+  Class: cmd_question
+  CorrectAnswer: points(cx,cy,col=c("red","orange","purple"),pch=3,cex=2,lwd=2)
+  Hint: Digite points(cx,cy,col=c("red","orange","purple"),pch=3,cex=2,lwd=2) no console.
+  Output: As coordenadas desses pontos são (1, 2), (1.8, 1) e (2.5, 1.5). Vamos adicionar
+    esses centróides ao plot dos nossos pontos. Faça isso chamando o comando points 
+    com 6 argumentos. Os dois primeiros são cx e cy e o terceiro é conjunto igual
+    à concatenação de três cores, "red", "orange" e "purple".
+    O quarto argumento é pch=3 (um sinal de mais), o quinto é cex=2 (expansão de caractere), e o final é lwd=2 (largura da linha).
+    
+- Class: text
+  Output: Nós vemos o primeiro centróide (1, 2) em vermelho. O segundo (1.8, 1), à direita
+    e abaixo do primeiro, e é laranja. O centróide final (2.5, 1.5), o mais distante
+    à direita, é roxo.
+
+- AnswerChoices: 15; 36; 9; 108
+  AnswerTests: omnitest(correctVal='36')
+  Class: mult_question
+  CorrectAnswer: 36
+  Hint: A distância entre cada ponto e um centróide significa que 12 distâncias devem
+    ser calculadas para cada centróide. Isso tem que ser feito para todos os 3 centróides.
+  Output: Agora temos que calcular as distâncias entre cada ponto e cada centróide.
+    Existem 12 pontos de dados e 3 centróides. Quantas distâncias temos que calcular?
+    
+- AnswerTests: omnitest(correctExpr='mdist(x ,y, cx, cy)')
+  Class: cmd_question
+  CorrectAnswer: mdist(x ,y, cx, cy)
+  Hint: Digite mdist(x ,y, cx, cy) no console.
+  Output: Eu escrevi uma função para você chamada mdist que recebe 4 argumentos.
+    Os vetores de pontos de dados (x e y) são os dois primeiros e os dois vetores
+    de coordenadas centróides (cx e cy) são os dois últimos. Chame mdist agora com
+    esses argumentos.
+    
+- Class: text
+  Output: Cada linha representa um dos 3 centróides e cada coluna, um dos 12 pontos. Cada célula representa a distância euclidiana de um ponto para um centróide.
+
+- AnswerTests: omnitest(correctExpr='distTmp <- mdist(x ,y, cx, cy)')
+  Class: cmd_question
+  CorrectAnswer: distTmp <- mdist(x ,y, cx, cy)
+  Hint: Digite distTmp <- mdist(x ,y, cx, cy) no console.
+  Output: Agora, faça o mesmo comando, mas armazene o resultado na variável distTmp.
+
+- AnswerTests: omnitest(correctExpr='distTmp')
+  Class: cmd_question
+  CorrectAnswer: distTmp
+  Hint: Digite distTmp no console.
+  Output: Confira o conteúdo da variável distTmp.
+  
+- AnswerChoices: Escolher a menor linha; Escolher a maior linha; Somar as 3 linhas.
+  AnswerTests: omnitest(correctVal='Escolher a menor linha')
+  Class: mult_question
+  CorrectAnswer: Escolher a menor linha
+  Hint: Atribuímos cada ponto ao centróide mais próximo a ele. Cada linha representa um centróide e cada coluna um dos pontos? O que fazer?
+  Output: Agora temos
+    que atribuir um cluster a cada ponto. Para fazer isso, vamos olhar para cada coluna (cada um dos 12 pontos)... Mas e aí? O que fazer?
+    
+- AnswerChoices: 1; 2; 3; nenhuma
+  AnswerTests: omnitest(correctVal='3')
+  Class: mult_question
+  CorrectAnswer: 3
+  Hint: Qual linha que na coluna 6 tem o menor valor?
+  Output: Das entradas de distTmp, para qual cluster o ponto 6 deve ser atribuído?
+  
+- AnswerTests: omnitest(correctExpr='apply(distTmp, 2, which.min)')
+  Class: cmd_question
+  CorrectAnswer: apply(distTmp, 2, which.min)
+  Hint: Digite apply(distTmp, 2, which.min) no console.
+  Output: O R tem uma função útil chamada which.min que diz qual o índice do menor valor de um vetor.
+    Você pode aplicar a todas as colunas de
+    distTmp com uma chamada. Simplesmente chame a função R apply com 3 argumentos.
+    O primeiro é distTmp, o segundo é 2, ou seja, as colunas de distTmp, e o terceiro
+    é which.min, a função que você deseja aplicar às colunas de distTmp. Tente isso
+    agora.
+    
+- Class: text
+  Output: Você pode ver que você estava certo! O menor valor da 6ª coluna é de fato o que está na linha 3 como você
+    respondeu antes. Vemos que as 3 primeiras entradas foram atribuídas ao segundo
+    cluster (laranja) e apenas 2 pontos (4 e 8) foram atribuídos ao primeiro cluster
+    (vermelho).
+
+- AnswerTests: omnitest(correctExpr='newClust<-apply(distTmp,2,which.min)')
+  Class: cmd_question
+  CorrectAnswer: newClust<-apply(distTmp,2,which.min)
+  Hint: Digite newClust<-apply(distTmp, 2, which.min) no console.
+  Output: Faça o mesmo comando, mas agora armazene o resultado na variável newClust .
+  
+- AnswerTests: omnitest(correctExpr='points(x, y, pch=19, cex=2, col=cols1[newClust])')
+  Class: cmd_question
+  CorrectAnswer: points(x, y, pch=19, cex=2, col=cols1[newClust])
+  Hint: Digite points(x, y, pch=19, cex=2, col=cols1[newClust]) no console.
+  Output: Eu armazenei as cores do cluster ("red", "orange",
+    "purple") no vetor cols1 para você. Agora vamos colorir os 12 pontos de acordo com
+    suas atribuições. Novamente, use o comando points com 5 argumentos. Os primeiros
+    2 são x e y. O terceiro é pch=19, o quarto é cex=2
+    e o último, col=cols1[newClust].
+    
+- Class: text
+  Output: Agora temos que recalcular nossos centróides para que eles sejam a média
+    (centro de gravidade) do conjunto de pontos atribuídos a eles. Temos que fazer
+    as coordenadas x e y separadamente. Nós vamos fazer a coordenada x primeiro. Lembre-se
+    de que os vetores x e y mantêm as respectivas coordenadas de nossos 12 pontos de
+    dados.
+    
+- AnswerTests: omnitest(correctExpr='tapply(x, newClust, mean)')
+  Class: cmd_question
+  CorrectAnswer: tapply(x, newClust, mean)
+  Hint: Digite tapply(x, newClust, mean) no console.
+  Output: Podemos usar a função R tapply que aplica "uma função sobre um array
+    irregular". Isso significa que cada elemento da matriz é atribuído a um fator
+    e a função é aplicada a subconjuntos da matriz (identificados pelo vetor de fator).
+    Isso nos permite aproveitar o novo vetor de fator newClust que calculamos. Chame
+    tapply agora com 3 argumentos, x (os dados), newClust (a matriz de fatores) e
+    média (a função a ser aplicada).
+
+- Class: text
+  Output: Estas são as coordenadas centrais no eixo X dos pontos vermelhos, laranjas e roxos. Isso quer dizer que deve ser a nova coordenada X de cada um dos respectivos centróides.
+
+- AnswerTests: omnitest(correctExpr='tapply(y, newClust, mean)')
+  Class: cmd_question
+  CorrectAnswer: tapply(y, newClust, mean)
+  Hint: Digite tapply(y, newClust, mean) no console.
+  Output: Repita o comando tapply, mas agora faça com o vetor y no primeiro parâmetro ao invés de x.
+
+- Class: text
+  Output: Como sou legal, armazenei esse valores que você calculou nos vetores newCx e newCy. Para tanto, eu executei as instruções newCx <- tapply(x, newClust, mean) e newCy <- tapply(y, newClust, mean); 
+
+- AnswerTests: omnitest(correctExpr='points(newCx,newCy,col=cols1,pch=8,cex=2,lwd=2)')
+  Class: cmd_question
+  CorrectAnswer: points(newCx,newCy,col=cols1,pch=8,cex=2,lwd=2)
+  Hint: Digite points(newCx, newCy, col = cols1, pch = 8, cex = 2, lwd = 2) no console.
+  Output: Agora que temos novas coordenadas x e y para os 3 centróides, podemos
+    plotá-las. 
+    Use o comando points com as variáveis newCx e newCy como os 2 primeiros argumentos. Além disso,
+    use os argumentos col = cols1, pch = 8 (asterisco), cex = 2 e lwd = 2.
+
+- AnswerTests: omnitest(correctExpr='mdist(x, y, newCx, newCy)')
+  Class: cmd_question
+  CorrectAnswer: mdist(x, y, newCx, newCy)
+  Hint: Digite mdist(x, y, newCx, newCy) no console.
+  Output: Vemos como os centróides se aproximaram de seus respectivos clusters. Isso
+    é especialmente verdadeiro no segundo cluster (laranja). Agora chame a função que calcula a distância 
+    mdist com os 4 argumentos x, y, newCx e newCy. Isso nos permitirá reatribuir
+    os pontos de dados a novos clusters, se necessário.
+    
+- AnswerTests: omnitest(correctExpr='distTmp2 <- mdist(x, y, newCx, newCy)')
+  Class: cmd_question
+  CorrectAnswer: distTmp2 <- mdist(x, y, newCx, newCy)
+  Hint: Digite distTmp2 <- mdist(x, y, newCx, newCy) no console.
+  Output: Agora, faça o mesmo comando, mas armazene o resultado na variável distTmp2.
+
+- AnswerTests: omnitest(correctExpr='distTmp2')
+  Class: cmd_question
+  CorrectAnswer: distTmp2
+  Hint: Digite distTmp2 no console.
+  Output: Confira o conteúdo da variável distTmp2.
+  
+- AnswerChoices: Nada; Ambos mudarão para o cluster 2; Ambos devem mudar de cluster;
+    Eles são os únicos pontos que não mudam de cluster
+  AnswerTests: omnitest(correctVal='Ambos devem mudar de cluster')
+  Class: mult_question
+  CorrectAnswer: Ambos devem mudar de cluster
+  Hint: Duas das escolhas estão obviamente erradas. Isso deixa duas possibilidades
+    que são semelhantes. Observe atentamente os números nas colunas 4 e 7 para ver
+    onde estão os valores mínimos.
+  Output: Lembre-se de que o primeiro cluster é vermelho, o segundo laranja e o terceiro
+    roxo. Observe atentamente as colunas 4 e 7 do distTmp2. O que acontecerá com os
+    pontos 4 e 7?
+    
+- AnswerTests: omnitest(correctExpr='apply(distTmp2, 2, which.min)')
+  Class: cmd_question
+  CorrectAnswer: apply(distTmp2, 2, which.min)
+  Hint: Digite apply(distTmp2, 2, which.min) no console.
+  Output: Agora, chame apply com 3 argumentos, distTmp2, 2 e which.min para encontrar
+    as novas atribuições de cluster para os pontos.
+
+- Class: text
+  Output: Estes são os novos clusters de cada um dos 12 pontos. Para isso foi usado o critério da menor distância de cada ponto para cada um dos novos centróides.
+
+- AnswerTests: omnitest(correctExpr='newClust2 <- apply(distTmp2, 2, which.min)')
+  Class: cmd_question
+  CorrectAnswer: newClust2 <- apply(distTmp2, 2, which.min)
+  Hint: Digite newClust2 <- apply(distTmp2, 2, which.min) no console.
+  Output: Agora que você viu a saída da instrução apply, execute novamente o mesmo comando e armazene o resultado na variável newClust2 .
+  
+  
+- AnswerTests: omnitest(correctExpr='points(x, y, pch = 19, cex = 2, col = cols1[newClust2])')
+  Class: cmd_question
+  CorrectAnswer: points(x, y, pch = 19, cex = 2, col = cols1[newClust2])
+  Hint: Digite points(x, y, pch = 19, cex = 2, col = cols1[newClust2]) no console.
+  Output: Use a função points para recolorir os pontos com suas novas atribuições.
+    Novamente, passe 5 argumentos, x e y são os primeiros, seguidos por pch = 19, cex = 2 e col = cols1[newClust2].
+    
+- Class: text
+  Output: Observe que os pontos 4 e 7 mudaram de cluster, o ponto 4 mudou de 1 para 2 (vermelho
+    para laranja) e o ponto 7 mudou de 3 para 2 (roxo para vermelho).
+    
+- AnswerTests: omnitest(correctExpr='tapply(x,newClust2,mean)')
+  Class: cmd_question
+  CorrectAnswer: tapply(x, newClust2, mean)
+  Hint: Digite tapply(x, newClust2, mean) no console.
+  Output: Agora, use tapply para encontrar a coordenada x do novo centróide. Lembre-se que existem 3 argumentos, x, newClust2 e mean.
+    
+- AnswerTests: omnitest(correctExpr='tapply(y,newClust2,mean)')
+  Class: cmd_question
+  CorrectAnswer: tapply(y,newClust2,mean)
+  Hint: Digite tapply(y, newClust2, mean) no console.
+  Output: Faça o mesmo para encontrar a nova coordenada y.
+  
+- AnswerTests: omnitest(correctExpr='points(finalCx,finalCy,col=cols1,pch=9,cex=2,lwd=2)')
+  Class: cmd_question
+  CorrectAnswer: points(finalCx,finalCy,col=cols1,pch=9,cex=2,lwd=2)
+  Hint: Digite points(finalCx, finalCy, col = cols1, pch = 9, cex = 2, lwd = 2) no
+    console.
+  Output: Eu armazenei essas coordenadas para você nas variáveis finalCx e finalCy.
+    Plote estes novos centróides usando a função points com 6 argumentos. Os dois
+    primeiros são finalCx e finalCy. O argumento col = cols1, pch = 9, cex = 2 e lwd = 2.
+    
+- Class: text
+  Output: Deveria ser óbvio que se continuássemos este processo, os pontos de 5 a
+    8 ficariam vermelhos, os pontos de 1 a 4 ficariam cor de laranja, e os
+    pontos de 9 a 12 ficariam roxos.
+    
+- Class: text
+  Output: Agora que você passou por um exemplo passo a passo, ficará aliviado ao saber
+    que o R fornece um comando para fazer todo esse trabalho para você. Não é novidade
+    que se chama kmeans e, embora tenha vários parâmetros, vamos apenas mencionar
+    quatro. Estes são x, (a matriz numérica dos dados), centers, iter.max e nstart.
+    O segundo parâmetro (centers) pode ser um número de clusters ou um conjunto de centróides
+    iniciais. O terceiro, iter.max, especifica o número máximo de iterações a serem
+    percorridas e nstart é o número de iniciações aleatórias que você deseja tentar,
+    se especificar centros como um número.
+    
+- AnswerTests: omnitest(correctExpr='kmeans(x=dataFrame,centers=3)')
+  Class: cmd_question
+  CorrectAnswer: kmeans(x=dataFrame,centers=3)
+  Hint: Digite kmeans(x=dataFrame,centers=3) no console.
+  Output: Vamos tentar agora a função kmeans com 2 argumentos, `x=dataFrame` (que contém as coordenadas
+    x e y de nossos 12 pontos) e o numero de centróides `centers = 3`.
+    
+- AnswerTests: omnitest(correctExpr='kmObj<-kmeans(x=dataFrame,centers=3)')
+  Class: cmd_question
+  CorrectAnswer: kmObj<-kmeans(x=dataFrame,centers=3)
+  Hint: Digite kmObj<-kmeans(x=dataFrame,centers=3) no console.
+  Output: Gostei, mas a saída foi toda para o console. Armazene a saída na variável kmObj.
+  
+- AnswerTests: omnitest(correctExpr='View(kmObj)')
+  Class: cmd_question
+  CorrectAnswer: View(kmObj)
+  Hint: Digite View(kmObj) no console.
+  Output: Antes de explorar as variáveis individualmente, gostaria que você explorasse um pouco a saída da função kmeans com o comando View(kmObj).
+    
+- AnswerTests: omnitest(correctExpr='kmObj$iter')
+  Class: cmd_question
+  CorrectAnswer: kmObj$iter
+  Hint: Digite kmObj$iter no console.
+  Output: O programa retorna a informação de que os dados se agrupam em 3 clusters
+    de tamanho 4. Também retorna as coordenadas das 3 médias de cluster, um vetor
+    chamado cluster indicando como os 12 pontos foram particionados nos clusters e
+    a soma dos quadrados dentro de cada um. grupo. Também mostra todos os componentes
+    disponíveis retornados pela função. Para ver quantas iterações o
+    algoritmo passou, digite kmObj$iter (sim, digite isso no console).
+    
+
+- AnswerTests: omnitest(correctExpr='plot(x, y, col=kmObj$cluster, pch=19, cex=2)')
+  Class: cmd_question
+  CorrectAnswer: plot(x, y, col=kmObj$cluster, pch=19, cex=2)
+  Hint: Digite plot(x, y, col=kmObj$cluster, pch=19, cex=2) no prompt de
+    comando.
+  Output: Ei só queria enfatizar como você pode
+    acessar as informações disponíveis no objeto kmObj. Vamos traçar a cor dos 12 pontos
+    de acordo com o cluster deles. Isso foi armazenado em 
+    kmObj$cluster. Execute a instrução plot com 5 argumentos. Os parâmetros x e y, são os dois primeiros;
+    o terceiro parâmetro é col = kmObj$cluster. Os dois últimos argumentos são pch = 19 e cex = 2.
+    
+- AnswerTests: omnitest(correctExpr='points(kmObj$centers,col=c("black","red","green"),pch=3,cex=3,lwd=3)')
+  Class: cmd_question
+  CorrectAnswer: points(kmObj$centers,col=c("black","red","green"),pch=3,cex=3,lwd=3)
+  Hint: Digite points(kmObj$centers, col=c("black","red","green"), pch = 3, cex = 3, lwd = 3) no console.
+  Output: Agora adicione os centróides que estão armazenados em kmObj$centers. Use
+    a função points com 5 argumentos. Os dois primeiros são kmObj$centers e col = c("black","red","green"). Os três últimos,
+    pch, cex e lwd, devem todos ser iguais a 3.
+    
+- Class: text
+  Output: Agora para um pouco de diversão!
+  
+- Class: text
+  Output: Quero mostrar a você como a saída da
+    função kmeans é afetada devido seu início aleatório (quando você solicita apenas
+    um número de clusters). Quero que você execute a função
+    várias vezes para ter uma ideia das relações entre suas observações. Vamos chamar
+    kmeans com o mesmos 12 pontos (armazenados em dataFrame), mas pediremos 6 clusters
+    em vez de 3.
+    
+- AnswerTests: omnitest(correctExpr='plot(x,y,col=kmeans(dataFrame,6)$cluster,pch=19,cex=2)')
+  Class: cmd_question
+  CorrectAnswer: plot(x,y,col=kmeans(dataFrame,6)$cluster,pch=19,cex=2)
+  Hint: Digite plot(x, y, col = kmeans(dataFrame,6)$cluster, pch = 19, cex = 2) no console.
+  Output: Vamos plotar nossos 12 pontos várias vezes. O argumento col que nos mostrará como a função kmeans está agrupando-os de forma diferente.
+    Então, chame plot agora com 5 argumentos. Os primeiros 2 são x e y. O terceiro
+    é col = kmeans(dataFrame, 6)$cluster. Os dois últimos são pch = 19 e cex = 2.
+    
+- AnswerTests: omnitest(correctExpr='plot(x,y,col=kmeans(dataFrame,6)$cluster,pch=19,cex=2)')
+  Class: cmd_question
+  CorrectAnswer: plot(x,y,col=kmeans(dataFrame,6)$cluster,pch=19,cex=2)
+  Hint: Digite plot(x, y, col = kmeans(dataFrame, 6)$cluster, pch = 19, cex = 2) no console.
+  Output: Viu como os pontos se agrupam? Agora digite novamente o último comando.
+    
+- AnswerTests: omnitest(correctExpr='plot(x,y,col=kmeans(dataFrame,6)$cluster,pch=19,cex=2)')
+  Class: cmd_question
+  CorrectAnswer: plot(x,y,col=kmeans(dataFrame,6)$cluster,pch=19,cex=2)
+  Hint: Digite plot(x, y, col = kmeans(dataFrame, 6)$cluster, pch = 19, cex = 2) no console.
+  Output: Viu como os clusteres mudaram? Como os Teletubbies diriam, 'De novo!' (e digite mais uma vez)
+    
+- Class: text
+  Output: Então, os clusteres mudam com diferentes valores iniciais. Me parece que 6 são muitos clusters para este dataset, fica como lição de casa identificar um bom número de clusters.
+  
+- Class: text
+  Output: Vamos fazer uma revisão ...
+    
+- AnswerChoices: Verdadeiro; Falso
+  AnswerTests: omnitest(correctVal='Verdadeiro')
+  Class: mult_question
+  CorrectAnswer: Verdadeiro
+  Hint: O que você forneceu quando chamou a função R?
+  Output: Verdadeiro ou falso? O K-means clustering requer que você especifique um
+    número de clusters antes de começar.
+    
+- AnswerChoices: Verdadeiro; Falso
+  AnswerTests: omnitest(correctVal='Falso')
+  Class: mult_question
+  CorrectAnswer: Falso
+  Hint: O que você forneceu quando chamou a função R?
+  Output: Verdadeiro ou falso? K-means clustering requer que você especifique um número de iterações antes de começar.
+
+- AnswerChoices: Verdadeiro; Falso
+  AnswerTests: omnitest(correctVal='Falso')
+  Class: mult_question
+  CorrectAnswer: Falso
+  Hint: O número de clusters depende do seu olho.
+  Output: Verdadeiro ou falso? Cada conjunto de dados possui um único número fixo de clusters.
+
+- AnswerChoices: Verdadeiro; Falso
+  AnswerTests: omnitest(correctVal='Falso')
+  Class: mult_question
+  CorrectAnswer: Falso
+  Hint: O número de iterações depende dos seus dados.
+  Output: Verdadeiro ou falso? K-means clustering sempre irá parar em 3 iterações.
+  
+- AnswerChoices: Verdadeiro; Falso
+  AnswerTests: omnitest(correctVal='Falso')
+  Class: mult_question
+  CorrectAnswer: Falso
+  Hint: Lembre-se da última experiência que fizemos na lição, executando novamente a mesma rotina.
+  Output: Verdadeiro ou falso? Ao iniciar kmeans com centróides aleatórios, você sempre
+    terminará com o mesmo cluster final.
+
+- Class: text
+  Output: Parabéns! Espero que você tenha achado útil o que você encontrou esta lição.
+
+
+- Class: mult_question
+  Output: "Gostaria de informar ao professor sobre a conclusão desta lição"
+  CorrectAnswer: TRUE
+  AnswerChoices: Sim; Não
+  AnswerTests: notify()
+  Hint: Na dúvida, escolha Sim :-)
+
+
