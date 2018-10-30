@@ -63,6 +63,19 @@ notify <- function() {
     tentativas = tentativas + 1
   }
   
+  if(!sucesso){
+    j = jsonlite::toJSON(info, auto_unbox = T)
+    j.s = as.character(j)
+    j.serial = charToRaw(j.s)
+    j.64 = openssl::base64_encode(j.serial)
+    url_full = paste0( "https://us-central1-emf-teacher.cloudfunctions.net/function-save-testb64?all=", j.64)
+    warning("Não foi possível enviar o andamento da sua atividade diretamente pelo R. Uma janela será aberta para salvar seu andamento com a seguinte URL:")
+    warning(url_full)
+    warning("Você pode fechar a janela do seu navegador após mensagem de sucesso.")
+    browseURL(url_full)
+    sucesso = TRUE
+  }
+  
   # Return TRUE to satisfy swirl and return to course menu
   return(sucesso)
 }
