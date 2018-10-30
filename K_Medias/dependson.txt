@@ -1,3 +1,5 @@
+openssl
+jsonlite
 ggplot2
 fields
 jpeg
