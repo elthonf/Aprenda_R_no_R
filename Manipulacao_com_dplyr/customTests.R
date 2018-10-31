@@ -93,8 +93,8 @@ notify <- function() {
   sucesso = FALSE
   tentativas = 1
   url = 'https://us-central1-emf-teacher.cloudfunctions.net/function-save-test'
-  while (!sucesso & tentativas <= 10) {
-    print(paste0("Tentando submeter ao professor, tentativa ", tentativas, " ... (max 10) ..."))
+  while (!sucesso & tentativas <= 5) {
+    print(paste0("Tentando submeter ao professor, tentativa ", tentativas, " ... (max 5) ..."))
     sucesso = tryCatch(
       {
         #Sendo through http
