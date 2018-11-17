@@ -1,2 +1,4 @@
 ggplot2
 jpeg
+openssl
+jsonlite

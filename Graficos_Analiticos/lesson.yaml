@@ -1,0 +1,265 @@
+- Class: meta
+  Course: Aprenda R no R
+  Lesson: Gráficos Analíticos
+  Author: Elthon Manhas de Freitas
+  Type: Standard
+  Organization: FIAP
+  Version: 1.0.0
+  
+- Class: text
+  Output: Oi alunos! Nesta lição, discutiremos alguns princípios básicos de apresentação de dados
+    de maneira eficaz. Estes irão ilustrar alguns conceitos fundamentais de exibição
+    de resultados, a fim de torná-los mais significativos e convincentes. Esses princípios
+    foram extraídos do grande livro de 2006 de Edward Tufte, Beautiful Evidence. Você
+    pode ler mais sobre estes princípios no site www.edwardtufte.com.
+    
+- AnswerChoices: Para mostrar comparações; Mostrar causalidade, mecanismo, explicação; Para mostrar dados multivariados; Para decidir em qual cavalo apostar
+  AnswerTests: omnitest(correctVal='Para decidir em qual cavalo apostar')
+  Class: mult_question
+  CorrectAnswer: Para decidir em qual cavalo apostar
+  Hint: Qual escolha não tem nada a ver com ciência de dados?
+  Output: Como aquecimento me  diga, qual dos seguintes casos NÃO seria um bom uso de gráficos analíticos?
+  
+- Class: text
+  Output: Show! Você está pronto para começar. Os gráficos nos dão uma forma visual de dados,
+    e o primeiro princípio dos gráficos analíticos é mostrar alguma comparação. Você
+    ouvirá mais sobre isso quando estudar inferência estatística
+    , mas a evidência de uma hipótese é sempre relativa a outra hipótese concorrente
+    ou alternativa.
+    
+- Class: figure
+  Figure: clearPlot.R
+  FigureType: new
+  Output: Quando um valor for apresentado com uma afirmação de que algo é bom, você deve sempre
+    perguntar "Comparado a quê?" É por isso que nos comerciais você costuma
+    ouvir a frase "outras marcas líderes". Uma comparação implícita, certo?
+
+- Class: text
+  Output: Vou mostrar vários gráficos nesta lição. Se precisar, use o Zoom do R para ver melhor sobre o que estou apresentando.
+
+- Class: figure
+  Figure: AC1.R
+  FigureType: new
+  Output: Considere este boxplot que mostra a relação entre o uso de um filtro de
+    ar e o número de dias sem sintomas de crianças asmáticas. (As linhas superior
+    e inferior da caixa indicam os quartis de 25% e 75% dos dados e a linha horizontal
+    na caixa mostra os 50%.) Como a caixa está acima de 0, o número de dias livres
+    de sintomas para crianças com asma é maior usando o filtro de ar. Acho que isso é bom,
+    certo?
+    
+- AnswerChoices: 4; -2; 1; 12
+  AnswerTests: omnitest(correctVal='1')
+  Class: mult_question
+  CorrectAnswer: 1
+  Hint: Os resultados para o número médio de crianças (50%) são mostrados pela linha
+    horizontal escura que é de cerca de +1, então a melhora é de cerca de 1 dia.
+  Output: Vamos ver se você está esperto(a). Quantos dias de melhora corresponde a mediana?
+  
+- Class: text
+  Output: Embora seja informativo, também é um pouco enigmático, já que o
+    eixo y afirma mostrar uma mudança no número de dias livres de sintomas. Não seria
+    melhor mostrar uma comparação?
+    
+- Class: figure
+  Figure: AC2.R
+  FigureType: new
+  Output: Como isso? Aqui está um gráfico que mostra dois boxplots, o da esquerda
+    mostrando os resultados para um grupo de controle que não usa um filtro de ar
+    ao lado do boxplot mostrado anteriormente.
+    
+- Class: text
+  Output: Ao mostrar os dois boxplots lado a lado, você pode ver claramente que usar
+    o filtro de ar aumenta o número de dias livres de sintomas para a maioria das
+    crianças asmáticas. O gráfico à direita (usando o filtro de ar) é um pouco maior
+    do que o da esquerda (o grupo de controle).
+    
+- AnswerChoices: As crianças do grupo controle tinham no máximo 3 dias livres de sintomas;
+    75% das crianças que usaram o filtro de ar tiveram no máximo 3 dias livres de
+    sintomas; Metade das crianças do grupo controle não teve melhora; Usando o filtro de ar faz crianças asmáticas mais doentes
+  AnswerTests: omnitest(correctVal='Usando o filtro de ar faz crianças asmáticas mais doentes')
+  Class: mult_question
+  CorrectAnswer: Usando o filtro de ar faz crianças asmáticas mais doentes
+  Hint: Como o boxplot à direita mostra que o número de dias livres de sintomas aumenta
+    com o uso do purificador de ar, o gráfico NÃO mostra que o uso torna as crianças
+    mais doentes.
+  Output: O que este gráfico NÃO mostra a você?
+  
+- Class: figure
+  Figure: clearPlot.R
+  FigureType: new
+  Output: Então o primeiro princípio de apresentação de resultados foi mostrar uma comparação. O segundo princípio
+    é mostrar a causalidade ou um mecanismo de como sua teoria dos dados funciona.
+    Essa explicação ou estrutura sistemática mostra sua estrutura causal para pensar
+    sobre a pergunta que você está tentando responder.
+    
+- Class: figure
+  Figure: AC3.R
+  FigureType: new
+  Output: Considere este gráfico que mostra o boxplot duplo que acabamos de mostrar,
+    mas ao lado dele temos um gráfico correspondente de mudanças nas medidas do material
+    particulado (o material que é filtrado pelo filtro de ar).
+
+- AnswerChoices: Que o filtro de ar reduz a poluição; Que o filtro de ar aumenta a poluição; Que as crianças do grupo de controle são mais saudáveis; Que o ar
+    no grupo de controle é mais limpo que o ar no outro grupo
+  AnswerTests: omnitest(correctVal='Que o filtro de ar reduz a poluição')
+  Class: mult_question
+  CorrectAnswer: Que o filtro de ar reduz a poluição
+  Hint: A imagem à direita mostra um purificador de ar e a poluição do ambiente.
+  Output: Esta imagem tenta explicar como o filtro de ar aumenta o número de
+    dias livres de sintomas para as crianças asmáticas. Seja PM a quantidade de material particulado (poluição), o que o gráfico diz?
+
+- Class: text
+  Output: Ao mostrar os dois conjuntos de boxplots lado a lado, você está explicando
+    sua teoria de por que o purificador de ar aumenta o número de dias livres de sintomas.
+
+    
+- Class: text
+  Output: Então o primeiro princípio foi mostrar alguma comparação, o segundo foi
+    mostrar um mecanismo (ou causalidade), então o que o terceiro princípio de apresentação de resultados nos dirá para mostrar?
+    
+- Class: text
+  Output: Dados multivariados!
+  
+- Class: text
+  Output: Quais são os dados multivariados do problema? Na literatura
+    técnica (científica), este termo significa mais de duas variáveis. Parcelas de
+    duas variáveis são o que você viu na álgebra do ensino médio. Lembre-se daqueles
+    gráficos x, y quando você estava aprendendo sobre inclinações, interceptações
+    e equações de retas? Esses conceitos são importantes, mas geralmente as perguntas são mais
+    complicadas e exigem mais variáveis.
+    
+- Class: figure
+  Figure: clearPlot.R
+  FigureType: new
+  Output: Às vezes, se você se restringir a duas variáveis, você será enganado e tirará
+    uma conclusão incorreta.
+    
+- Class: figure
+  Figure: MVD1.R
+  FigureType: new
+  Output: Considere este gráfico que mostra a relação entre a poluição do ar (eixo
+    x) e as taxas de mortalidade entre os idosos (eixo y). A linha de regressão azul
+    mostra um resultado surpreendente. (Você aprenderá sobre linhas de regressão quando
+    estudar estatística.)
+  
+- AnswerChoices: À medida que a poluição aumenta, mais pessoas morrem; À medida que a poluição aumenta, menos pessoas morrem; À medida que a poluição aumenta, o número
+    de mortes não muda; A poluição não aumenta muito, só é mais informada
+  AnswerTests: omnitest(correctVal='À medida que a poluição aumenta, menos pessoas morrem')
+  Class: mult_question
+  CorrectAnswer: À medida que a poluição aumenta, menos pessoas morrem
+  Hint: Conforme você se move para a direita ao longo do eixo x, a poluição aumenta,
+    mas a linha azul se move para baixo, indicando menos mortes.
+  Output: O que a linha de regressão azul indica?
+  
+- Class: text
+  Output: Menos mortes com mais poluição? Isso é uma surpresa! Algo tem que estar
+    errado, certo? Na verdade, este é um exemplo do paradoxo de Simpson, ou o efeito
+    Yule-Simpson. A Wikipedia (http://en.wikipedia.org/wiki/Simpson%27s_paradox) nos
+    diz que isso "é um paradoxo em probabilidade e estatística, no qual uma tendência
+    que aparece em diferentes grupos de dados desaparece quando esses grupos são combinados".
+
+- Class: text
+  Output: Suponha que dividimos esses dados de mortalidade / poluição nas quatro estações
+    do ano. Será que nós veríamos diferentes tendências?
+
+- Class: figure
+  Figure: MVD2.R
+  FigureType: new
+  Output: Sim nós vemos dados diferentes! Plotando os mesmos dados para as 4 estações individualmente,
+    vemos um resultado BEM diferente.
+    
+- AnswerChoices: À medida que a poluição aumenta, mais pessoas morrem em todas as estações; À medida que a poluição aumenta, menos pessoas morrem em todas as estações;
+    À medida que a poluição aumenta, as estações mudam; A poluição não aumenta muito,
+    só é mais informada
+  AnswerTests: omnitest(correctVal='À medida que a poluição aumenta, mais pessoas morrem em todas as estações')
+  Class: mult_question
+  CorrectAnswer: À medida que a poluição aumenta, mais pessoas morrem em todas as estações
+  Hint: Em todas as estações, à medida que você se move para a direita ao longo do
+    eixo x, a poluição aumenta e todas as quatro linhas de regressão azuis se movem
+    para cima, indicando mais mortes.
+  Output: O que o novo gráfico indica?
+  
+- Class: text
+  Output: 'O quarto princípio do grafismo analítico (só quis mostrar o nome técnico, rs) envolve a integração de evidências.
+    Isso significa não se limitar a uma forma de expressão. Você pode usar palavras,
+    números, imagens e diagramas. Gráficos devem fazer uso de muitos modos de apresentação
+    de dados. Lembre-se: "Não deixe a ferramenta dirigir a análise!"'
+    
+- Class: figure
+  Figure: ITG.R
+  FigureType: new
+  Output: Para mostrar o que quero dizer, aqui está um exemplo de uma figura tirada
+    de um artigo publicado no Journal of the AMA. Mostra a relação entre poluição
+    e hospitalização de pessoas com doença cardíaca. Como você pode ver, é muito diferente
+    dos nossos gráficos anteriores. Os círculos sólidos na porção central indicam
+    estimativas pontuais de variações percentuais nas taxas de hospitalização para
+    diferentes níveis de poluição. As linhas nos círculos indicam intervalos de confiança
+    associados a essas estimativas. (Intervalos de confiança é outro assunto interessante
+    das aulas de estatística.)
+    
+- Class: text
+  Output: Note que no lado direito da figura há outra coluna de números, um para cada
+    uma das estimativas pontuais. Esta coluna mostra probabilidades posteriores
+    de que o risco relativo é maior que 0. Isso, com efeito, é uma medida da força
+    das evidências que mostram a correlação entre poluição e hospitalização. O ponto
+    aqui é que todas essas informações estão localizadas em uma imagem, de modo que
+    o leitor pode ver a força não apenas das correlações, mas também das evidências.
+    
+- Class: text
+  Output: O quinto princípio da representação gráfica envolve descrever e documentar
+    a evidência com fontes, rótulos e escalas apropriados. Credibilidade é importante
+    para que os gráficos de dados contem uma história completa. Além disso, usando
+    R, você quer preservar qualquer código que você usa para gerar seus dados e gráficos
+    para que a pesquisa possa ser replicada, se necessário. Isso permite fácil verificação
+    ou encontrar erros em sua análise.
+    
+- Class: text
+  Output: O sexto e último princípio do grafismo analítico é talvez o mais importante.
+    O conteúdo é soberano! Se você não tiver algo interessante para relatar, seus gráficos
+    não salvarão você. As apresentações analíticas, em última análise, permanecem
+    ou diminuem dependendo da qualidade, relevância e integridade de seu conteúdo.
+    
+- Class: text
+  Output: Agora vamos revisar !!!
+  
+- AnswerChoices: Integrar múltiplos modos de evidência; Descrever e documentar provas;
+    O conteúdo é soberano; Ter rótulos ilegíveis
+  AnswerTests: omnitest(correctVal='Ter rótulos ilegíveis')
+  Class: mult_question
+  CorrectAnswer: Ter rótulos ilegíveis
+  Hint: Qual escolha é obviamente ruim?
+  Output: Qual das seguintes opções NÃO é um bom princípio de representação gráfica?
+  
+- AnswerChoices: Para provar que você está sempre certo; Mostrar duas hipóteses concorrentes;
+    Demonstrar um mecanismo causativo subjacente a uma correlação; O conteúdo é soberano
+  AnswerTests: omnitest(correctVal='Para provar que você está sempre certo')
+  Class: mult_question
+  CorrectAnswer: Para provar que você está sempre certo
+  Hint: Qual escolha é obviamente ruim?
+  Output: Qual das seguintes opções NÃO é um bom princípio de representação gráfica?
+  
+- AnswerChoices: Integrar diferentes tipos de evidências; Para mostrar que algumas fontes são melhores que outras; Mostrar bons rótulos e escalas; O conteúdo é soberano
+  AnswerTests: omnitest(correctVal='Para mostrar que algumas fontes são melhores que outras')
+  Class: mult_question
+  CorrectAnswer: Para mostrar que algumas fontes são melhores que outras
+  Hint: Qual escolha é obviamente ruim?
+  Output: Qual das seguintes opções NÃO é um bom princípio de representação gráfica?
+  
+- AnswerChoices: Verdadeiro; Falso
+  AnswerTests: omnitest(correctVal='Falso')
+  Class: mult_question
+  CorrectAnswer: Falso
+  Hint: Pense no sexto princípio
+  Output: Verdadeiro ou falso? A cor do gráfico é soberana.
+  
+- Class: text
+  Output: Parabéns! Você concluiu esta lição sobre princípios de representação
+    gráfica. Espero principalmente que você tenha descoberto princípios (nossa, essa foi ruim!).
+    
+- Class: mult_question
+  Output: "Gostaria de informar ao professor sobre a conclusão desta lição"
+  CorrectAnswer: TRUE
+  AnswerChoices: Sim; Não
+  AnswerTests: notify()
+  Hint: Na dúvida, escolha Sim :-)
+
