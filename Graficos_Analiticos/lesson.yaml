@@ -13,6 +13,9 @@
     foram extraídos do grande livro de 2006 de Edward Tufte, Beautiful Evidence. Você
     pode ler mais sobre estes princípios no site www.edwardtufte.com.
     
+- Class: text
+  Output: Depois de tanto assunto mais técnico, você verá que esta lição é mais conceitual, para fecharmos o conteúdo de análise de dados.
+    
 - AnswerChoices: Para mostrar comparações; Mostrar causalidade, mecanismo, explicação; Para mostrar dados multivariados; Para decidir em qual cavalo apostar
   AnswerTests: omnitest(correctVal='Para decidir em qual cavalo apostar')
   Class: mult_question
