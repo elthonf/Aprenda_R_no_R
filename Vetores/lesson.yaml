@@ -123,7 +123,7 @@
     \ das partes é TRUE. Seu trabalho é descobrir se cada uma é uma afirmaç\
     ão verdadeira. Se uma for, toda a condição é verdadeira. Se não,\
     \ é falso."
-  Output: (TRUE == TRUE) | (TRUE = FALSE)
+  Output: (TRUE == TRUE) | (TRUE == FALSE)
 
 - AnswerChoices: TRUE; FALSE
   AnswerTests: omnitest(correctVal='TRUE')
